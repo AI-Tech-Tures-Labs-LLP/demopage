@@ -40,16 +40,21 @@ const BubbleNetwork = () => {
         analytics: { left: R(w * 0.45), top: R(h * 0.75) }
       },
       subs: {
-        'sales-management': { left: R(w * 0.72), top: R(h * 0.13) },
-        'distributors-portal': { left: R(w * 0.72), top: R(h * 0.21) },
-        'field-assist': { left: R(w * 0.72), top: R(h * 0.29) },
-        'ecommerce-portal': { left: R(w * 0.72), top: R(h * 0.37) },
-        'inventory-management': { left: R(w * 0.72), top: R(h * 0.44) },
+        // Group 1 (Sales Enablement) - Shifted significantly UP
+        'sales-management': { left: R(w * 0.72), top: R(h * 0.04) },
+        'distributors-portal': { left: R(w * 0.72), top: R(h * 0.12) },
+        'field-assist': { left: R(w * 0.72), top: R(h * 0.20) },
+        'ecommerce-portal': { left: R(w * 0.72), top: R(h * 0.28) },
+        
+        // Group 2 (ERP Processes) - Centered at 0.50, Spacing 0.08
+        'inventory-management': { left: R(w * 0.72), top: R(h * 0.42) },
         'audit-trail': { left: R(w * 0.72), top: R(h * 0.50) },
-        'sales-forecasting': { left: R(w * 0.72), top: R(h * 0.56) },
-        'dashboard': { left: R(w * 0.72), top: R(h * 0.69) },
-        'reports-schedules': { left: R(w * 0.72), top: R(h * 0.75) },
-        'custom-dashboard': { left: R(w * 0.72), top: R(h * 0.81) },
+        'sales-forecasting': { left: R(w * 0.72), top: R(h * 0.58) },
+        
+        // Group 3 (AI Analytics) - Shifted significantly DOWN
+        'dashboard': { left: R(w * 0.72), top: R(h * 0.76) },
+        'reports-schedules': { left: R(w * 0.72), top: R(h * 0.84) },
+        'custom-dashboard': { left: R(w * 0.72), top: R(h * 0.92) },
       }
     };
 
