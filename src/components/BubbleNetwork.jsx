@@ -31,24 +31,25 @@ const BubbleNetwork = () => {
 
   // Dynamic Layout Engine
   const getLayout = () => {
+    const R = Math.round;
     const layout = {
-      root: { left: w * 0.15, top: h * 0.5 },
+      root: { left: R(w * 0.15), top: R(h * 0.5) },
       cats: {
-        sales: { left: w * 0.45, top: h * 0.25 },
-        erp: { left: w * 0.45, top: h * 0.50 },
-        analytics: { left: w * 0.45, top: h * 0.75 }
+        sales: { left: R(w * 0.45), top: R(h * 0.25) },
+        erp: { left: R(w * 0.45), top: R(h * 0.50) },
+        analytics: { left: R(w * 0.45), top: R(h * 0.75) }
       },
       subs: {
-        'sales-management': { left: w * 0.72, top: h * 0.13 },
-        'distributors-portal': { left: w * 0.72, top: h * 0.21 },
-        'field-assist': { left: w * 0.72, top: h * 0.29 },
-        'ecommerce-portal': { left: w * 0.72, top: h * 0.37 },
-        'inventory-management': { left: w * 0.72, top: h * 0.44 },
-        'audit-trail': { left: w * 0.72, top: h * 0.50 },
-        'sales-forecasting': { left: w * 0.72, top: h * 0.56 },
-        'dashboard': { left: w * 0.72, top: h * 0.69 },
-        'reports-schedules': { left: w * 0.72, top: h * 0.75 },
-        'custom-dashboard': { left: w * 0.72, top: h * 0.81 },
+        'sales-management': { left: R(w * 0.72), top: R(h * 0.13) },
+        'distributors-portal': { left: R(w * 0.72), top: R(h * 0.21) },
+        'field-assist': { left: R(w * 0.72), top: R(h * 0.29) },
+        'ecommerce-portal': { left: R(w * 0.72), top: R(h * 0.37) },
+        'inventory-management': { left: R(w * 0.72), top: R(h * 0.44) },
+        'audit-trail': { left: R(w * 0.72), top: R(h * 0.50) },
+        'sales-forecasting': { left: R(w * 0.72), top: R(h * 0.56) },
+        'dashboard': { left: R(w * 0.72), top: R(h * 0.69) },
+        'reports-schedules': { left: R(w * 0.72), top: R(h * 0.75) },
+        'custom-dashboard': { left: R(w * 0.72), top: R(h * 0.81) },
       }
     };
 
@@ -57,48 +58,48 @@ const BubbleNetwork = () => {
     const focusedType = bubbleData[focusedNode] ? 'cat' : 'sub';
 
     if (focusedType === 'cat') {
-      layout.root = { left: w * 0.05, top: h * 0.35 }; // Pushed further left
+      layout.root = { left: R(w * 0.05), top: R(h * 0.35) }; // Pushed further left
       
       Object.keys(bubbleData).forEach((catId) => {
         if (catId === focusedNode) {
-          layout.cats[catId] = { left: w * 0.45, top: h * 0.50 }; // Shifted left to make room
+          layout.cats[catId] = { left: R(w * 0.45), top: R(h * 0.50) }; // Shifted left to make room
           const subs = bubbleData[catId].subComponents;
           const spacing = 0.16; 
           const startTop = 0.5 - ((subs.length - 1) * spacing) / 2;
           subs.forEach((sub, i) => {
-            layout.subs[sub.id] = { left: w * 0.88, top: h * (startTop + i * spacing) }; // Safely positioned
+            layout.subs[sub.id] = { left: R(w * 0.88), top: R(h * (startTop + i * spacing)) }; // Safely positioned
           });
         } else {
           // Hide other categories by placing them under the root
-          layout.cats[catId] = { left: w * 0.08, top: h * 0.30 };
+          layout.cats[catId] = { left: R(w * 0.08), top: R(h * 0.30) };
           bubbleData[catId].subComponents.forEach(sub => {
-            layout.subs[sub.id] = { left: w * 0.08, top: h * 0.30 };
+            layout.subs[sub.id] = { left: R(w * 0.08), top: R(h * 0.30) };
           });
         }
       });
     } else {
       const parentCatId = getCatFromSub(focusedNode);
 
-      layout.root = { left: w * 0.03, top: h * 0.20 }; // Push Brain further left
+      layout.root = { left: R(w * 0.03), top: R(h * 0.20) }; // Push Brain further left
       
       Object.keys(bubbleData).forEach((catId) => {
         if (catId === parentCatId) {
-          layout.cats[catId] = { left: w * 0.12, top: h * 0.35 }; // Push parent left to make room
+          layout.cats[catId] = { left: R(w * 0.12), top: R(h * 0.35) }; // Push parent left to make room
           const subs = bubbleData[catId].subComponents;
           
           subs.forEach(sub => {
             if (sub.id === focusedNode) {
-              layout.subs[sub.id] = { left: w * 0.58, top: h * 0.50 }; // Shifted right to stop overlap
+              layout.subs[sub.id] = { left: R(w * 0.58), top: R(h * 0.50) }; // Shifted right to stop overlap
             } else {
               // Hide sibling subs under parent
-              layout.subs[sub.id] = { left: w * 0.12, top: h * 0.35 }; 
+              layout.subs[sub.id] = { left: R(w * 0.12), top: R(h * 0.35) }; 
             }
           });
         } else {
           // Hide other categories under root
-          layout.cats[catId] = { left: w * 0.05, top: h * 0.15 };
+          layout.cats[catId] = { left: R(w * 0.05), top: R(h * 0.15) };
           bubbleData[catId].subComponents.forEach(sub => {
-            layout.subs[sub.id] = { left: w * 0.05, top: h * 0.15 };
+            layout.subs[sub.id] = { left: R(w * 0.05), top: R(h * 0.15) };
           });
         }
       });
@@ -176,6 +177,8 @@ const BubbleNetwork = () => {
     });
   });
   const springConfig = { type: 'spring', stiffness: 220, damping: 25, mass: 0.5 };
+  const cleanTransform = ({ x, y, scale }) => `translate(${x}, ${y}) scale(${scale})`;
+  
   return (
     <div 
       style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden' }}
@@ -259,6 +262,7 @@ const BubbleNetwork = () => {
           width: '240px', height: '240px', x: '-50%', y: '-50%', zIndex: getSize('root').zIndex, borderRadius: '50%'
         }}
         transition={springConfig}
+        transformTemplate={cleanTransform}
       >
         <img src="/center.png" alt="Brain" style={{ width: '90px', height: '90px', mixBlendMode: 'multiply', marginBottom: '8px' }} />
         <h1 style={{ fontSize: '26px', fontWeight: '800', margin: 0 }}>StackLogix</h1>
@@ -281,6 +285,7 @@ const BubbleNetwork = () => {
               overflow: 'hidden' // prevents text from spilling over during shrink
             }}
             transition={springConfig}
+            transformTemplate={cleanTransform}
             whileHover={!focus && !focusedNode ? { scale: 1.05, boxShadow: 'inset 0 0 20px #fff, 0 15px 40px rgba(232, 149, 40,0.4)' } : {}}
           >
             {/* Minimal View */}
@@ -364,6 +369,7 @@ const BubbleNetwork = () => {
                 animate={{ width: `${size.width}px`, height: `${size.height}px`, scale: size.scale, opacity: size.opacity, x: '-50%', y: '-50%', borderRadius: size.borderRadius || '50%' }}
                 style={{ position: 'absolute', cursor: 'pointer', transformOrigin: 'center', overflow: 'hidden', borderWidth: `${1 / size.scale}px` }}
                 transition={springConfig}
+                transformTemplate={cleanTransform}
                 whileHover={!focus && !focusedNode ? { scale: 1.2, boxShadow: 'inset 0 0 10px #fff, 0 10px 20px rgba(232, 149, 40,0.4)' } : {}}
               >
                 {/* Rich Content View inside Subcomponent */}
