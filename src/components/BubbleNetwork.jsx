@@ -41,20 +41,20 @@ const BubbleNetwork = () => {
       },
       subs: {
         // Group 1 (Sales Enablement) - Shifted significantly UP
-        'sales-management': { left: R(w * 0.72), top: R(h * 0.04) },
-        'distributors-portal': { left: R(w * 0.72), top: R(h * 0.12) },
-        'field-assist': { left: R(w * 0.72), top: R(h * 0.20) },
-        'ecommerce-portal': { left: R(w * 0.72), top: R(h * 0.28) },
+        'sales-management': { left: w < 768 ? R(w * 0.75) : R(w * 0.72), top: R(h * 0.04) },
+        'distributors-portal': { left: w < 768 ? R(w * 0.75) : R(w * 0.72), top: R(h * 0.12) },
+        'field-assist': { left: w < 768 ? R(w * 0.75) : R(w * 0.72), top: R(h * 0.20) },
+        'ecommerce-portal': { left: w < 768 ? R(w * 0.75) : R(w * 0.72), top: R(h * 0.28) },
         
         // Group 2 (ERP Processes) - Centered at 0.50, Spacing 0.08
-        'inventory-management': { left: R(w * 0.72), top: R(h * 0.42) },
-        'audit-trail': { left: R(w * 0.72), top: R(h * 0.50) },
-        'sales-forecasting': { left: R(w * 0.72), top: R(h * 0.58) },
+        'inventory-management': { left: w < 768 ? R(w * 0.75) : R(w * 0.72), top: R(h * 0.42) },
+        'audit-trail': { left: w < 768 ? R(w * 0.75) : R(w * 0.72), top: R(h * 0.50) },
+        'sales-forecasting': { left: w < 768 ? R(w * 0.75) : R(w * 0.72), top: R(h * 0.58) },
         
         // Group 3 (AI Analytics) - Shifted significantly DOWN
-        'dashboard': { left: R(w * 0.72), top: R(h * 0.76) },
-        'reports-schedules': { left: R(w * 0.72), top: R(h * 0.84) },
-        'custom-dashboard': { left: R(w * 0.72), top: R(h * 0.92) },
+        'dashboard': { left: w < 768 ? R(w * 0.75) : R(w * 0.72), top: R(h * 0.76) },
+        'reports-schedules': { left: w < 768 ? R(w * 0.75) : R(w * 0.72), top: R(h * 0.84) },
+        'custom-dashboard': { left: w < 768 ? R(w * 0.75) : R(w * 0.72), top: R(h * 0.92) },
       }
     };
 
@@ -63,16 +63,16 @@ const BubbleNetwork = () => {
     const focusedType = bubbleData[focusedNode] ? 'cat' : 'sub';
 
     if (focusedType === 'cat') {
-      layout.root = { left: R(w * 0.05), top: R(h * 0.35) }; // Pushed further left
+      layout.root = { left: w < 768 ? R(w * -0.2) : R(w * 0.05), top: R(h * 0.35) }; // Pushed further left
       
       Object.keys(bubbleData).forEach((catId) => {
         if (catId === focusedNode) {
-          layout.cats[catId] = { left: R(w * 0.45), top: R(h * 0.50) }; // Shifted left to make room
+          layout.cats[catId] = { left: w < 768 ? R(w * 0.35) : R(w * 0.45), top: R(h * 0.50) }; // Shifted left to make room
           const subs = bubbleData[catId].subComponents;
-          const spacing = 0.16; 
+          const spacing = w < 768 ? 0.10 : 0.16; 
           const startTop = 0.5 - ((subs.length - 1) * spacing) / 2;
           subs.forEach((sub, i) => {
-            layout.subs[sub.id] = { left: R(w * 0.88), top: R(h * (startTop + i * spacing)) }; // Safely positioned
+            layout.subs[sub.id] = { left: w < 768 ? R(w * 0.84) : R(w * 0.88), top: R(h * (startTop + i * spacing)) }; // Safely positioned
           });
         } else {
           // Hide other categories by placing them under the root
@@ -85,16 +85,16 @@ const BubbleNetwork = () => {
     } else {
       const parentCatId = getCatFromSub(focusedNode);
 
-      layout.root = { left: R(w * 0.03), top: R(h * 0.20) }; // Push Brain further left
+      layout.root = { left: w < 768 ? R(w * -0.2) : R(w * 0.03), top: R(h * 0.20) }; // Push Brain further left
       
       Object.keys(bubbleData).forEach((catId) => {
         if (catId === parentCatId) {
-          layout.cats[catId] = { left: R(w * 0.12), top: R(h * 0.35) }; // Push parent left to make room
+          layout.cats[catId] = { left: w < 768 ? R(w * -0.2) : R(w * 0.12), top: R(h * 0.35) }; // Hide parent on mobile
           const subs = bubbleData[catId].subComponents;
           
           subs.forEach(sub => {
             if (sub.id === focusedNode) {
-              layout.subs[sub.id] = { left: R(w * 0.58), top: R(h * 0.50) }; // Shifted right to stop overlap
+              layout.subs[sub.id] = { left: w < 768 ? R(w * 0.50) : R(w * 0.58), top: R(h * 0.50) }; // Center perfectly
             } else {
               // Hide sibling subs under parent
               layout.subs[sub.id] = { left: R(w * 0.12), top: R(h * 0.35) }; 
@@ -114,45 +114,47 @@ const BubbleNetwork = () => {
 
   const layout = getLayout();
 
+  const rs = w < 600 ? 0.4 : w < 1024 ? 0.7 : 1;
+
   const getSize = (type, id) => {
     if (!focusedNode) {
-      if (type === 'root') return { width: 240, height: 240, scale: 1, opacity: 1, zIndex: 10 };
-      if (type === 'cat') return { width: 180, height: 180, scale: 1, opacity: 1, zIndex: 11 };
-      if (type === 'sub') return { width: 40, height: 40, scale: 1, opacity: 1, zIndex: 12 };
+      if (type === 'root') return { width: 240 * rs, height: 240 * rs, scale: 1, opacity: 1, zIndex: 10 };
+      if (type === 'cat') return { width: 180 * rs, height: 180 * rs, scale: 1, opacity: 1, zIndex: 11 };
+      if (type === 'sub') return { width: 40 * rs, height: 40 * rs, scale: 1, opacity: 1, zIndex: 12 };
     }
     
     // Completely hide everything unrelated to the focused path
     const isCatFocused = bubbleData[focusedNode] !== undefined;
     
     if (type === 'root') {
-      return { width: 240, height: 240, scale: 0.35, opacity: 0.6, zIndex: 5 };
+      return { width: 240 * rs, height: 240 * rs, scale: 0.35, opacity: 0.6, zIndex: 5 };
     }
 
     if (id === focusedNode) {
        const isCat = bubbleData[id] !== undefined;
        if (isCat) {
-         return { width: 1350, height: 750, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
+         return { width: Math.min(1350, w < 768 ? w * 0.65 : w * 0.9), height: w < 768 ? 380 : Math.min(750, h * 0.9), scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
        } else {
-         return { width: 1350, height: 750, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
+         return { width: Math.min(1350, w < 768 ? w * 0.9 : w * 0.9), height: w < 768 ? 380 : Math.min(750, h * 0.9), scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
        }
     }
 
     if (type === 'cat') {
       if (!isCatFocused && getCatFromSub(focusedNode) === id) {
         // Parent of focused sub
-        return { width: 180, height: 180, scale: 0.7, opacity: 0.8, zIndex: 11 };
+        return { width: 180 * rs, height: 180 * rs, scale: 0.7, opacity: 0.8, zIndex: 11 };
       }
       // Unrelated category
-      return { width: 180, height: 180, scale: 0.1, opacity: 0, zIndex: 1 };
+      return { width: 180 * rs, height: 180 * rs, scale: 0.1, opacity: 0, zIndex: 1 };
     }
 
     if (type === 'sub') {
       if (isCatFocused && getCatFromSub(id) === focusedNode) {
         // Child of focused category
-        return { width: 50, height: 50, scale: 1.1, opacity: 1, zIndex: 12 };
+        return { width: 50 * rs, height: 50 * rs, scale: 1.1, opacity: 1, zIndex: 12 };
       }
       // Unrelated or sibling subcomponent
-      return { width: 40, height: 40, scale: 0.1, opacity: 0, zIndex: 1 };
+      return { width: 40 * rs, height: 40 * rs, scale: 0.1, opacity: 0, zIndex: 1 };
     }
   };
 
@@ -195,31 +197,30 @@ const BubbleNetwork = () => {
     >
       <div className="mesh-bg" />
 
-      {/* Close Button */}
       <AnimatePresence>
         {focusedNode && (
           <motion.button
             initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
             onClick={() => setFocusedNode(null)}
             style={{
-              position: 'absolute', top: '40px', left: '40px', zIndex: 200,
-              width: '56px', height: '56px', borderRadius: '50%',
+              position: 'absolute', top: w < 768 ? '20px' : '40px', left: w < 768 ? '20px' : '40px', zIndex: 200,
+              width: w < 768 ? '40px' : '56px', height: w < 768 ? '40px' : '56px', borderRadius: '50%',
               background: '#fff', border: '2px solid #e89528',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               boxShadow: '0 4px 15px rgba(232, 149, 40, 0.2)', cursor: 'pointer'
             }}
             whileHover={{ scale: 1.1, background: '#fdfbf2' }}
           >
-            <X color="#a35b12" size={28} />
+            <X color="#a35b12" size={w < 768 ? 20 : 28} />
           </motion.button>
         )}
       </AnimatePresence>
 
       <motion.div
         initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5, ...springConfig }}
-        style={{ position: 'absolute', top: '40px', right: '50px', zIndex: 20 }}
+        style={{ position: 'absolute', top: w < 768 ? '20px' : '40px', left: w < 768 ? '20px' : 'auto', right: w < 768 ? 'auto' : '50px', zIndex: 20 }}
       >
-        <h1 className="shining-text" style={{ fontSize: '32px', margin: 0 }}>StackLogix DEMO</h1>
+        <h1 className="shining-text" style={{ fontSize: w < 768 ? '16px' : '32px', margin: 0, display: w < 768 && focusedNode ? 'none' : 'block' }}>StackLogix DEMO</h1>
       </motion.div>
 
       {/* SVG Connections with Animated Paths */}
@@ -235,8 +236,12 @@ const BubbleNetwork = () => {
             } else {
               // Subcomponent is focused: only show Root -> Parent line, and Parent -> Sub line
               const parentCatId = getCatFromSub(focusedNode);
-              if (path.id === `root-${parentCatId}` || path.subId === focusedNode) lineOpacity = 1;
-              else lineOpacity = 0;
+              if (w < 768) {
+                lineOpacity = 0; // Hide lines when subcomponent modal is full screen
+              } else {
+                if (path.id === `root-${parentCatId}` || path.subId === focusedNode) lineOpacity = 1;
+                else lineOpacity = 0;
+              }
             }
           }
           return (
@@ -264,14 +269,14 @@ const BubbleNetwork = () => {
         animate={{ 
           left: layout.root.left, top: layout.root.top, 
           scale: getSize('root').scale, opacity: getSize('root').opacity,
-          width: '240px', height: '240px', x: '-50%', y: '-50%', zIndex: getSize('root').zIndex, borderRadius: '50%'
+          width: `${getSize('root').width}px`, height: `${getSize('root').height}px`, x: '-50%', y: '-50%', zIndex: getSize('root').zIndex, borderRadius: '50%'
         }}
         transition={springConfig}
         transformTemplate={cleanTransform}
       >
-        <img src="/center.png" alt="Brain" style={{ width: '90px', height: '90px', mixBlendMode: 'multiply', marginBottom: '8px' }} />
-        <h1 style={{ fontSize: '26px', fontWeight: '800', margin: 0 }}>StackLogix</h1>
-        <h2 style={{ fontSize: '13px', fontWeight: '600', color: '#a35b12', letterSpacing: '2px' }}>BRAIN</h2>
+        <img src="/center.png" alt="Brain" style={{ width: `${90 * rs}px`, height: `${90 * rs}px`, mixBlendMode: 'multiply', marginBottom: '8px' }} />
+        <h1 style={{ fontSize: `${26 * rs}px`, fontWeight: '800', margin: 0 }}>StackLogix</h1>
+        <h2 style={{ fontSize: `${13 * rs}px`, fontWeight: '600', color: '#a35b12', letterSpacing: '2px' }}>BRAIN</h2>
       </motion.div>
 
       {/* Category Bubbles */}
@@ -284,7 +289,8 @@ const BubbleNetwork = () => {
             style={{ position: 'absolute', borderWidth: `${1 / size.scale}px` }}
             animate={{ 
               left: layout.cats[cat.id].left, top: layout.cats[cat.id].top,
-              width: `${size.width}px`, height: `${size.height}px`,
+              width: typeof size.width === 'number' ? `${size.width}px` : size.width, 
+              height: typeof size.height === 'number' ? `${size.height}px` : size.height,
               scale: size.scale, opacity: size.opacity, zIndex: size.zIndex,
               x: '-50%', y: '-50%', borderRadius: size.borderRadius || '50%', cursor: 'pointer',
               overflow: 'hidden' // prevents text from spilling over during shrink
@@ -302,8 +308,8 @@ const BubbleNetwork = () => {
                   exit={{ opacity: 0, transition: { duration: 0.1 } }} 
                   style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
                 >
-                  <img src={`/${cat.id}.png`} alt={cat.title} style={{ width: '50px', height: '50px', mixBlendMode: 'multiply', marginBottom: '8px' }} />
-                  <h2 style={{ fontSize: '16px', fontWeight: '700', textAlign: 'center', margin: '0 10px', color: 'var(--text-color)' }}>{cat.title}</h2>
+                  <img src={`/${cat.id}.png`} alt={cat.title} style={{ width: `${50 * rs}px`, height: `${50 * rs}px`, mixBlendMode: 'multiply', marginBottom: '8px' }} />
+                  <h2 style={{ fontSize: `${16 * rs}px`, fontWeight: '700', textAlign: 'center', margin: '0 10px', color: 'var(--text-color)' }}>{cat.title}</h2>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -323,28 +329,30 @@ const BubbleNetwork = () => {
                   initial={{ opacity: 0, scale: 0.95 }} 
                   animate={{ opacity: 1, scale: 1, transition: { delay: 0.25, duration: 0.4 } }} 
                   exit={{ opacity: 0, transition: { duration: 0.1 } }} 
-                  style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%', display: 'flex', flexDirection: 'row' }}
+                  style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%', display: 'flex', flexDirection: w < 768 ? 'column' : 'row' }}
                 >
-                  <div style={{ flex: '1', padding: '40px' }}>
-                    <div style={{ width: '100%', height: '100%', borderRadius: '16px', backgroundImage: 'url(/map-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
-                  </div>
+                  {w >= 768 && (
+                    <div style={{ flex: '1', padding: '40px' }}>
+                      <div style={{ width: '100%', height: '100%', borderRadius: '16px', backgroundImage: 'url(/map-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
+                    </div>
+                  )}
                   
-                  <div style={{ flex: '0 0 45%', padding: '40px 60px 40px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
-                      <h2 style={{ fontSize: '42px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.2', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center' }}>
-                        {cat.title} <ExternalLink size={28} style={{ marginLeft: '12px' }}/>
+                  <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '40px 60px 40px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '16px' : '24px' }}>
+                      <h2 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.2', whiteSpace: w < 768 ? 'normal' : 'nowrap', display: 'flex', alignItems: 'center' }}>
+                        {cat.title} <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }}/>
                       </h2>
                     </div>
-                    <p style={{ fontSize: '18px', color: '#555', lineHeight: '1.6', marginBottom: '40px' }}>Available on both web and mobile platforms, enabling powerful insights and operations tightly coupled with your central logic systems.</p>
+                    <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#555', lineHeight: '1.6', marginBottom: w < 768 ? '30px' : '40px' }}>Available on both web and mobile platforms, enabling powerful insights and operations tightly coupled with your central logic systems.</p>
                     
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', width: '100%' }}>
-                       <div style={{ background: '#fff', padding: '30px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
-                         <Package color="#e89528" size={32} style={{ marginBottom: '12px' }}/>
-                         <span style={{ fontWeight: '600', fontSize: '16px', color: '#222' }}>Catalogue</span>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: w < 768 ? '12px' : '20px', width: '100%' }}>
+                       <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
+                         <Package color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }}/>
+                         <span style={{ fontWeight: '600', fontSize: w < 768 ? '14px' : '16px', color: '#222' }}>Catalogue</span>
                        </div>
-                       <div style={{ background: '#fff', padding: '30px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
-                         <Clock color="#e89528" size={32} style={{ marginBottom: '12px' }}/>
-                         <span style={{ fontWeight: '600', fontSize: '16px', color: '#222' }}>Reminders</span>
+                       <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
+                         <Clock color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }}/>
+                         <span style={{ fontWeight: '600', fontSize: w < 768 ? '14px' : '16px', color: '#222' }}>Reminders</span>
                        </div>
                     </div>
                   </div>
@@ -371,7 +379,7 @@ const BubbleNetwork = () => {
             >
               <motion.div
                 className={`glass-bubble ${focus ? 'expanded' : ''}`} onClick={() => handleNodeClick(sub.id)}
-                animate={{ width: `${size.width}px`, height: `${size.height}px`, scale: size.scale, opacity: size.opacity, x: '-50%', y: '-50%', borderRadius: size.borderRadius || '50%' }}
+                animate={{ width: typeof size.width === 'number' ? `${size.width}px` : size.width, height: typeof size.height === 'number' ? `${size.height}px` : size.height, scale: size.scale, opacity: size.opacity, x: '-50%', y: '-50%', borderRadius: size.borderRadius || '50%' }}
                 style={{ position: 'absolute', cursor: 'pointer', transformOrigin: 'center', overflow: 'hidden', borderWidth: `${1 / size.scale}px` }}
                 transition={springConfig}
                 transformTemplate={cleanTransform}
@@ -392,28 +400,30 @@ const BubbleNetwork = () => {
                       initial={{ opacity: 0, scale: 0.95 }} 
                       animate={{ opacity: 1, scale: 1, transition: { delay: 0.25, duration: 0.4 } }} 
                       exit={{ opacity: 0, transition: { duration: 0.1 } }} 
-                      style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%', display: 'flex', flexDirection: 'row' }}
+                      style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%', display: 'flex', flexDirection: w < 768 ? 'column' : 'row' }}
                     >
-                      <div style={{ flex: '1', padding: '40px' }}>
-                        <div style={{ width: '100%', height: '100%', borderRadius: '16px', backgroundImage: 'url(/map-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
-                      </div>
+                      {w >= 768 && (
+                        <div style={{ flex: '1', padding: '40px' }}>
+                          <div style={{ width: '100%', height: '100%', borderRadius: '16px', backgroundImage: 'url(/map-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
+                        </div>
+                      )}
                       
-                      <div style={{ flex: '0 0 45%', padding: '40px 60px 40px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
-                          <h3 style={{ fontSize: '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center' }}>
-                            {sub.title} <ExternalLink size={28} style={{ marginLeft: '12px' }}/>
+                      <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '40px 60px 40px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '16px' : '24px' }}>
+                          <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: w < 768 ? 'normal' : 'nowrap' }}>
+                            {sub.title} <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }}/>
                           </h3>
                         </div>
-                        <p style={{ fontSize: '18px', color: '#555', lineHeight: '1.6', marginBottom: '40px' }}>{sub.description} Ensures predictive insights, live data streams, and autonomous actions highly specific to your operational workflows.</p>
+                        <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#555', lineHeight: '1.6', marginBottom: w < 768 ? '30px' : '40px' }}>{sub.description} Ensures predictive insights, live data streams, and autonomous actions highly specific to your operational workflows.</p>
                         
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                          <div style={{ background: '#fff', padding: '30px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                            <Package color="#e89528" size={32} style={{ marginBottom: '12px' }}/>
-                            <h4 style={{ fontSize: '16px', color: '#222', margin: 0, fontWeight: '600' }}>Catalogue</h4>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: w < 768 ? '12px' : '20px' }}>
+                          <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                            <Package color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }}/>
+                            <h4 style={{ fontSize: w < 768 ? '14px' : '16px', color: '#222', margin: 0, fontWeight: '600' }}>Catalogue</h4>
                           </div>
-                          <div style={{ background: '#fff', padding: '30px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                            <Clock color="#e89528" size={32} style={{ marginBottom: '12px' }}/>
-                            <h4 style={{ fontSize: '16px', color: '#222', margin: 0, fontWeight: '600' }}>Reminders</h4>
+                          <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                            <Clock color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }}/>
+                            <h4 style={{ fontSize: w < 768 ? '14px' : '16px', color: '#222', margin: 0, fontWeight: '600' }}>Reminders</h4>
                           </div>
                         </div>
                       </div>
@@ -423,18 +433,70 @@ const BubbleNetwork = () => {
               </motion.div>
               
               <AnimatePresence>
-                {!focus && (
-                  <motion.h3
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: size.opacity, x: 0, transition: { delay: focusedNode ? 0 : 0.4 } }}
-                    exit={{ opacity: 0, transition: { duration: 0.1 } }}
-                    onClick={() => handleNodeClick(sub.id)}
-                    style={{ position: 'absolute', left: '32px', top: '-12px', fontSize: '18px', fontWeight: '600', color: '#82490e', margin: 0, whiteSpace: 'nowrap', cursor: 'pointer' }}
-                    whileHover={!focus && !focusedNode ? { color: '#e89528' } : {}}
-                  >
-                    {sub.title}
-                  </motion.h3>
-                )}
+                {!focus && (() => {
+                  const parentCatId = getCatFromSub(sub.id);
+                  const isCatFocused = focusedNode === parentCatId;
+                  const parentTop = layout.cats[parentCatId]?.top || h / 2;
+                  const isAbove = pos.top < parentTop;
+                  
+                  let textLeft = `${(typeof size.width === 'number' ? size.width : 40) / 2 + 8}px`;
+                  let textTop = '50%';
+                  let textBottom = 'auto';
+                  let textTransform = 'translateY(-50%)';
+                  let textAlign = 'left';
+
+                  if (w < 768) {
+                    if (isCatFocused) {
+                      textLeft = '50%';
+                      textTransform = 'translateX(-50%)';
+                      textAlign = 'center';
+                      if (isAbove) {
+                        textBottom = `${(typeof size.height === 'number' ? size.height : 40) / 2 + 8}px`;
+                        textTop = 'auto';
+                      } else {
+                        textTop = `${(typeof size.height === 'number' ? size.height : 40) / 2 + 8}px`;
+                        textBottom = 'auto';
+                      }
+                    } else {
+                      textLeft = `${(typeof size.width === 'number' ? size.width : 40) / 2 + 8}px`;
+                      textTop = '50%';
+                      textTransform = 'translateY(-50%)';
+                      textAlign = 'left';
+                    }
+                  } else {
+                    textLeft = `${(typeof size.width === 'number' ? size.width : 40) / 2 + 8}px`;
+                    textTop = `-${12 * rs}px`;
+                    textTransform = 'none';
+                  }
+
+                  return (
+                    <motion.h3
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: size.opacity, x: 0, transition: { delay: focusedNode ? 0 : 0.4 } }}
+                      exit={{ opacity: 0, transition: { duration: 0.1 } }}
+                      onClick={() => handleNodeClick(sub.id)}
+                      style={{ 
+                        position: 'absolute', 
+                        left: textLeft, 
+                        top: textTop, 
+                        bottom: textBottom,
+                        transform: textTransform, 
+                        fontSize: w < 768 ? '11px' : `${18 * rs}px`, 
+                        fontWeight: '600', 
+                        color: '#82490e', 
+                        margin: 0, 
+                        whiteSpace: w < 768 ? 'normal' : 'nowrap', 
+                        width: w < 768 ? (isCatFocused ? '80px' : '75px') : 'auto',
+                        textAlign: textAlign,
+                        lineHeight: '1.2',
+                        cursor: 'pointer' 
+                      }}
+                      whileHover={!focus && !focusedNode ? { color: '#e89528' } : {}}
+                    >
+                      {sub.title}
+                    </motion.h3>
+                  );
+                })()}
               </AnimatePresence>
             </motion.div>
           );
