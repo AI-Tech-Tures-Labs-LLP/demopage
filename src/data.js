@@ -16,8 +16,8 @@ export const bubbleData = {
     color: '#4a90e2',
     subComponents: [
       { id: 'inventory-management', title: 'Inventory Management', description: 'Smart procurement and predictive stock optimization.' },
-      { id: 'audit-trail', title: 'Audit Trail', description: 'Comprehensive tracking of finances, invoices, and compliance data.' },
-      { id: 'sales-forecasting', title: 'Sales Forecasting', description: 'Machine learning algorithms to predict future demand and trends.' }
+      { id: 'finances', title: 'Finances', description: 'Comprehensive tracking of finances, invoices, and compliance data.' },
+      { id: 'inventory-planning', title: 'Inventory Planning', description: 'Machine learning algorithms to predict future demand and trends.' }
     ]
   },
   analytics: {
