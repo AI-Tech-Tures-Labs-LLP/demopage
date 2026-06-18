@@ -50,6 +50,8 @@ body {
     );
   z-index: -1;
   pointer-events: none;
+  -webkit-mask-image: radial-gradient(circle at center, transparent 102px, black 103px);
+  mask-image: radial-gradient(circle at center, transparent 102px, black 103px);
 }
 
 button {

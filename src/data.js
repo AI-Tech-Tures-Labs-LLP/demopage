@@ -1,33 +1,49 @@
 export const bubbleData = {
   sales: {
     id: 'sales',
-    title: 'Sales Enablement',
+    title: 'Top Management',
     color: '#e8a83d',
+    link: import.meta.env.VITE_LINK_SALES,
     subComponents: [
-      { id: 'sales-management', title: 'Sales Management', description: 'Empower your sales team with AI-driven insights and streamlined workflows.' },
-      { id: 'distributors-portal', title: 'Distributors Portal', description: 'A centralized hub for seamless distributor collaboration and order management.' },
-      { id: 'field-assist', title: 'Field Assist', description: 'Equip your field agents with real-time data and route optimization.' },
-      { id: 'ecommerce-portal', title: 'E-commerce Portal', description: 'Next-generation digital storefront powered by intelligent recommendations.' }
+      { id: 'advanced-ai-monitoring', title: 'Advanced AI Monitoring', description: 'Real-time AI-powered operational surveillance.', link: import.meta.env.VITE_LINK_ADVANCED_AI_MONITORING },
+      { id: 'automated-reports', title: 'Automated Reports & Dashboards', description: 'Self-generating data visualizations and insights.', link: import.meta.env.VITE_LINK_AUTOMATED_REPORTS },
+      { id: 'command-center', title: 'Command Center', description: 'Centralized control room for enterprise management.', link: import.meta.env.VITE_LINK_COMMAND_CENTER }
     ]
   },
   erp: {
     id: 'erp',
-    title: 'ERP Processes',
+    title: 'Analyst',
     color: '#4a90e2',
+    link: import.meta.env.VITE_LINK_ERP,
     subComponents: [
-      { id: 'inventory-management', title: 'Inventory Management', description: 'Smart procurement and predictive stock optimization.' },
-      { id: 'finances', title: 'Finances', description: 'Comprehensive tracking of finances, invoices, and compliance data.' },
-      { id: 'inventory-planning', title: 'Inventory Planning', description: 'Machine learning algorithms to predict future demand and trends.' }
+      { id: 'analyst-automated-reports', title: 'Automated Reports', description: 'Schedule and auto-generate detailed performance reports.', link: import.meta.env.VITE_LINK_ANALYST_AUTOMATED_REPORTS },
+      { id: 'analyst-audit-trails', title: 'Audit Trails', description: 'Comprehensive tracking of all system activities and changes.', link: import.meta.env.VITE_LINK_ANALYST_AUDIT_TRAILS },
+      { id: 'analyst-command-center', title: 'Command Center', description: 'Unified overview of system health and metrics.', link: import.meta.env.VITE_LINK_ANALYST_COMMAND_CENTER },
+      { id: 'analyst-ai-monitoring', title: 'AI Monitoring', description: 'Intelligent alerts and real-time anomaly detection.', link: import.meta.env.VITE_LINK_ANALYST_AI_MONITORING }
+    ]
+  },
+  topManagement: {
+    id: 'topManagement',
+    title: 'Procurement',
+    color: '#e74c3c',
+    link: import.meta.env.VITE_LINK_TOP_MANAGEMENT,
+    subComponents: [
+      { id: 'order-fulfillment', title: 'Order Fulfillment', description: 'Streamlined tracking from order placement to delivery.', link: import.meta.env.VITE_LINK_ORDER_FULFILLMENT },
+      { id: 'procurement-inventory', title: 'Inventory Management', description: 'Smart stock optimization and supply chain visibility.', link: import.meta.env.VITE_LINK_PROCUREMENT_INVENTORY },
+      { id: 'raw-materials', title: 'Procurement of Raw Materials', description: 'Automated reordering and supplier tracking.', link: import.meta.env.VITE_LINK_RAW_MATERIALS },
+      { id: 'invoicing-vendor-management', title: 'Invoicing and Vendor Management', description: 'Centralized invoice processing and vendor portal.', link: import.meta.env.VITE_LINK_INVOICING_VENDOR_MANAGEMENT }
     ]
   },
   analytics: {
     id: 'analytics',
-    title: 'AI Analytics',
+    title: 'Sales Enablement',
     color: '#9b59b6',
+    link: import.meta.env.VITE_LINK_ANALYTICS,
     subComponents: [
-      { id: 'dashboard', title: 'Intelligent Dashboard', description: 'Real-time overview of your core business metrics.' },
-      { id: 'reports-schedules', title: 'Reports & Schedules', description: 'Automated reporting tailored to your operational needs.' },
-      { id: 'custom-dashboard', title: 'Custom Dashboard', description: 'Create and configure your own analytical views.' }
+      { id: 'intelligent-dashboard', title: 'Intelligent Dashboard', description: 'Real-time overview of your core business metrics.', link: import.meta.env.VITE_LINK_INTELLIGENT_DASHBOARD },
+      { id: 'lead-assignments', title: 'Lead Assignments', description: 'Smart routing of potential clients to the right reps.', link: import.meta.env.VITE_LINK_LEAD_ASSIGNMENTS },
+      { id: 'field-sales', title: 'Field Sales', description: 'Mobile-first tools for on-the-go sales professionals.', link: import.meta.env.VITE_LINK_FIELD_SALES },
+      { id: 'ai-sales-monitoring', title: 'AI Sales Monitoring', description: 'Predictive insights for hitting targets and closing deals.', link: import.meta.env.VITE_LINK_AI_SALES_MONITORING }
     ]
   }
 };
