@@ -40,10 +40,10 @@ export const bubbleData = {
     color: '#9b59b6',
     link: import.meta.env.VITE_LINK_ANALYTICS,
     subComponents: [
-      { id: 'intelligent-dashboard', title: 'Intelligent Dashboard', description: 'Real-time overview of your core business metrics.', link: import.meta.env.VITE_LINK_INTELLIGENT_DASHBOARD },
-      { id: 'lead-assignments', title: 'Lead Assignments', description: 'Smart routing of potential clients to the right reps.', link: import.meta.env.VITE_LINK_LEAD_ASSIGNMENTS },
-      { id: 'field-sales', title: 'Field Sales', description: 'Mobile-first tools for on-the-go sales professionals.', link: import.meta.env.VITE_LINK_FIELD_SALES },
-      { id: 'ai-sales-monitoring', title: 'AI Sales Monitoring', description: 'Predictive insights for hitting targets and closing deals.', link: import.meta.env.VITE_LINK_AI_SALES_MONITORING }
+      { id: 'intelligent-dashboard', title: 'Intelligent Lead Assignment', description: 'Smart allocation of leads to representatives based on geography and workload.', link: import.meta.env.VITE_LINK_INTELLIGENT_DASHBOARD },
+      { id: 'lead-assignments', title: 'Field Sales Management', description: 'Operational workspace for hunters to manage leads, meetings, and visits.', link: import.meta.env.VITE_LINK_LEAD_ASSIGNMENTS },
+      { id: 'field-sales', title: 'AI Sales Monitoring', description: 'Continuous analysis of sales activities, conversion rates, and pipeline health.', link: import.meta.env.VITE_LINK_FIELD_SALES },
+      { id: 'ai-sales-monitoring', title: 'Feedback and Collaboration', description: 'Seamless communication and visit feedback tracking between managers and hunters.', link: import.meta.env.VITE_LINK_AI_SALES_MONITORING }
     ]
   }
 };

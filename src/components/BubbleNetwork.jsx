@@ -350,26 +350,23 @@ const BubbleNetwork = () => {
               exit={{ opacity: 0, transition: { duration: 0.1 } }}
               style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}
             >
-              <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '40px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '16px' : '24px' }}>
+              <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '40px 60px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '20px' : '28px' }}>
                   <h2 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.2', display: 'flex', alignItems: 'center' }}>
                     <img src="/stacklogix-brain.png" alt="Brain" style={{ width: w < 768 ? '70px' : '110px', height: w < 768 ? '70px' : '110px', mixBlendMode: 'multiply', marginRight: '20px' }} />
-                    StackLogix Brain
+                    What is StackLogix?
                   </h2>
                 </div>
-                <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#555', lineHeight: '1.6', marginBottom: w < 768 ? '30px' : '40px' }}>
-                  The central coordination engine powering your entire enterprise. It synchronizes data streams, manages user access, orchestrates autonomous agents, and processes critical events in real time.
-                </p>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: w < 768 ? '12px' : '20px', width: '100%' }}>
-                  <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
-                    <ShieldCheck color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }} />
-                    <span style={{ fontWeight: '600', fontSize: w < 768 ? '14px' : '16px', color: '#222' }}>Central Hub</span>
-                  </div>
-                  <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
-                    <Sparkles color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }} />
-                    <span style={{ fontWeight: '600', fontSize: w < 768 ? '14px' : '16px', color: '#222' }}>AI Mesh</span>
-                  </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: w < 768 ? '14px' : '20px', color: '#444', fontSize: w < 768 ? '14px' : '16px', lineHeight: '1.7', fontWeight: '500', textAlign: 'justify' }}>
+                  <p style={{ margin: 0 }}>
+                    StackLogix is a fully customizable business operating system designed to unify and optimize every stage of the business lifecycle. Built to integrate seamlessly with existing ERP, CRM, accounting, manufacturing, and inventory systems, it eliminates data silos and creates a single source of truth across the organization.
+                  </p>
+                  <p style={{ margin: 0 }}>
+                    Purpose-built for the jewellery industry and adaptable to any enterprise workflow, StackLogix combines AI-driven forecasting, inventory planning, procurement, sales enablement, lead management, customer relationship management, and business intelligence into one modular platform. Organizations can choose only the modules they need, ensuring flexibility and cost efficiency.
+                  </p>
+                  <p style={{ margin: 0 }}>
+                    Beyond traditional dashboards and chatbots, StackLogix delivers actionable AI through predictive analytics, automated monitoring, intelligent recommendations, anomaly detection, and executive command centers that provide real-time visibility into operations, performance, risks, and opportunities. The result is a connected, data-driven enterprise where management can make faster, smarter decisions with complete operational transparency.
+                  </p>
                 </div>
               </div>
             </motion.div>
