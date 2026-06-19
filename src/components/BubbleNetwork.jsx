@@ -470,25 +470,25 @@ const BubbleNetwork = () => {
                                 Top Management
                               </h2>
                             </div>
-                            <p style={{ fontSize: w < 768 ? '16px' : '20px', color: '#333', lineHeight: '1.65', margin: '0 0 16px 0', fontWeight: '500', textAlign: 'justify' }}>
+                            <p style={{ fontSize: w < 768 ? '16px' : '20px', color: '#333', lineHeight: '1.65', margin: '0 0 16px 0', fontWeight: '500', textAlign: 'left' }}>
                               The Top Management module provides leadership with a centralized view of the organization, enabling faster and more informed decision-making through AI-driven insights and real-time business intelligence.
                             </p>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                               <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '10px', flexShrink: 0 }} />
-                                <p style={{ margin: 0, fontSize: '17px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
+                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: w < 768 ? '8px' : '12px', flexShrink: 0 }} />
+                                <p style={{ margin: 0, fontSize: w < 768 ? '16px' : '20px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
                                   Advanced AI Monitoring identifies risks, anomalies, and performance drifts before they impact the business.
                                 </p>
                               </div>
                               <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '10px', flexShrink: 0 }} />
-                                <p style={{ margin: 0, fontSize: '17px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
+                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: w < 768 ? '8px' : '12px', flexShrink: 0 }} />
+                                <p style={{ margin: 0, fontSize: w < 768 ? '16px' : '20px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
                                   Automated Reports & Dashboards provide real-time visibility into critical KPIs, trends, and operational performance.
                                 </p>
                               </div>
                               <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '10px', flexShrink: 0 }} />
-                                <p style={{ margin: 0, fontSize: '17px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
+                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: w < 768 ? '8px' : '12px', flexShrink: 0 }} />
+                                <p style={{ margin: 0, fontSize: w < 768 ? '16px' : '20px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
                                   Command Center enables executives to monitor alerts, investigate issues, and coordinate resolutions across departments.
                                 </p>
                               </div>
@@ -501,23 +501,23 @@ const BubbleNetwork = () => {
                               Real-World Example
                             </h3>
                              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '16px', lineHeight: '1.6', color: '#444', fontWeight: '500' }}>
-                              <p style={{ margin: 0, textAlign: 'justify' }}>
+                              <p style={{ margin: 0, textAlign: 'left' }}>
                                 A jewellery manufacturer notices that gross profit margins have fallen from 24% to 19% over the last six weeks, despite maintaining monthly sales of approximately ₹8–10 crore.
                               </p>
-                              <p style={{ margin: 0, textAlign: 'justify' }}>
+                              <p style={{ margin: 0, textAlign: 'left' }}>
                                 In many organizations, management would first need to collect reports from Finance, Procurement, Manufacturing, Inventory, and Sales teams. Multiple review meetings would then be conducted to compare data, identify discrepancies, and determine the root cause, often taking several days or even weeks before corrective action can be taken.
                               </p>
                               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', margin: '2px 0' }}>
-                                <p style={{ margin: 0, textAlign: 'justify' }}>
+                                <p style={{ margin: 0, textAlign: 'left' }}>
                                   With StackLogix, AI Monitoring automatically detects the 5% margin decline and flags it as a critical business drift. The Automated Dashboard instantly consolidates data across departments and reveals that:
                                 </p>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', paddingLeft: '14px' }}>
-                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '15.5px' }}>• Gold procurement costs have increased by 7%</span>
-                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '15.5px' }}>• Manufacturing wastage has risen from 2.8% to 4.1%</span>
-                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '15.5px' }}>• Discounts on a high-volume product category have increased by 12%</span>
+                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '18px' }}>• Gold procurement costs have increased by 7%</span>
+                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '18px' }}>• Manufacturing wastage has risen from 2.8% to 4.1%</span>
+                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '18px' }}>• Discounts on a high-volume product category have increased by 12%</span>
                                 </div>
                               </div>
-                              <p style={{ margin: 0, textAlign: 'justify' }}>
+                              <p style={{ margin: 0, textAlign: 'left' }}>
                                 The Command Center brings all related metrics, alerts, and discussions into a single workspace, enabling management and department heads to quickly investigate the issue and implement corrective actions.
                               </p>
                               <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '10px 14px', borderRadius: '8px', fontWeight: '600', color: '#a35b12', fontSize: '16px', marginTop: '4px', lineHeight: '1.5' }}>
@@ -648,25 +648,59 @@ const BubbleNetwork = () => {
                       )}
 
                       <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '40px 60px 40px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '16px' : '24px' }}>
-                          <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: w < 768 ? 'normal' : 'nowrap' }}>
-                            <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                              {sub.title} <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                            </a>
-                          </h3>
-                        </div>
-                        <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#555', lineHeight: '1.6', marginBottom: w < 768 ? '30px' : '40px' }}>{sub.description} Ensures predictive insights, live data streams, and autonomous actions highly specific to your operational workflows.</p>
+                        {sub.id === 'advanced-ai-monitoring' ? (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: w < 768 ? 'normal' : 'nowrap' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  AI Monitoring <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
+                              AI Monitoring continuously analyzes business operations across sales, inventory, procurement, manufacturing, finance, and customer management to identify risks, anomalies, and performance drifts in real time. When unusual patterns are detected, the system automatically raises flags, prioritizes their severity, and provides AI-generated recommendations to help management take corrective action before issues impact profitability or operational efficiency.
+                            </p>
+                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                              Key Features
+                            </h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                              {[
+                                "Real-Time Drift & Anomaly Detection",
+                                "Intelligent Flagging & Alert Management",
+                                "AI-Powered Recommendations",
+                                "Predictive Risk Monitoring",
+                                "Cross-Functional Performance Visibility",
+                                "Root Cause & Trend Analysis"
+                              ].map((feat, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '16px' : '24px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: w < 768 ? 'normal' : 'nowrap' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  {sub.title} <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#555', lineHeight: '1.6', marginBottom: w < 768 ? '30px' : '40px' }}>{sub.description} Ensures predictive insights, live data streams, and autonomous actions highly specific to your operational workflows.</p>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: w < 768 ? '12px' : '20px' }}>
-                          <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                            <Package color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }} />
-                            <h4 style={{ fontSize: w < 768 ? '14px' : '16px', color: '#222', margin: 0, fontWeight: '600' }}>Catalogue</h4>
-                          </div>
-                          <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                            <Clock color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }} />
-                            <h4 style={{ fontSize: w < 768 ? '14px' : '16px', color: '#222', margin: 0, fontWeight: '600' }}>Reminders</h4>
-                          </div>
-                        </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: w < 768 ? '12px' : '20px' }}>
+                              <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                <Package color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }} />
+                                <h4 style={{ fontSize: w < 768 ? '14px' : '16px', color: '#222', margin: 0, fontWeight: '600' }}>Catalogue</h4>
+                              </div>
+                              <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                <Clock color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }} />
+                                <h4 style={{ fontSize: w < 768 ? '14px' : '16px', color: '#222', margin: 0, fontWeight: '600' }}>Reminders</h4>
+                              </div>
+                            </div>
+                          </>
+                        )}
                       </div>
                     </motion.div>
                   )}
