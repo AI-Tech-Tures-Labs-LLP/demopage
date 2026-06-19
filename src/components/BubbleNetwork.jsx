@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { bubbleData } from '../data';
-import { Sparkles, X, ChevronRight, BarChart3, Database, ShieldCheck, ExternalLink, Package, Clock, TrendingUp, Layers, ShoppingCart, Briefcase, UserCheck, HeartHandshake, PieChart, BrainCircuit, Activity, Lightbulb, AlertTriangle, Sliders, ArrowRight, Users } from 'lucide-react';
+import { Sparkles, X, ChevronRight, BarChart3, Database, ShieldCheck, ExternalLink, Package, Clock, TrendingUp, Layers, ShoppingCart, Briefcase, UserCheck, HeartHandshake, PieChart, BrainCircuit, Activity, Lightbulb, AlertTriangle, Sliders, ArrowRight, Users, Crown, Monitor, Bell, Zap, Shield, Target, ClipboardCheck, Bot, IndianRupee, Truck, Trophy, TrendingDown, CheckCircle2 } from 'lucide-react';
 
 const BubbleNetwork = () => {
   const [dimensions, setDimensions] = useState({
@@ -545,39 +545,159 @@ const BubbleNetwork = () => {
                     }}
                   >
                     {cat.id === 'sales' ? (
-                      <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '30px 70px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
-                        <div style={{ display: 'flex', flexDirection: w < 1024 ? 'column' : 'row', gap: w < 1024 ? '30px' : '50px', alignItems: 'stretch' }}>
-                          {/* Left Column */}
-                          <div style={{ flex: '1', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                            <div style={{ marginBottom: '12px' }}>
-                              <h2 style={{ fontSize: w < 768 ? '34px' : '46px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.2' }}>
-                                Top Management
-                              </h2>
+                      <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '20px 70px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
+                        <div style={{ display: 'flex', flexDirection: w < 1024 ? 'column' : 'row', gap: w < 1024 ? '30px' : '40px', alignItems: 'stretch' }}>
+                          {/* Left Column (Timeline & Infographic) */}
+                          <div style={{ flex: '1', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingRight: w < 1024 ? '0px' : '10px' }}>
+                            {/* Header Section */}
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '4px' }}>
+                              <div style={{
+                                width: w < 768 ? '44px' : '56px',
+                                height: w < 768 ? '44px' : '56px',
+                                borderRadius: '50%',
+                                border: '1.5px solid rgba(232, 149, 40, 0.3)',
+                                background: 'rgba(232, 149, 40, 0.04)',
+                                color: '#e89528',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                marginRight: '16px',
+                                flexShrink: 0
+                              }}>
+                                <Crown size={w < 768 ? 20 : 28} />
+                              </div>
+                              <div>
+                                <h2 style={{ fontSize: w < 768 ? '28px' : '36px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
+                                  Top Management
+                                </h2>
+                                <h3 style={{ fontSize: w < 768 ? '13px' : '15px', fontWeight: '600', color: '#666', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
+                                  AI-Powered Executive Intelligence
+                                </h3>
+                              </div>
                             </div>
-                            <p style={{ fontSize: w < 768 ? '16px' : '20px', color: '#333', lineHeight: '1.65', margin: '0 0 16px 0', fontWeight: '500', textAlign: 'left' }}>
-                              The Top Management module provides leadership with a centralized view of the organization, enabling faster and more informed decision-making through AI-driven insights and real-time business intelligence.
+
+                            <p style={{ fontSize: w < 768 ? '13px' : '15px', color: '#444', lineHeight: '1.45', margin: '6px 0 12px 0', fontWeight: '500', textAlign: 'left' }}>
+                              One unified view of the business for faster, smarter decision-making.
                             </p>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: w < 768 ? '8px' : '12px', flexShrink: 0 }} />
-                                <p style={{ margin: 0, fontSize: w < 768 ? '16px' : '20px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
-                                  Advanced AI Monitoring identifies risks, anomalies, and performance drifts before they impact the business.
-                                </p>
-                              </div>
-                              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: w < 768 ? '8px' : '12px', flexShrink: 0 }} />
-                                <p style={{ margin: 0, fontSize: w < 768 ? '16px' : '20px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
-                                  Automated Reports & Dashboards provide real-time visibility into critical KPIs, trends, and operational performance.
-                                </p>
-                              </div>
-                              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: w < 768 ? '8px' : '12px', flexShrink: 0 }} />
-                                <p style={{ margin: 0, fontSize: w < 768 ? '16px' : '20px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
-                                  Command Center enables executives to monitor alerts, investigate issues, and coordinate resolutions across departments.
-                                </p>
-                              </div>
+
+                            {/* Timeline List */}
+                            <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: w < 768 ? '10px' : '14px', paddingLeft: '4px' }}>
+                              {/* Connector Line */}
+                              <div style={{
+                                position: 'absolute',
+                                left: w < 768 ? '18px' : '27px',
+                                top: w < 768 ? '14px' : '23px',
+                                bottom: w < 768 ? '14px' : '23px',
+                                width: '2px',
+                                background: 'linear-gradient(to bottom, rgba(232, 149, 40, 0.4) 0%, rgba(232, 149, 40, 0.1) 100%)',
+                                zIndex: 0
+                              }} />
+
+                              {[
+                                {
+                                  title: 'Executive Visibility',
+                                  desc: 'Monitor sales, finance, inventory, production, and operations from a single workspace.',
+                                  icon: Monitor
+                                },
+                                {
+                                  title: 'Advanced AI Monitoring',
+                                  desc: 'Identify risks, anomalies, and performance drifts before they impact business outcomes.',
+                                  icon: BrainCircuit
+                                },
+                                {
+                                  title: 'Real-Time Insights',
+                                  desc: 'Track critical KPIs, trends, profitability, and operational performance as they happen.',
+                                  icon: TrendingUp
+                                },
+                                {
+                                  title: 'Command Center',
+                                  desc: 'Investigate alerts, collaborate across teams, and accelerate issue resolution.',
+                                  icon: Bell
+                                },
+                                {
+                                  title: 'AI Recommendations',
+                                  desc: 'Receive intelligent suggestions and corrective actions based on performance.',
+                                  icon: Lightbulb
+                                }
+                              ].map((item, index) => {
+                                const ItemIcon = item.icon;
+                                return (
+                                  <div key={index} style={{ display: 'flex', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+                                    <div style={{
+                                      width: w < 768 ? '28px' : '46px',
+                                      height: w < 768 ? '28px' : '46px',
+                                      borderRadius: '50%',
+                                      border: '1.5px solid rgba(232, 149, 40, 0.25)',
+                                      background: '#fff',
+                                      color: '#e89528',
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      marginRight: w < 768 ? '10px' : '14px',
+                                      boxShadow: '0 3px 6px rgba(0,0,0,0.03)',
+                                      flexShrink: 0
+                                    }}>
+                                      <ItemIcon size={w < 768 ? 14 : 22} />
+                                    </div>
+                                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                      <h4 style={{ fontSize: w < 768 ? '13px' : '16.5px', fontWeight: '700', color: '#d68022', margin: 0 }}>
+                                        {item.title}
+                                      </h4>
+                                      <p style={{ fontSize: w < 768 ? '11px' : '13.5px', color: '#555', margin: '1px 0 0 0', lineHeight: '1.4', fontWeight: '500' }}>
+                                        {item.desc}
+                                      </p>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+
+                            {/* Divider Line */}
+                            <div style={{
+                              height: '1px',
+                              background: 'linear-gradient(to right, rgba(232, 149, 40, 0.25), rgba(232, 149, 40, 0.02))',
+                              margin: w < 768 ? '12px 0 8px 0' : '14px 0 10px 0'
+                            }} />
+
+                            {/* Bottom Badge Row */}
+                            <div style={{ display: 'flex', gap: '8px', justifyContent: 'space-between' }}>
+                              {[
+                                { text: 'Faster\nDecisions', icon: Zap },
+                                { text: 'Reduced\nRisks', icon: Shield },
+                                { text: 'Higher\nProfitability', icon: TrendingUp },
+                                { text: 'Better\nGovernance', icon: Target }
+                              ].map((badge, idx) => {
+                                const BadgeIcon = badge.icon;
+                                return (
+                                  <div key={idx} style={{
+                                    flex: 1,
+                                    background: 'rgba(232, 149, 40, 0.03)',
+                                    border: '1.2px solid rgba(232, 149, 40, 0.12)',
+                                    padding: w < 768 ? '6px 2px' : '10px 4px',
+                                    borderRadius: '8px',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '4px'
+                                  }}>
+                                    <BadgeIcon size={w < 768 ? 14 : 20} color="#e89528" style={{ strokeWidth: 2.2 }} />
+                                    <span style={{
+                                      fontSize: w < 768 ? '9px' : '12px',
+                                      fontWeight: '700',
+                                      color: '#555',
+                                      textAlign: 'center',
+                                      lineHeight: '1.25',
+                                      whiteSpace: 'pre-line'
+                                    }}>
+                                      {badge.text}
+                                    </span>
+                                  </div>
+                                );
+                              })}
                             </div>
                           </div>
+
 
                           {/* Right Column (Case Study Card) */}
                           <div style={{ flex: w < 1024 ? 'none' : '1.25', background: '#fff', padding: w < 768 ? '20px' : '22px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -606,6 +726,247 @@ const BubbleNetwork = () => {
                               </p>
                               <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '10px 14px', borderRadius: '8px', fontWeight: '600', color: '#a35b12', fontSize: '16px', marginTop: '4px', lineHeight: '1.5' }}>
                                 Result: Instead of spending days gathering information, leadership identifies the root cause within hours, preventing further margin erosion and potentially saving ₹30–50 lakh per month in avoidable losses.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : cat.id === 'topManagement' ? (
+                      <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '20px 70px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
+                        <div style={{ display: 'flex', flexDirection: w < 1024 ? 'column' : 'row', gap: w < 1024 ? '30px' : '40px', alignItems: 'stretch' }}>
+                          {/* Left Column (Timeline & Infographic) */}
+                          <div style={{ flex: '1', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingRight: w < 1024 ? '0px' : '10px' }}>
+                            {/* Header Section */}
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '4px' }}>
+                              <div style={{
+                                width: w < 768 ? '44px' : '56px',
+                                height: w < 768 ? '44px' : '56px',
+                                borderRadius: '50%',
+                                border: '1.5px solid rgba(232, 149, 40, 0.3)',
+                                background: 'rgba(232, 149, 40, 0.04)',
+                                color: '#e89528',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                marginRight: '16px',
+                                flexShrink: 0
+                              }}>
+                                <ShoppingCart size={w < 768 ? 20 : 28} />
+                              </div>
+                              <div>
+                                <h2 style={{ fontSize: w < 768 ? '28px' : '38px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
+                                  Procurement
+                                </h2>
+                                <h3 style={{ fontSize: w < 768 ? '13px' : '16px', fontWeight: '600', color: '#666', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
+                                  Intelligent Procurement & Inventory Control
+                                </h3>
+                              </div>
+                            </div>
+
+                            <p style={{ fontSize: w < 768 ? '13px' : '16px', color: '#444', lineHeight: '1.45', margin: '6px 0 14px 0', fontWeight: '500', textAlign: 'left' }}>
+                              Ensure the right materials are available at the right time while optimizing inventory, procurement costs, and fulfilment efficiency.
+                            </p>
+
+                            {/* Timeline List */}
+                            <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: w < 768 ? '10px' : '15px', paddingLeft: '4px' }}>
+                              {/* Connector Line */}
+                              <div style={{
+                                position: 'absolute',
+                                left: w < 768 ? '18px' : '26px',
+                                top: w < 768 ? '14px' : '22px',
+                                bottom: w < 768 ? '14px' : '22px',
+                                width: '2px',
+                                background: 'linear-gradient(to bottom, rgba(232, 149, 40, 0.4) 0%, rgba(232, 149, 40, 0.1) 100%)',
+                                zIndex: 0
+                              }} />
+
+                              {[
+                                {
+                                  title: '1. Procurement Planning',
+                                  desc: 'Manage procurement of raw materials, finished goods, and stock replenishment based on business demand and inventory requirements.',
+                                  icon: Package
+                                },
+                                {
+                                  title: '2. Inventory Visibility',
+                                  desc: 'Monitor stock levels, material consumption, inventory ageing, and warehouse availability in real time.',
+                                  icon: TrendingUp
+                                },
+                                {
+                                  title: '3. Order Fulfilment Management',
+                                  desc: 'Track sales order commitments, inventory allocation, fulfilment status, and delivery readiness across locations.',
+                                  icon: ClipboardCheck
+                                },
+                                {
+                                  title: '4. AI-Powered Purchase Recommendations',
+                                  desc: 'Receive intelligent suggestions on what to buy, when to buy, and how much to procure based on demand forecasts and inventory trends.',
+                                  icon: Bot
+                                },
+                                {
+                                  title: '5. Cost & Supplier Optimization',
+                                  desc: 'Control procurement costs, evaluate supplier performance, and improve purchasing efficiency through data-driven decisions.',
+                                  icon: IndianRupee
+                                }
+                              ].map((item, index) => {
+                                const ItemIcon = item.icon;
+                                return (
+                                  <div key={index} style={{ display: 'flex', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+                                    <div style={{
+                                      width: w < 768 ? '28px' : '44px',
+                                      height: w < 768 ? '28px' : '44px',
+                                      borderRadius: '50%',
+                                      border: '1.5px solid rgba(232, 149, 40, 0.25)',
+                                      background: '#fff',
+                                      color: '#e89528',
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      marginRight: w < 768 ? '10px' : '14px',
+                                      boxShadow: '0 3px 6px rgba(0,0,0,0.03)',
+                                      flexShrink: 0
+                                    }}>
+                                      <ItemIcon size={w < 768 ? 14 : 21} />
+                                    </div>
+                                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                      <h4 style={{ fontSize: w < 768 ? '13px' : '16.5px', fontWeight: '700', color: '#d68022', margin: 0 }}>
+                                        {item.title}
+                                      </h4>
+                                      <p style={{ fontSize: w < 768 ? '11px' : '13.5px', color: '#555', margin: '1px 0 0 0', lineHeight: '1.4', fontWeight: '500' }}>
+                                        {item.desc}
+                                      </p>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+
+                            {/* Divider Line */}
+                            <div style={{
+                              height: '1px',
+                              background: 'linear-gradient(to right, rgba(232, 149, 40, 0.25), rgba(232, 149, 40, 0.02))',
+                              margin: w < 768 ? '12px 0 8px 0' : '16px 0 12px 0'
+                            }} />
+
+                            {/* Bottom Badge Row */}
+                            <div style={{ display: 'flex', gap: '8px', justifyContent: 'space-between' }}>
+                              {[
+                                { text: 'Faster\nProcurement', icon: Zap },
+                                { text: 'Optimized\nInventory', icon: Package },
+                                { text: 'Better\nFulfilment', icon: Truck },
+                                { text: 'Lower\nCosts', icon: TrendingDown }
+                              ].map((badge, idx) => {
+                                const BadgeIcon = badge.icon;
+                                return (
+                                  <div key={idx} style={{
+                                    flex: 1,
+                                    background: 'rgba(232, 149, 40, 0.03)',
+                                    border: '1.2px solid rgba(232, 149, 40, 0.12)',
+                                    padding: w < 768 ? '6px 2px' : '11px 5px',
+                                    borderRadius: '8px',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '4px'
+                                  }}>
+                                    <BadgeIcon size={w < 768 ? 14 : 20} color="#e89528" style={{ strokeWidth: 2.2 }} />
+                                    <span style={{
+                                      fontSize: w < 768 ? '9px' : '12px',
+                                      fontWeight: '700',
+                                      color: '#555',
+                                      textAlign: 'center',
+                                      lineHeight: '1.25',
+                                      whiteSpace: 'pre-line'
+                                    }}>
+                                      {badge.text}
+                                    </span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+
+                          {/* Right Column (Case Study Card) */}
+                          <div style={{ flex: w < 1024 ? 'none' : '1.25', background: '#fff', padding: w < 768 ? '20px' : '22px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}>
+                              <Lightbulb size={26} color="#e89528" style={{ marginRight: '10px' }} />
+                              <h3 style={{ fontSize: '24px', fontWeight: '700', margin: 0, color: '#e89528' }}>
+                                Real-World Example
+                              </h3>
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '11px', fontSize: w < 768 ? '14px' : '16px', lineHeight: '1.5', color: '#444', fontWeight: '500' }}>
+                              <p style={{ margin: 0, textAlign: 'left', fontWeight: '700', color: '#111' }}>
+                                A jewellery manufacturer receives a sudden increase in customer orders for a fast-moving product category.
+                              </p>
+                              <p style={{ margin: 0, textAlign: 'left' }}>
+                                Without a centralized procurement system, teams manually review inventory reports, pending purchase orders, supplier commitments, and production requirements. This often leads to delayed purchasing decisions, stock shortages, or excess inventory.
+                              </p>
+                              <p style={{ margin: 0, textAlign: 'left' }}>
+                                With StackLogix Procurement, the system automatically identifies the shortage risk and provides real-time visibility into:
+                              </p>
+
+                              {/* Two-Column Checklist & Dashboard Widget layout */}
+                              <div style={{ display: 'flex', flexDirection: w < 768 ? 'column' : 'row', gap: '20px', alignItems: 'center', margin: '6px 0' }}>
+                                <div style={{ flex: '1.25', display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+                                  {[
+                                    "Current raw material stock levels",
+                                    "Pending supplier deliveries",
+                                    "Open sales order commitments",
+                                    "Projected material consumption based on demand forecasts",
+                                    "Recommended purchase quantities and reorder timelines"
+                                  ].map((text, i) => (
+                                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                                      <CheckCircle2 size={16} color="#e89528" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                      <span style={{ fontSize: '14.5px', lineHeight: '1.35', color: '#333', fontWeight: '600' }}>{text}</span>
+                                    </div>
+                                  ))}
+                                </div>
+
+                                <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <span style={{ fontSize: '12px', fontWeight: '800', color: '#222', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Procurement Dashboard</span>
+                                  </div>
+                                  <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '4px 0' }} />
+                                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '9px 11px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                      <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Stock Overview</span>
+                                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: '2.5px solid #f0f0f0', borderTopColor: '#e89528', borderLeftColor: '#e89528', flexShrink: 0 }} />
+                                        <span style={{ fontSize: '12px', color: '#222', fontWeight: '700', lineHeight: '1.1' }}>68% stock</span>
+                                      </div>
+                                    </div>
+                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '9px 11px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                      <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Purchase Orders</span>
+                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                        <span style={{ fontSize: '12px', color: '#222', fontWeight: '700' }}>32 Open POs</span>
+                                        <ClipboardCheck size={16} color="#a3a8b3" />
+                                      </div>
+                                    </div>
+                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '9px 11px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                      <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Deliveries</span>
+                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                        <span style={{ fontSize: '12px', color: '#222', fontWeight: '700' }}>12 In Transit</span>
+                                        <Truck size={16} color="#e89528" />
+                                      </div>
+                                    </div>
+                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '9px 11px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                      <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Shortage Risk</span>
+                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                        <span style={{ fontSize: '12px', color: '#d9381e', fontWeight: '800' }}>5 At Risk</span>
+                                        <AlertTriangle size={16} color="#d9381e" />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <p style={{ margin: 0, textAlign: 'left' }}>
+                                The procurement team can instantly raise purchase orders, reserve inventory for confirmed orders, and coordinate with suppliers before shortages occur.
+                              </p>
+                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '12px 16px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px' }}>
+                                <Trophy size={22} color="#e89528" style={{ flexShrink: 0 }} />
+                                <span style={{ fontSize: '15.5px', fontWeight: '600', color: '#a35b12', lineHeight: '1.4', textAlign: 'left' }}>
+                                  Result: Improved inventory availability, faster order fulfilment, reduced procurement costs, and fewer production disruptions.
+                                </span>
                               </div>
                             </div>
                           </div>
