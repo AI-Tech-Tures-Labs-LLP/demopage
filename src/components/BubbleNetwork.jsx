@@ -3,17 +3,290 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { bubbleData } from '../data';
 import { Sparkles, X, ChevronRight, BarChart3, Database, ShieldCheck, ExternalLink, Package, Clock, TrendingUp, Layers, ShoppingCart, Briefcase, UserCheck, HeartHandshake, PieChart, BrainCircuit, Activity, Lightbulb, AlertTriangle, Sliders, ArrowRight, Users, Crown, Monitor, Bell, Zap, Shield, Target, ClipboardCheck, Bot, IndianRupee, Truck, Trophy, TrendingDown, CheckCircle2, MessageSquare, MapPin, Calendar } from 'lucide-react';
 
+const subComponentContent = {
+  'advanced-ai-monitoring': {
+    title: 'AI Monitoring',
+    intro: 'AI Monitoring continuously analyzes business operations in real-time to identify risks, anomalies, and performance drifts.',
+    bullets: [
+      'Automatically flags and prioritizes operational anomalies across all departments.',
+      'Generates intelligent, actionable recommendations to resolve issues quickly.',
+      'Prevents performance declines before they impact enterprise profitability.'
+    ],
+    features: [
+      "Real-Time Drift & Anomaly Detection",
+      "Intelligent Flagging & Alert Management",
+      "AI-Powered Recommendations",
+      "Predictive Risk Monitoring",
+      "Cross-Functional Performance Visibility",
+      "Root Cause & Trend Analysis"
+    ]
+  },
+  'automated-reports': {
+    title: 'Automated Dashboards & Reports',
+    intro: 'Automated Dashboards and Reports provide a centralized, real-time view of business performance across multiple systems.',
+    bullets: [
+      'Consolidates operational data into a single, reliable source of truth.',
+      'Features interactive charts and visual analytics to track company growth.',
+      'Eliminates the need for manual reporting and Excel spreadsheet compilation.'
+    ],
+    features: [
+      "Real-Time Business Performance Monitoring",
+      "Interactive Dashboards & Visual Analytics",
+      "Automated Reporting & Distribution",
+      "Executive & Departmental Insights",
+      "Trend, Variance & Growth Analysis",
+      "Unified Business Intelligence Platform"
+    ]
+  },
+  'command-center': {
+    title: 'Command Center',
+    intro: 'The Command Center acts as the central hub for managing business drifts, critical alerts, and resolutions.',
+    bullets: [
+      'Facilitates dedicated War Rooms for cross-functional collaboration and alignment.',
+      'Ensures complete visibility and accountability for all raised flags.',
+      'Accelerates the investigation and resolution of business-critical issues.'
+    ],
+    features: [
+      "Centralized Drift & Alert Management",
+      "AI-Powered Resolution Recommendations",
+      "War Rooms & Cross-Functional Collaboration",
+      "Root Cause Analysis & Documentation",
+      "Action Plan & Resolution Tracking",
+      "Governance, Visibility & Audit Trail"
+    ]
+  },
+  'order-fulfillment': {
+    title: 'Sales Order Fulfilment',
+    intro: 'Sales Order Fulfilment manages the end-to-end journey of customer orders from confirmation to delivery.',
+    bullets: [
+      'Optimizes inventory allocation and production planning for each order.',
+      'Streamlines dispatch scheduling and logistics coordination.',
+      'Ensures accurate, on-time deliveries to maximize customer satisfaction.'
+    ],
+    features: [
+      "End-to-End Order Tracking",
+      "Inventory Allocation & Control",
+      "Production & Dispatch Coordination",
+      "Real-Time Order Visibility",
+      "Exception & Delay Management",
+      "Fulfilment Performance Monitoring"
+    ]
+  },
+  'raw-materials': {
+    title: 'Procurement of Raw Materials',
+    intro: 'The Raw Material Procurement module streamlines the purchasing process for metals, diamonds, and gemstones.',
+    bullets: [
+      'Simplifies vendor communication and delivery schedule tracking.',
+      'Coordinates material purchasing with real-time manufacturing demands.',
+      'Minimizes inventory shortages to maintain uninterrupted production.'
+    ],
+    features: [
+      "Purchase Requisition & Order Management",
+      "Vendor Performance Management",
+      "Material Requirement Planning",
+      "Procurement Approval Workflows",
+      "Quotation & Price Comparison",
+      "Delivery Tracking, Analytics & Cost Optimization"
+    ]
+  },
+  'procurement-inventory': {
+    title: 'Inventory Management',
+    intro: 'Inventory Management provides complete visibility and control over stock items across all warehouse locations.',
+    bullets: [
+      'Monitors raw materials, work-in-progress, and finished goods in real time.',
+      'Reduces carrying costs by optimizing stock levels dynamically.',
+      'Prevents costly stockouts and shortages for sales and production teams.'
+    ],
+    features: [
+      "Real-Time Inventory Visibility",
+      "Multi-Location Inventory Tracking",
+      "Raw Material, WIP & Finished Goods Monitoring",
+      "Stock Alerts & Exception Management",
+      "Stock Movement & Batch Traceability",
+      "Inventory Valuation, Reporting & Dead Stock Analysis"
+    ]
+  },
+  'invoicing-vendor-management': {
+    title: 'Invoicing',
+    intro: 'The Invoicing module automates invoice generation and financial documentation for billing operations.',
+    bullets: [
+      'Integrates directly with sales orders and costing components.',
+      'Automatically updates gold, diamond, and labour rates dynamically.',
+      'Ensures complete tax compliance and accurate invoice history.'
+    ],
+    features: [
+      "Automated Invoice Generation",
+      "Sales Order & Billing Integration",
+      "Dynamic Pricing & Rate Management",
+      "Tax & Compliance Management",
+      "Cost Component Management (Gold, Diamond, Labour & Certification)",
+      "Payment Tracking, Invoice History & Audit Trail"
+    ]
+  },
+  'intelligent-dashboard': {
+    title: 'Intelligent Lead Assignment',
+    intro: 'The Intelligent Lead Assignment module automatically allocates sales opportunities to the best field representatives.',
+    bullets: [
+      'Uses geographical data and proximity mapping for optimal routing.',
+      'Balances workloads based on agent expertise and current capacity.',
+      'Improves response times and increases lead conversion rates.'
+    ],
+    features: [
+      "Map-Based Lead Allocation",
+      "Territory & Region Management",
+      "Intelligent Workload Balancing",
+      "Nearest Representative Assignment",
+      "Lead Ownership & Reassignment Control",
+      "Geographic Coverage & Lead Visibility Analytics"
+    ]
+  },
+  'lead-assignments': {
+    title: 'Field Sales Management',
+    intro: 'The Field Sales Management module serves as the mobile-friendly workspace for active sales representatives.',
+    bullets: [
+      'Tracks assigned leads, customer interactions, and meetings.',
+      'Enables direct order placement and follow-up logging from the field.',
+      'Keeps sales managers aligned with real-time updates and activity logs.'
+    ],
+    features: [
+      "Mobile & Web Sales Workspace",
+      "Meeting, Reminder & Follow-Up Management",
+      "Customer Visit & Interaction Tracking",
+      "Order Placement & Submission",
+      "Manager Guidance & Sales Recommendations",
+      "Activity Monitoring, Route Planning & Real-Time Updates"
+    ]
+  },
+  'field-sales': {
+    title: 'AI Sales Monitoring',
+    intro: 'AI Sales Monitoring continuously tracks sales pipelines, follow-ups, and representative performance.',
+    bullets: [
+      'Identifies missed opportunities, delayed follow-ups, and inactive leads.',
+      'Provides predictive performance insights and conversion metrics.',
+      'Generates actionable recommendations to maximize team effectiveness.'
+    ],
+    features: [
+      "Lead Aging & Follow-Up Monitoring",
+      "Sales Performance & Conversion Analytics",
+      "Sales Pipeline Health Tracking",
+      "Automated Drift & Risk Detection",
+      "AI-Powered Recommendations & Opportunity Identification",
+      "Team Productivity & Predictive Sales Insights"
+    ]
+  },
+  'ai-sales-monitoring': {
+    title: 'Feedback & Collaboration Hub',
+    intro: 'The Feedback & Collaboration Hub facilitates seamless communication between sales managers and field teams.',
+    bullets: [
+      'Records visit feedback, meeting outcomes, and customer responses.',
+      'Enables managers to provide timely direction and monitor commitments.',
+      'Ensures complete transparency and team accountability.'
+    ],
+    features: [
+      "Post-Visit Feedback & Customer Records",
+      "Manager–Hunter Communication Hub",
+      "Activity, Progress & Performance Tracking",
+      "Task, Deadline & Follow-Up Management",
+      "Escalation & Action Item Tracking",
+      "Sales Audit Trail & Accountability Monitoring"
+    ]
+  },
+  'analyst-automated-reports': {
+    title: 'Business Intelligence',
+    intro: 'Transforms large volumes of operational data into meaningful insights and performance indicators.',
+    bullets: [
+      'Consolidates business metrics to track performance trends.',
+      'Helps teams understand real-time operations across departments.',
+      'Generates growth analytics and key performance visualizations.'
+    ],
+    features: [
+      "KPI Analysis",
+      "Trend Monitoring",
+      "Performance Benchmarking",
+      "Custom Reports",
+      "Growth Analysis",
+      "Data Visualization"
+    ]
+  },
+  'analyst-audit-trails': {
+    title: 'Audit Trails',
+    intro: 'Provides complete transparency into every transaction, approval, and system activity.',
+    bullets: [
+      'Allows analysts to validate and verify critical operations.',
+      'Traces anomalies and system issues back to their exact origin.',
+      'Monitors modifications for complete security and compliance.'
+    ],
+    features: [
+      "Activity Tracking",
+      "Change History",
+      "Transaction Traceability",
+      "Approval Logs",
+      "Data Validation",
+      "Compliance Monitoring"
+    ]
+  },
+  'analyst-command-center': {
+    title: 'Root Cause Analysis',
+    intro: 'Enables analysts to investigate flagged anomalies and identify performance drifts.',
+    bullets: [
+      'Identifies the core factors contributing to business inefficiencies.',
+      'Performs exception analysis to isolate critical errors.',
+      'Provides root cause insights to prevent future performance declines.'
+    ],
+    features: [
+      "Anomaly Investigation",
+      "Cause Identification",
+      "Exception Analysis",
+      "Cross-Department Correlation",
+      "Issue Documentation",
+      "Resolution Recommendations"
+    ]
+  },
+  'analyst-ai-monitoring': {
+    title: 'AI Insights Engine',
+    intro: 'Continuously analyzes business data to uncover opportunities, risks, and predictive insights.',
+    bullets: [
+      'Detects unusual patterns not visible through traditional reporting.',
+      'Uncovers hidden revenue opportunities and emerging risks.',
+      'Applies predictive analytics to forecast future trends.'
+    ],
+    features: [
+      "Predictive Analytics",
+      "Anomaly Detection",
+      "Risk Identification",
+      "Opportunity Discovery",
+      "AI Recommendations",
+      "Pattern Recognition"
+    ]
+  }
+};
+
 const BubbleNetwork = () => {
   const [dimensions, setDimensions] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 1000,
     height: typeof window !== 'undefined' ? window.innerHeight : 800
   });
   const [focusedNode, setFocusedNode] = useState(null);
+  const [isResizing, setIsResizing] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setDimensions({ width: window.innerWidth, height: window.innerHeight });
+    let timeoutId;
+    const handleResize = () => {
+      setIsResizing(true);
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsResizing(false);
+      }, 100);
+    };
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   const w = dimensions.width;
@@ -32,37 +305,53 @@ const BubbleNetwork = () => {
   // Dynamic Layout Engine
   const getLayout = () => {
     const R = Math.round;
+
+    // Dynamic factors based on screen size (keeps desktop exactly the same)
+    let rootPct = 0.16;
+    let catPct = 0.46;
+    let subPct = 0.73;
+
+    if (w < 768) {
+      rootPct = 0.12;
+      catPct = 0.36;
+      subPct = 0.60;
+    } else if (w < 1024) {
+      rootPct = 0.14;
+      catPct = 0.41;
+      subPct = 0.66;
+    }
+
     const layout = {
-      root: { left: R(w * 0.16), top: R(h * 0.48) },
+      root: { left: R(w * rootPct), top: R(h * 0.48) },
       cats: {
-        sales: { left: R(w * 0.46), top: R(h * 0.13) },
-        topManagement: { left: R(w * 0.46), top: R(h * 0.36) },
-        analytics: { left: R(w * 0.46), top: R(h * 0.61) },
-        erp: { left: R(w * 0.46), top: R(h * 0.86) }
+        sales: { left: R(w * catPct), top: R(h * 0.13) },
+        topManagement: { left: R(w * catPct), top: R(h * 0.36) },
+        analytics: { left: R(w * catPct), top: R(h * 0.61) },
+        erp: { left: R(w * catPct), top: R(h * 0.86) }
       },
       subs: {
         // Group 1 (Top Management)
-        'advanced-ai-monitoring': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.08) },
-        'automated-reports': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.13) },
-        'command-center': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.18) },
+        'advanced-ai-monitoring': { left: R(w * subPct), top: R(h * 0.08) },
+        'automated-reports': { left: R(w * subPct), top: R(h * 0.13) },
+        'command-center': { left: R(w * subPct), top: R(h * 0.18) },
 
         // Group 2 (Procurement)
-        'order-fulfillment': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.28) },
-        'procurement-inventory': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.33) },
-        'raw-materials': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.38) },
-        'invoicing-vendor-management': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.43) },
+        'order-fulfillment': { left: R(w * subPct), top: R(h * 0.28) },
+        'procurement-inventory': { left: R(w * subPct), top: R(h * 0.33) },
+        'raw-materials': { left: R(w * subPct), top: R(h * 0.38) },
+        'invoicing-vendor-management': { left: R(w * subPct), top: R(h * 0.43) },
 
         // Group 3 (Sales Enablement)
-        'intelligent-dashboard': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.53) },
-        'lead-assignments': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.58) },
-        'field-sales': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.63) },
-        'ai-sales-monitoring': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.68) },
+        'intelligent-dashboard': { left: R(w * subPct), top: R(h * 0.53) },
+        'lead-assignments': { left: R(w * subPct), top: R(h * 0.58) },
+        'field-sales': { left: R(w * subPct), top: R(h * 0.63) },
+        'ai-sales-monitoring': { left: R(w * subPct), top: R(h * 0.68) },
 
         // Group 4 (Analyst)
-        'analyst-automated-reports': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.78) },
-        'analyst-audit-trails': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.83) },
-        'analyst-command-center': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.88) },
-        'analyst-ai-monitoring': { left: w < 768 ? R(w * 0.71) : R(w * 0.73), top: R(h * 0.93) },
+        'analyst-automated-reports': { left: R(w * subPct), top: R(h * 0.78) },
+        'analyst-audit-trails': { left: R(w * subPct), top: R(h * 0.83) },
+        'analyst-command-center': { left: R(w * subPct), top: R(h * 0.88) },
+        'analyst-ai-monitoring': { left: R(w * subPct), top: R(h * 0.93) },
       }
     };
 
@@ -145,10 +434,13 @@ const BubbleNetwork = () => {
 
     // Completely hide everything unrelated to the focused path
     const isCatFocused = bubbleData[focusedNode] !== undefined;
+    const R = Math.round;
 
     if (type === 'root') {
       if (focusedNode === 'root') {
-        return { width: Math.min(1350, w < 768 ? w * 0.70 : w * 0.73), height: w < 768 ? 380 : Math.min(750, h * 0.93), scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
+        const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1350, w * 0.73));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
+        return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       }
       return { width: 240 * rs, height: 240 * rs, scale: 0.35, opacity: 0.6, zIndex: 5 };
     }
@@ -156,9 +448,13 @@ const BubbleNetwork = () => {
     if (nodeId === focusedNode) {
       const isCat = bubbleData[nodeId] !== undefined;
       if (isCat) {
-        return { width: Math.min(1350, w < 768 ? w * 0.70 : w * 0.73), height: w < 768 ? 380 : Math.min(750, h * 0.93), scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
+        const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1350, w * 0.73));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
+        return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       } else {
-        return { width: Math.min(1350, w < 768 ? w * 0.9 : w * 0.9), height: w < 768 ? 380 : Math.min(750, h * 0.93), scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
+        const width = w < 768 ? R(w * 0.92) : w < 1024 ? R(w * 0.85) : R(Math.min(1350, w * 0.9));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
+        return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       }
     }
 
@@ -213,13 +509,14 @@ const BubbleNetwork = () => {
     });
   });
   const springConfig = { type: 'spring', stiffness: 120, damping: 20, mass: 0.8 };
+  const activeTransition = isResizing ? { type: 'tween', duration: 0 } : springConfig;
   const cleanTransform = ({ x, y, scale }) => `translate(${x}, ${y}) scale(${scale})`;
 
   return (
     <div
       style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden' }}
-      onClick={(e) => {
-        if (e.target === e.currentTarget && focusedNode) {
+      onClick={() => {
+        if (focusedNode) {
           setFocusedNode(null);
         }
       }}
@@ -287,12 +584,12 @@ const BubbleNetwork = () => {
             <g key={path.id}>
               <motion.path
                 style={{ willChange: 'opacity' }}
-                animate={{ d: path.d, opacity: lineOpacity === 1 ? 0.35 : 0 }} transition={springConfig}
+                animate={{ d: path.d, opacity: lineOpacity === 1 ? 0.35 : 0 }} transition={activeTransition}
                 fill="none" stroke="rgba(232, 149, 40, 0.8)" strokeWidth="3"
               />
               <motion.path
                 style={{ willChange: 'opacity' }}
-                animate={{ d: path.d, opacity: lineOpacity === 1 ? 0.6 : 0 }} transition={springConfig}
+                animate={{ d: path.d, opacity: lineOpacity === 1 ? 0.6 : 0 }} transition={activeTransition}
                 fill="none" stroke="#f2ac49" strokeWidth="1.5"
               />
             </g>
@@ -309,7 +606,9 @@ const BubbleNetwork = () => {
           borderWidth: `${Math.min(1.5, 1 / getSize('root').scale)}px`,
           willChange: 'left, top, transform, opacity, width, height, border-radius'
         }}
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
+          if (focusedNode === 'root') return;
           handleNodeClick('root');
         }}
         animate={{
@@ -320,7 +619,7 @@ const BubbleNetwork = () => {
           borderRadius: focusedNode === 'root' ? '24px' : '50%',
           overflow: 'hidden'
         }}
-        transition={springConfig}
+        transition={activeTransition}
         transformTemplate={cleanTransform}
         whileHover={focusedNode !== 'root' && !focusedNode ? { scale: 1.05, boxShadow: 'inset 0 0 20px #fff, 0 15px 40px rgba(232, 149, 40,0.4)' } : {}}
       >
@@ -358,8 +657,8 @@ const BubbleNetwork = () => {
                 position: 'absolute', 
                 top: 0, 
                 left: 0, 
-                width: w < 768 ? `${w * 0.70}px` : `${Math.min(1350, w * 0.73)}px`, 
-                height: w < 768 ? '380px' : `${Math.min(750, h * 0.93)}px`, 
+                width: `${getSize('root').width}px`, 
+                height: `${getSize('root').height}px`, 
                 zIndex: 1, 
                 display: 'flex', 
                 flexDirection: 'column' 
@@ -480,12 +779,19 @@ const BubbleNetwork = () => {
             key={cat.id}
             style={{ position: 'absolute', willChange: 'left, top' }}
             animate={{ left: pos.left, top: pos.top, zIndex: size.zIndex }}
-            transition={springConfig}
+            transition={activeTransition}
           >
             <motion.div
-              className={`glass-bubble ${focus ? 'expanded' : ''}`} onClick={() => handleNodeClick(cat.id)}
+              className={`glass-bubble ${focus ? 'expanded' : ''}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                if (focus) return;
+                handleNodeClick(cat.id);
+              }}
               style={{ 
                 position: 'absolute', 
+                left: 0,
+                top: 0,
                 borderWidth: `${Math.min(1.5, 1 / size.scale)}px`,
                 willChange: 'transform, opacity, width, height, border-radius'
               }}
@@ -496,7 +802,7 @@ const BubbleNetwork = () => {
                 x: '-50%', y: '-50%', borderRadius: size.borderRadius || '50%', cursor: 'pointer',
                 overflow: 'hidden' // prevents text from spilling over during shrink
               }}
-              transition={springConfig}
+              transition={activeTransition}
               transformTemplate={cleanTransform}
               whileHover={!focus && !focusedNode ? { scale: 1.05, boxShadow: 'inset 0 0 20px #fff, 0 15px 40px rgba(232, 149, 40,0.4)' } : {}}
             >
@@ -537,8 +843,8 @@ const BubbleNetwork = () => {
                       position: 'absolute', 
                       top: 0, 
                       left: 0, 
-                      width: w < 768 ? `${w * 0.70}px` : `${Math.min(1350, w * 0.73)}px`, 
-                      height: w < 768 ? '380px' : `${Math.min(750, h * 0.93)}px`, 
+                      width: `${size.width}px`, 
+                      height: `${size.height}px`, 
                       zIndex: 1, 
                       display: 'flex', 
                       flexDirection: 'column' 
@@ -1257,7 +1563,7 @@ const BubbleNetwork = () => {
                               </div>
                               <div>
                                 <h2 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
-                                  Analyst
+                                  Analytics
                                 </h2>
                                 <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '600', color: '#666', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
                                   Turn Data Into Actionable Intelligence
@@ -1548,20 +1854,27 @@ const BubbleNetwork = () => {
               key={sub.id}
               style={{ position: 'absolute', willChange: 'left, top' }}
               animate={{ left: pos.left, top: pos.top, zIndex: size.zIndex }}
-              transition={springConfig}
+              transition={activeTransition}
             >
               <motion.div
-                className={`glass-bubble ${focus ? 'expanded' : ''}`} onClick={() => handleNodeClick(sub.id)}
+                className={`glass-bubble ${focus ? 'expanded' : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (focus) return;
+                  handleNodeClick(sub.id);
+                }}
                 animate={{ width: typeof size.width === 'number' ? `${size.width}px` : size.width, height: typeof size.height === 'number' ? `${size.height}px` : size.height, scale: size.scale, opacity: size.opacity, x: '-50%', y: '-50%', borderRadius: size.borderRadius || '50%' }}
                 style={{ 
                   position: 'absolute', 
+                  left: 0,
+                  top: 0,
                   cursor: 'pointer', 
                   transformOrigin: 'center', 
                   overflow: 'hidden', 
                   borderWidth: `${Math.min(1.5, 1 / size.scale)}px`,
                   willChange: 'transform, opacity, width, height, border-radius'
                 }}
-                transition={springConfig}
+                transition={activeTransition}
                 transformTemplate={cleanTransform}
                 whileHover={!focus && !focusedNode ? { scale: 1.2, boxShadow: 'inset 0 0 10px #fff, 0 10px 20px rgba(232, 149, 40,0.4)' } : {}}
               >
@@ -1584,351 +1897,92 @@ const BubbleNetwork = () => {
                         position: 'absolute', 
                         top: 0, 
                         left: 0, 
-                        width: w < 768 ? `${w * 0.9}px` : `${Math.min(1350, w * 0.9)}px`, 
-                        height: w < 768 ? '380px' : `${Math.min(750, h * 0.9)}px`, 
+                        width: `${size.width}px`, 
+                        height: `${size.height}px`, 
                         zIndex: 1, 
                         display: 'flex', 
                         flexDirection: w < 768 ? 'column' : 'row' 
                       }}
                     >
                       {w >= 768 && (
-                        <div style={{ flex: '1', padding: '40px' }}>
-                          <div style={{ width: '100%', height: '100%', borderRadius: '16px', backgroundImage: 'url(/map-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
+                        <div style={{ flex: '1', padding: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <div style={{ 
+                            width: '100%', 
+                            height: (sub.id === 'intelligent-dashboard' || sub.id === 'lead-assignments' || sub.id === 'field-sales' || sub.id === 'order-fulfillment' || sub.id === 'procurement-inventory' || sub.id === 'raw-materials' || sub.id === 'invoicing-vendor-management') ? 'auto' : '100%',
+                            aspectRatio: sub.id === 'intelligent-dashboard' ? '1635 / 1519' : 
+                                         (sub.id === 'lead-assignments' ? '1769 / 1502' : 
+                                         (sub.id === 'field-sales' ? '1607 / 1414' : 
+                                         (sub.id === 'order-fulfillment' ? '1984 / 1448' : 
+                                         (sub.id === 'procurement-inventory' ? '1994 / 1396' : 
+                                         (sub.id === 'raw-materials' ? '1936 / 1406' : 
+                                         (sub.id === 'invoicing-vendor-management' ? '815 / 720' : 'auto')))))),
+                            maxHeight: '100%',
+                            borderRadius: '16px', 
+                            backgroundImage: `url(${
+                              sub.id === 'intelligent-dashboard' ? '/intelligent_lead_assignment.png' : 
+                              (sub.id === 'lead-assignments' ? '/field_sales_management.png' : 
+                              (sub.id === 'field-sales' ? '/ai_sales_monitoring.png' : 
+                              (sub.id === 'order-fulfillment' ? '/order_fulfillment.png' : 
+                              (sub.id === 'procurement-inventory' ? '/procurement_inventory.png' : 
+                              (sub.id === 'raw-materials' ? '/raw_materials.png' : 
+                              (sub.id === 'invoicing-vendor-management' ? '/invoicing_vendor_management.png' : '/map-bg.png'))))))
+                            })`, 
+                            backgroundSize: (sub.id === 'intelligent-dashboard' || sub.id === 'lead-assignments' || sub.id === 'field-sales' || sub.id === 'order-fulfillment' || sub.id === 'procurement-inventory' || sub.id === 'raw-materials' || sub.id === 'invoicing-vendor-management') ? 'contain' : 'cover', 
+                            backgroundPosition: 'center', 
+                            backgroundRepeat: 'no-repeat',
+                            backgroundColor: (sub.id === 'intelligent-dashboard' || sub.id === 'lead-assignments' || sub.id === 'field-sales' || sub.id === 'order-fulfillment' || sub.id === 'procurement-inventory' || sub.id === 'raw-materials' || sub.id === 'invoicing-vendor-management') ? '#fff' : 'transparent',
+                            boxShadow: '0 20px 40px rgba(0,0,0,0.1)' 
+                          }} />
                         </div>
                       )}
 
                       <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '40px 60px 40px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
-                        {sub.id === 'advanced-ai-monitoring' ? (
-                          <>
-                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
-                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                  AI Monitoring <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                                </a>
-                              </h3>
-                            </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
-                              AI Monitoring continuously analyzes business operations across sales, inventory, procurement, manufacturing, finance, and customer management to identify risks, anomalies, and performance drifts in real time. When unusual patterns are detected, the system automatically raises flags, prioritizes their severity, and provides AI-generated recommendations to help management take corrective action before issues impact profitability or operational efficiency.
-                            </p>
-                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
-                              Key Features
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
-                              {[
-                                "Real-Time Drift & Anomaly Detection",
-                                "Intelligent Flagging & Alert Management",
-                                "AI-Powered Recommendations",
-                                "Predictive Risk Monitoring",
-                                "Cross-Functional Performance Visibility",
-                                "Root Cause & Trend Analysis"
-                              ].map((feat, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        ) : sub.id === 'automated-reports' ? (
-                          <>
-                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
-                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                  Automated Dashboards & Reports <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                                </a>
-                              </h3>
-                            </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
-                              Automated Dashboards and Reports provide a centralized view of business performance by consolidating data from multiple systems into a single source of truth. Interactive charts, graphs, and visual analytics make it easier to identify problem areas, track company growth, monitor profitability, and evaluate operational performance without relying on manually prepared reports.
-                            </p>
-                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
-                              Key Features
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
-                              {[
-                                "Real-Time Business Performance Monitoring",
-                                "Interactive Dashboards & Visual Analytics",
-                                "Automated Reporting & Distribution",
-                                "Executive & Departmental Insights",
-                                "Trend, Variance & Growth Analysis",
-                                "Unified Business Intelligence Platform"
-                              ].map((feat, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        ) : sub.id === 'command-center' ? (
-                          <>
-                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
-                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                  Command Center <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                                </a>
-                              </h3>
-                            </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
-                              The Command Center acts as the central hub for managing business drifts, critical alerts, investigations, and resolutions. When a flag is raised, all relevant stakeholders can collaborate within a dedicated War Room, where departments can discuss the issue, provide context, identify root causes, and coordinate corrective actions. This ensures complete visibility, accountability, and faster resolution of business-critical problems.
-                            </p>
-                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
-                              Key Features
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
-                              {[
-                                "Centralized Drift & Alert Management",
-                                "AI-Powered Resolution Recommendations",
-                                "War Rooms & Cross-Functional Collaboration",
-                                "Root Cause Analysis & Documentation",
-                                "Action Plan & Resolution Tracking",
-                                "Governance, Visibility & Audit Trail"
-                              ].map((feat, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        ) : sub.id === 'order-fulfillment' ? (
-                          <>
-                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
-                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                  Sales Order Fulfilment <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                                </a>
-                              </h3>
-                            </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
-                              Sales Order Fulfilment manages the complete journey of an order from confirmation to delivery. It ensures inventory availability, production allocation, dispatch planning, and order tracking, enabling businesses to deliver products accurately and on time while maintaining customer satisfaction.
-                            </p>
-                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
-                              Key Features
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
-                              {[
-                                "End-to-End Order Tracking",
-                                "Inventory Allocation & Control",
-                                "Production & Dispatch Coordination",
-                                "Real-Time Order Visibility",
-                                "Exception & Delay Management",
-                                "Fulfilment Performance Monitoring"
-                              ].map((feat, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        ) : sub.id === 'raw-materials' ? (
-                          <>
-                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
-                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                  Procurement of Raw Materials <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                                </a>
-                              </h3>
-                            </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
-                              The Raw Material Procurement module streamlines the purchasing process for essential materials such as gold, diamonds, gemstones, findings, and packaging components. It helps procurement teams plan purchases, manage vendors, monitor delivery schedules, and maintain uninterrupted production operations.
-                            </p>
-                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
-                              Key Features
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
-                              {[
-                                "Purchase Requisition & Order Management",
-                                "Vendor Performance Management",
-                                "Material Requirement Planning",
-                                "Procurement Approval Workflows",
-                                "Quotation & Price Comparison",
-                                "Delivery Tracking, Analytics & Cost Optimization"
-                              ].map((feat, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        ) : sub.id === 'procurement-inventory' ? (
-                          <>
-                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
-                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                  Inventory Management <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                                </a>
-                              </h3>
-                            </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
-                              Inventory Management provides complete visibility and control over raw materials, work-in-progress items, and finished goods across all locations. It helps businesses maintain optimal stock levels, reduce carrying costs, prevent stock shortages, and ensure materials are available whenever required for production or sales fulfilment.
-                            </p>
-                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
-                              Key Features
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
-                              {[
-                                "Real-Time Inventory Visibility",
-                                "Multi-Location Inventory Tracking",
-                                "Raw Material, WIP & Finished Goods Monitoring",
-                                "Stock Alerts & Exception Management",
-                                "Stock Movement & Batch Traceability",
-                                "Inventory Valuation, Reporting & Dead Stock Analysis"
-                              ].map((feat, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        ) : sub.id === 'invoicing-vendor-management' ? (
-                          <>
-                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
-                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                  Invoicing <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                                </a>
-                              </h3>
-                            </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
-                              The Invoicing module automates invoice generation and financial documentation while ensuring accuracy and compliance. It integrates directly with sales orders, pricing structures, taxes, gold rates, diamond rates, labour charges, certifications, and other costing components to simplify billing operations.
-                            </p>
-                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
-                              Key Features
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
-                              {[
-                                "Automated Invoice Generation",
-                                "Sales Order & Billing Integration",
-                                "Dynamic Pricing & Rate Management",
-                                "Tax & Compliance Management",
-                                "Cost Component Management (Gold, Diamond, Labour & Certification)",
-                                "Payment Tracking, Invoice History & Audit Trail"
-                              ].map((feat, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        ) : sub.id === 'intelligent-dashboard' ? (
-                          <>
-                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
-                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                  Intelligent Lead Assignment <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                                </a>
-                              </h3>
-                            </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
-                              The Intelligent Lead Assignment module ensures that leads are allocated to the most suitable Field Assistants based on geography, workload, territory, expertise, and proximity to the customer. Using map-based visualization, Sales Managers can view lead distribution in real time and assign opportunities to the best available resource, improving response times and conversion rates.
-                            </p>
-                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
-                              Key Features
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
-                              {[
-                                "Map-Based Lead Allocation",
-                                "Territory & Region Management",
-                                "Intelligent Workload Balancing",
-                                "Nearest Representative Assignment",
-                                "Lead Ownership & Reassignment Control",
-                                "Geographic Coverage & Lead Visibility Analytics"
-                              ].map((feat, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        ) : sub.id === 'lead-assignments' ? (
-                          <>
-                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
-                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                  Field Sales Management <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                                </a>
-                              </h3>
-                            </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
-                              The Field Sales Management module serves as the operational workspace for Hunters, providing complete visibility into assigned leads, scheduled meetings, follow-ups, customer interactions, and order management. It enables Field Assistants to stay organized while ensuring that Sales Managers remain informed of all sales activities.
-                            </p>
-                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
-                              Key Features
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
-                              {[
-                                "Mobile & Web Sales Workspace",
-                                "Meeting, Reminder & Follow-Up Management",
-                                "Customer Visit & Interaction Tracking",
-                                "Order Placement & Submission",
-                                "Manager Guidance & Sales Recommendations",
-                                "Activity Monitoring, Route Planning & Real-Time Updates"
-                              ].map((feat, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        ) : sub.id === 'field-sales' ? (
-                          <>
-                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
-                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                  AI Sales Monitoring <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                                </a>
-                              </h3>
-                            </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
-                              AI Sales Monitoring continuously analyzes sales activities, lead progression, follow-up effectiveness, conversion rates, and team performance. The system identifies missed opportunities, delayed actions, inactive leads, and unusual sales patterns while providing actionable recommendations to improve performance and maximize conversions.
-                            </p>
-                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
-                              Key Features
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
-                              {[
-                                "Lead Aging & Follow-Up Monitoring",
-                                "Sales Performance & Conversion Analytics",
-                                "Sales Pipeline Health Tracking",
-                                "Automated Drift & Risk Detection",
-                                "AI-Powered Recommendations & Opportunity Identification",
-                                "Team Productivity & Predictive Sales Insights"
-                              ].map((feat, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        ) : sub.id === 'ai-sales-monitoring' ? (
-                          <>
-                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
-                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                  Feedback & Collaboration Hub <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                                </a>
-                              </h3>
-                            </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
-                              The Feedback & Collaboration Hub ensures seamless communication between Sales Managers and Field Assistants. Every customer visit, follow-up, meeting outcome, and sales update is recorded through structured feedback forms, creating complete visibility into field operations. This enables managers to provide timely guidance, track commitments, monitor deadlines, and ensure accountability across the sales team.
-                            </p>
-                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
-                              Key Features
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
-                              {[
-                                "Post-Visit Feedback & Customer Records",
-                                "Manager–Hunter Communication Hub",
-                                "Activity, Progress & Performance Tracking",
-                                "Task, Deadline & Follow-Up Management",
-                                "Escalation & Action Item Tracking",
-                                "Sales Audit Trail & Accountability Monitoring"
-                              ].map((feat, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        ) : (
+                        {subComponentContent[sub.id] ? (() => {
+                          const content = subComponentContent[sub.id];
+                          return (
+                            <>
+                              <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                                <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                                  <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                    {content.title} <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                  </a>
+                                </h3>
+                              </div>
+                              <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '14px', textAlign: 'left', fontWeight: '500' }}>
+                                {content.intro}
+                              </p>
+                              
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px' }}>
+                                {content.bullets.map((bullet, idx) => (
+                                  <div key={idx} style={{ 
+                                    border: '1px solid rgba(232, 149, 40, 0.12)', 
+                                    background: 'rgba(232, 149, 40, 0.02)', 
+                                    padding: '10px 14px', 
+                                    borderRadius: '8px', 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    gap: '10px',
+                                    boxShadow: '0 2px 8px rgba(0,0,0,0.01)'
+                                  }}>
+                                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#e89528', flexShrink: 0 }} />
+                                    <span style={{ fontSize: w < 768 ? '14px' : '15px', color: '#555', fontWeight: '500', textAlign: 'left', lineHeight: '1.4' }}>{bullet}</span>
+                                  </div>
+                                ))}
+                              </div>
+
+                              <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                                Key Features
+                              </h4>
+                              <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                                {content.features.map((feat, i) => (
+                                  <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                    <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </>
+                          );
+                        })() : (
                           <>
                             <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '16px' : '24px' }}>
                               <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>

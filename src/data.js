@@ -12,14 +12,14 @@ export const bubbleData = {
   },
   erp: {
     id: 'erp',
-    title: 'Analyst',
+    title: 'Analytics',
     color: '#4a90e2',
     link: import.meta.env.VITE_LINK_ERP,
     subComponents: [
-      { id: 'analyst-automated-reports', title: 'Automated Reports', description: 'Schedule and auto-generate detailed performance reports.', link: import.meta.env.VITE_LINK_ANALYST_AUTOMATED_REPORTS },
+      { id: 'analyst-automated-reports', title: 'Business Intelligence', description: 'Schedule and auto-generate detailed performance reports.', link: import.meta.env.VITE_LINK_ANALYST_AUTOMATED_REPORTS },
       { id: 'analyst-audit-trails', title: 'Audit Trails', description: 'Comprehensive tracking of all system activities and changes.', link: import.meta.env.VITE_LINK_ANALYST_AUDIT_TRAILS },
-      { id: 'analyst-command-center', title: 'Command Center', description: 'Unified overview of system health and metrics.', link: import.meta.env.VITE_LINK_ANALYST_COMMAND_CENTER },
-      { id: 'analyst-ai-monitoring', title: 'AI Monitoring', description: 'Intelligent alerts and real-time anomaly detection.', link: import.meta.env.VITE_LINK_ANALYST_AI_MONITORING }
+      { id: 'analyst-command-center', title: 'Root Cause Analysis', description: 'Unified overview of system health and metrics.', link: import.meta.env.VITE_LINK_ANALYST_COMMAND_CENTER },
+      { id: 'analyst-ai-monitoring', title: 'AI Insights Engine', description: 'Intelligent alerts and real-time anomaly detection.', link: import.meta.env.VITE_LINK_ANALYST_AI_MONITORING }
     ]
   },
   topManagement: {
