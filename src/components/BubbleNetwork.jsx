@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { bubbleData } from '../data';
-import { Sparkles, X, ChevronRight, BarChart3, Database, ShieldCheck, ExternalLink, Package, Clock } from 'lucide-react';
+import { Sparkles, X, ChevronRight, BarChart3, Database, ShieldCheck, ExternalLink, Package, Clock, TrendingUp, Layers, ShoppingCart, Briefcase, UserCheck, HeartHandshake, PieChart, BrainCircuit, Activity, Lightbulb, AlertTriangle, Sliders, ArrowRight, Users } from 'lucide-react';
 
 const BubbleNetwork = () => {
   const [dimensions, setDimensions] = useState({
@@ -212,7 +212,7 @@ const BubbleNetwork = () => {
       paths.push({ id: `${catId}-${sub.id}`, d: createBezierCurve(layout.cats[catId], layout.subs[sub.id], rStart, rEnd), catId, subId: sub.id });
     });
   });
-  const springConfig = { type: 'spring', stiffness: 220, damping: 25, mass: 0.5 };
+  const springConfig = { type: 'spring', stiffness: 120, damping: 20, mass: 0.8 };
   const cleanTransform = ({ x, y, scale }) => `translate(${x}, ${y}) scale(${scale})`;
 
   return (
@@ -286,10 +286,12 @@ const BubbleNetwork = () => {
           return (
             <g key={path.id}>
               <motion.path
+                style={{ willChange: 'opacity' }}
                 animate={{ d: path.d, opacity: lineOpacity === 1 ? 0.35 : 0 }} transition={springConfig}
                 fill="none" stroke="rgba(232, 149, 40, 0.8)" strokeWidth="3"
               />
               <motion.path
+                style={{ willChange: 'opacity' }}
                 animate={{ d: path.d, opacity: lineOpacity === 1 ? 0.6 : 0 }} transition={springConfig}
                 fill="none" stroke="#f2ac49" strokeWidth="1.5"
               />
@@ -301,7 +303,12 @@ const BubbleNetwork = () => {
       {/* Root Bubble */}
       <motion.div
         className={`glass-bubble ${focusedNode === 'root' ? 'expanded' : ''}`}
-        style={{ position: 'absolute', cursor: 'pointer', borderWidth: `${1 / getSize('root').scale}px` }}
+        style={{ 
+          position: 'absolute', 
+          cursor: 'pointer', 
+          borderWidth: `${1 / getSize('root').scale}px`,
+          willChange: 'left, top, transform, opacity, width, height, border-radius'
+        }}
         onClick={() => {
           handleNodeClick('root');
         }}
@@ -358,30 +365,103 @@ const BubbleNetwork = () => {
                 flexDirection: 'column' 
               }}
             >
-              <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '50px 100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
-                <div style={{ marginBottom: w < 768 ? '24px' : '44px' }}>
-                  <h2 style={{ fontSize: w < 768 ? '38px' : '52px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.2' }}>
+              <div style={{ flex: '1', padding: w < 768 ? '16px 12px' : '32px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: w < 768 ? 'auto' : 'hidden', gap: w < 768 ? '16px' : '24px' }}>
+                {/* Title & Introduction */}
+                <div style={{ marginBottom: w < 768 ? '12px' : '0px' }}>
+                  <h2 style={{ fontSize: w < 768 ? '26px' : '44px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
                     What is StackLogix?
                   </h2>
+                  <p style={{ fontSize: w < 768 ? '13px' : '17px', color: '#444', lineHeight: '1.5', marginTop: '8px', fontWeight: '500', textAlign: 'left', margin: '8px 0 0 0' }}>
+                    A fully customizable platform that unifies and optimizes every stage of the business lifecycle — eliminating data silos and creating a single source of truth across the organization.
+                  </p>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: w < 768 ? '22px' : '32px', color: '#333', fontSize: w < 768 ? '17px' : '22px', lineHeight: '1.75', fontWeight: '500' }}>
-                  <div style={{ display: 'flex', gap: '18px', alignItems: 'flex-start' }}>
-                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '14px', flexShrink: 0 }} />
-                    <p style={{ margin: 0, textAlign: 'justify' }}>
-                      StackLogix is a fully customizable business operating system designed to unify and optimize every stage of the business lifecycle. Built to integrate seamlessly with existing ERP, CRM, accounting, manufacturing, and inventory systems, it eliminates data silos and creates a single source of truth across the organization.
-                    </p>
+
+                {/* Section 1: One system, every source of truth */}
+                <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
+                    One system, every source of truth
+                  </h3>
+                  <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
+                    Integrates seamlessly with the tools you already run, then connects them into a single layer.
+                  </p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: w < 768 ? '6px' : '12px', flexWrap: 'wrap' }}>
+                    {['ERP', 'CRM', 'Accounting', 'Manufacturing', 'Inventory'].map((source, index) => (
+                      <React.Fragment key={source}>
+                        <div style={{ background: '#fdfbf2', border: '1px solid rgba(232, 149, 40, 0.35)', color: '#a35b12', padding: w < 768 ? '4px 8px' : '6px 14px', borderRadius: '20px', fontSize: w < 768 ? '10px' : '13px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '5px', boxShadow: '0 2px 5px rgba(232,149,40,0.04)', flexShrink: 0 }}>
+                          {source === 'ERP' && <Database size={w < 768 ? 11 : 13} />}
+                          {source === 'CRM' && <Users size={w < 768 ? 11 : 13} />}
+                          {source === 'Accounting' && <BarChart3 size={w < 768 ? 11 : 13} />}
+                          {source === 'Manufacturing' && <Package size={w < 768 ? 11 : 13} />}
+                          {source === 'Inventory' && <Layers size={w < 768 ? 11 : 13} />}
+                          {source}
+                        </div>
+                        {index < 5 && <ArrowRight size={w < 768 ? 12 : 16} color="#d68022" style={{ flexShrink: 0 }} />}
+                      </React.Fragment>
+                    ))}
+                    <div style={{ background: '#d68022', color: '#fff', padding: w < 768 ? '5px 10px' : '7px 16px', borderRadius: '20px', fontSize: w < 768 ? '10px' : '13px', fontWeight: '700', boxShadow: '0 4px 12px rgba(214, 128, 34, 0.25)', display: 'flex', alignItems: 'center', gap: '5px', flexShrink: 0 }}>
+                      <ShieldCheck size={w < 768 ? 11 : 13} />
+                      Single source of truth
+                    </div>
                   </div>
-                  <div style={{ display: 'flex', gap: '18px', alignItems: 'flex-start' }}>
-                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '14px', flexShrink: 0 }} />
-                    <p style={{ margin: 0, textAlign: 'justify' }}>
-                      Purpose-built for the jewellery industry and adaptable to any enterprise workflow, StackLogix combines AI-driven forecasting, inventory planning, procurement, sales enablement, lead management, customer relationship management, and business intelligence into one modular platform. Organizations can choose only the modules they need, ensuring flexibility and cost efficiency.
-                    </p>
+                </div>
+
+                {/* Section 2: Modular by design */}
+                <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
+                    Modular by design
+                  </h3>
+                  <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
+                    Purpose-built for the jewellery industry, adaptable to any enterprise workflow. Choose only the modules you need.
+                  </p>
+                  <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : 'repeat(4, 1fr)', gap: '10px' }}>
+                    {[
+                      { title: 'AI-driven forecasting', icon: TrendingUp },
+                      { title: 'Inventory planning', icon: Layers },
+                      { title: 'Procurement', icon: ShoppingCart },
+                      { title: 'Sales enablement', icon: Briefcase },
+                      { title: 'Lead management', icon: UserCheck },
+                      { title: 'Customer relationship', icon: HeartHandshake },
+                      { title: 'Business intelligence', icon: PieChart }
+                    ].map((mod, i) => {
+                      const IconComponent = mod.icon;
+                      return (
+                        <div key={i} style={{ background: '#f8f9fa', border: '1px solid #f0f1f3', padding: w < 768 ? '8px 10px' : '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                          <div style={{ background: 'rgba(232, 149, 40, 0.08)', padding: '6px', borderRadius: '6px', color: '#e89528', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            <IconComponent size={w < 768 ? 14 : 18} />
+                          </div>
+                          <span style={{ fontSize: w < 768 ? '11px' : '14px', fontWeight: '600', color: '#222', lineHeight: '1.2' }}>{mod.title}</span>
+                        </div>
+                      );
+                    })}
                   </div>
-                  <div style={{ display: 'flex', gap: '18px', alignItems: 'flex-start' }}>
-                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '14px', flexShrink: 0 }} />
-                    <p style={{ margin: 0, textAlign: 'justify' }}>
-                      Beyond traditional dashboards and chatbots, StackLogix delivers actionable AI through predictive analytics, automated monitoring, intelligent recommendations, anomaly detection, and executive command centers that provide real-time visibility into operations, performance, risks, and opportunities. The result is a connected, data-driven enterprise where management can make faster, smarter decisions with complete operational transparency.
-                    </p>
+                </div>
+
+                {/* Section 3: Beyond dashboards and chatbots */}
+                <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px', marginTop: w < 768 ? '0px' : '-16px' }}>
+                  <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
+                    Beyond dashboards and chatbots
+                  </h3>
+                  <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
+                    Actionable AI that gives management real-time visibility into operations, performance, risks, and opportunities.
+                  </p>
+                  <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : 'repeat(5, 1fr)', gap: '10px' }}>
+                    {[
+                      { title: 'Predictive analytics', icon: BrainCircuit },
+                      { title: 'Automated monitoring', icon: Activity },
+                      { title: 'Intelligent recommendations', icon: Lightbulb },
+                      { title: 'Anomaly detection', icon: AlertTriangle },
+                      { title: 'Executive command centers', icon: Sliders }
+                    ].map((feat, i) => {
+                      const IconComponent = feat.icon;
+                      return (
+                        <div key={i} style={{ background: '#f8f9fa', border: '1px solid #f0f1f3', padding: w < 768 ? '8px 10px' : '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                          <div style={{ background: 'rgba(232, 149, 40, 0.08)', padding: '6px', borderRadius: '6px', color: '#e89528', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            <IconComponent size={w < 768 ? 14 : 18} />
+                          </div>
+                          <span style={{ fontSize: w < 768 ? '11px' : '14px', fontWeight: '600', color: '#222', lineHeight: '1.2' }}>{feat.title}</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -398,13 +478,17 @@ const BubbleNetwork = () => {
         return (
           <motion.div
             key={cat.id}
-            style={{ position: 'absolute' }}
+            style={{ position: 'absolute', willChange: 'left, top' }}
             animate={{ left: pos.left, top: pos.top, zIndex: size.zIndex }}
             transition={springConfig}
           >
             <motion.div
               className={`glass-bubble ${focus ? 'expanded' : ''}`} onClick={() => handleNodeClick(cat.id)}
-              style={{ position: 'absolute', borderWidth: `${1 / size.scale}px` }}
+              style={{ 
+                position: 'absolute', 
+                borderWidth: `${1 / size.scale}px`,
+                willChange: 'transform, opacity, width, height, border-radius'
+              }}
               animate={{
                 width: typeof size.width === 'number' ? `${size.width}px` : size.width,
                 height: typeof size.height === 'number' ? `${size.height}px` : size.height,
@@ -603,14 +687,21 @@ const BubbleNetwork = () => {
           return (
             <motion.div
               key={sub.id}
-              style={{ position: 'absolute' }}
+              style={{ position: 'absolute', willChange: 'left, top' }}
               animate={{ left: pos.left, top: pos.top, zIndex: size.zIndex }}
               transition={springConfig}
             >
               <motion.div
                 className={`glass-bubble ${focus ? 'expanded' : ''}`} onClick={() => handleNodeClick(sub.id)}
                 animate={{ width: typeof size.width === 'number' ? `${size.width}px` : size.width, height: typeof size.height === 'number' ? `${size.height}px` : size.height, scale: size.scale, opacity: size.opacity, x: '-50%', y: '-50%', borderRadius: size.borderRadius || '50%' }}
-                style={{ position: 'absolute', cursor: 'pointer', transformOrigin: 'center', overflow: 'hidden', borderWidth: `${1 / size.scale}px` }}
+                style={{ 
+                  position: 'absolute', 
+                  cursor: 'pointer', 
+                  transformOrigin: 'center', 
+                  overflow: 'hidden', 
+                  borderWidth: `${1 / size.scale}px`,
+                  willChange: 'transform, opacity, width, height, border-radius'
+                }}
                 transition={springConfig}
                 transformTemplate={cleanTransform}
                 whileHover={!focus && !focusedNode ? { scale: 1.2, boxShadow: 'inset 0 0 10px #fff, 0 10px 20px rgba(232, 149, 40,0.4)' } : {}}
@@ -651,7 +742,7 @@ const BubbleNetwork = () => {
                         {sub.id === 'advanced-ai-monitoring' ? (
                           <>
                             <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: w < 768 ? 'normal' : 'nowrap' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
                                 <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
                                   AI Monitoring <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
                                 </a>
@@ -678,10 +769,70 @@ const BubbleNetwork = () => {
                               ))}
                             </div>
                           </>
+                        ) : sub.id === 'automated-reports' ? (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  Automated Dashboards & Reports <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
+                              Automated Dashboards and Reports provide a centralized view of business performance by consolidating data from multiple systems into a single source of truth. Interactive charts, graphs, and visual analytics make it easier to identify problem areas, track company growth, monitor profitability, and evaluate operational performance without relying on manually prepared reports.
+                            </p>
+                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                              Key Features
+                            </h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                              {[
+                                "Real-Time Business Performance Monitoring",
+                                "Interactive Dashboards & Visual Analytics",
+                                "Automated Reporting & Distribution",
+                                "Executive & Departmental Insights",
+                                "Trend, Variance & Growth Analysis",
+                                "Unified Business Intelligence Platform"
+                              ].map((feat, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : sub.id === 'command-center' ? (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  Command Center <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
+                              The Command Center acts as the central hub for managing business drifts, critical alerts, investigations, and resolutions. When a flag is raised, all relevant stakeholders can collaborate within a dedicated War Room, where departments can discuss the issue, provide context, identify root causes, and coordinate corrective actions. This ensures complete visibility, accountability, and faster resolution of business-critical problems.
+                            </p>
+                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                              Key Features
+                            </h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                              {[
+                                "Centralized Drift & Alert Management",
+                                "AI-Powered Resolution Recommendations",
+                                "War Rooms & Cross-Functional Collaboration",
+                                "Root Cause Analysis & Documentation",
+                                "Action Plan & Resolution Tracking",
+                                "Governance, Visibility & Audit Trail"
+                              ].map((feat, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
                         ) : (
                           <>
                             <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '16px' : '24px' }}>
-                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: w < 768 ? 'normal' : 'nowrap' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
                                 <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
                                   {sub.title} <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
                                 </a>
