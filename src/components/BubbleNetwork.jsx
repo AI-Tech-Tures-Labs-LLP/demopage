@@ -326,9 +326,8 @@ const BubbleNetwork = () => {
               exit={{ opacity: 0, transition: { duration: 0.1 } }}
               style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
             >
-              <img src="/stacklogix-brain.png" alt="Brain" style={{ width: `${130 * rs}px`, height: `${130 * rs}px`, mixBlendMode: 'multiply', marginBottom: '8px' }} />
               <h1 style={{ fontSize: `${26 * rs}px`, fontWeight: '800', margin: 0 }}>StackLogix</h1>
-              <h2 style={{ fontSize: `${13 * rs}px`, fontWeight: '600', color: '#a35b12', letterSpacing: '2px' }}>BRAIN</h2>
+              <h2 style={{ fontSize: `${13 * rs}px`, fontWeight: '600', color: '#a35b12', letterSpacing: '2px', marginTop: '4px' }}>BRAIN</h2>
             </motion.div>
           )}
         </AnimatePresence>
@@ -348,25 +347,42 @@ const BubbleNetwork = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1, transition: { delay: 0.25, duration: 0.4 } }}
               exit={{ opacity: 0, transition: { duration: 0.1 } }}
-              style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}
+              style={{ 
+                position: 'absolute', 
+                top: 0, 
+                left: 0, 
+                width: w < 768 ? `${w * 0.65}px` : `${Math.min(1350, w * 0.68)}px`, 
+                height: w < 768 ? '380px' : `${Math.min(750, h * 0.9)}px`, 
+                zIndex: 1, 
+                display: 'flex', 
+                flexDirection: 'column' 
+              }}
             >
-              <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '40px 60px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '20px' : '28px' }}>
-                  <h2 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.2', display: 'flex', alignItems: 'center' }}>
-                    <img src="/stacklogix-brain.png" alt="Brain" style={{ width: w < 768 ? '70px' : '110px', height: w < 768 ? '70px' : '110px', mixBlendMode: 'multiply', marginRight: '20px' }} />
+              <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '50px 100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
+                <div style={{ marginBottom: w < 768 ? '24px' : '44px' }}>
+                  <h2 style={{ fontSize: w < 768 ? '38px' : '52px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.2' }}>
                     What is StackLogix?
                   </h2>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: w < 768 ? '14px' : '20px', color: '#444', fontSize: w < 768 ? '14px' : '16px', lineHeight: '1.7', fontWeight: '500', textAlign: 'justify' }}>
-                  <p style={{ margin: 0 }}>
-                    StackLogix is a fully customizable business operating system designed to unify and optimize every stage of the business lifecycle. Built to integrate seamlessly with existing ERP, CRM, accounting, manufacturing, and inventory systems, it eliminates data silos and creates a single source of truth across the organization.
-                  </p>
-                  <p style={{ margin: 0 }}>
-                    Purpose-built for the jewellery industry and adaptable to any enterprise workflow, StackLogix combines AI-driven forecasting, inventory planning, procurement, sales enablement, lead management, customer relationship management, and business intelligence into one modular platform. Organizations can choose only the modules they need, ensuring flexibility and cost efficiency.
-                  </p>
-                  <p style={{ margin: 0 }}>
-                    Beyond traditional dashboards and chatbots, StackLogix delivers actionable AI through predictive analytics, automated monitoring, intelligent recommendations, anomaly detection, and executive command centers that provide real-time visibility into operations, performance, risks, and opportunities. The result is a connected, data-driven enterprise where management can make faster, smarter decisions with complete operational transparency.
-                  </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: w < 768 ? '22px' : '32px', color: '#333', fontSize: w < 768 ? '17px' : '22px', lineHeight: '1.75', fontWeight: '500' }}>
+                  <div style={{ display: 'flex', gap: '18px', alignItems: 'flex-start' }}>
+                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '14px', flexShrink: 0 }} />
+                    <p style={{ margin: 0, textAlign: 'justify' }}>
+                      StackLogix is a fully customizable business operating system designed to unify and optimize every stage of the business lifecycle. Built to integrate seamlessly with existing ERP, CRM, accounting, manufacturing, and inventory systems, it eliminates data silos and creates a single source of truth across the organization.
+                    </p>
+                  </div>
+                  <div style={{ display: 'flex', gap: '18px', alignItems: 'flex-start' }}>
+                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '14px', flexShrink: 0 }} />
+                    <p style={{ margin: 0, textAlign: 'justify' }}>
+                      Purpose-built for the jewellery industry and adaptable to any enterprise workflow, StackLogix combines AI-driven forecasting, inventory planning, procurement, sales enablement, lead management, customer relationship management, and business intelligence into one modular platform. Organizations can choose only the modules they need, ensuring flexibility and cost efficiency.
+                    </p>
+                  </div>
+                  <div style={{ display: 'flex', gap: '18px', alignItems: 'flex-start' }}>
+                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '14px', flexShrink: 0 }} />
+                    <p style={{ margin: 0, textAlign: 'justify' }}>
+                      Beyond traditional dashboards and chatbots, StackLogix delivers actionable AI through predictive analytics, automated monitoring, intelligent recommendations, anomaly detection, and executive command centers that provide real-time visibility into operations, performance, risks, and opportunities. The result is a connected, data-driven enterprise where management can make faster, smarter decisions with complete operational transparency.
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -407,15 +423,12 @@ const BubbleNetwork = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1, transition: { delay: focusedNode ? 0 : 0.4, duration: 0.2 } }}
                     exit={{ opacity: 0, transition: { duration: 0.1 } }}
-                    style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                    style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
                   >
                     {focusedNode === 'root' ? (
-                      <img src={`/${cat.id}.png`} alt={cat.title} style={{ width: `${30 * rs}px`, height: `${30 * rs}px`, mixBlendMode: 'multiply' }} />
+                      null
                     ) : (
-                      <>
-                        <img src={`/${cat.id}.png`} alt={cat.title} style={{ width: `${50 * rs}px`, height: `${50 * rs}px`, mixBlendMode: 'multiply', marginBottom: '8px' }} />
-                        <h2 style={{ fontSize: `${16 * rs}px`, fontWeight: '700', textAlign: 'center', margin: '0 10px', color: 'var(--text-color)' }}>{cat.title}</h2>
-                      </>
+                      <h2 style={{ fontSize: `${16 * rs}px`, fontWeight: '700', textAlign: 'center', margin: '0 10px', color: 'var(--text-color)' }}>{cat.title}</h2>
                     )}
                   </motion.div>
                 )}
@@ -436,35 +449,107 @@ const BubbleNetwork = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1, transition: { delay: 0.25, duration: 0.4 } }}
                     exit={{ opacity: 0, transition: { duration: 0.1 } }}
-                    style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%', display: 'flex', flexDirection: w < 768 ? 'column' : 'row' }}
+                    style={{ 
+                      position: 'absolute', 
+                      top: 0, 
+                      left: 0, 
+                      width: w < 768 ? `${w * 0.65}px` : `${Math.min(1350, w * 0.68)}px`, 
+                      height: w < 768 ? '380px' : `${Math.min(750, h * 0.9)}px`, 
+                      zIndex: 1, 
+                      display: 'flex', 
+                      flexDirection: 'column' 
+                    }}
                   >
-                    {w >= 768 && (
-                      <div style={{ flex: '1', padding: '40px' }}>
-                        <div style={{ width: '100%', height: '100%', borderRadius: '16px', backgroundImage: 'url(/map-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
+                    {cat.id === 'sales' ? (
+                      <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '30px 70px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
+                        <div style={{ display: 'flex', flexDirection: w < 1024 ? 'column' : 'row', gap: w < 1024 ? '30px' : '50px', alignItems: 'stretch' }}>
+                          {/* Left Column */}
+                          <div style={{ flex: '1', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                            <div style={{ marginBottom: '12px' }}>
+                              <h2 style={{ fontSize: w < 768 ? '34px' : '46px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.2' }}>
+                                Top Management
+                              </h2>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '16px' : '20px', color: '#333', lineHeight: '1.65', margin: '0 0 16px 0', fontWeight: '500', textAlign: 'justify' }}>
+                              The Top Management module provides leadership with a centralized view of the organization, enabling faster and more informed decision-making through AI-driven insights and real-time business intelligence.
+                            </p>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '10px', flexShrink: 0 }} />
+                                <p style={{ margin: 0, fontSize: '17px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
+                                  Advanced AI Monitoring identifies risks, anomalies, and performance drifts before they impact the business.
+                                </p>
+                              </div>
+                              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '10px', flexShrink: 0 }} />
+                                <p style={{ margin: 0, fontSize: '17px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
+                                  Automated Reports & Dashboards provide real-time visibility into critical KPIs, trends, and operational performance.
+                                </p>
+                              </div>
+                              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#e89528', marginTop: '10px', flexShrink: 0 }} />
+                                <p style={{ margin: 0, fontSize: '17px', lineHeight: '1.6', color: '#222', fontWeight: '500' }}>
+                                  Command Center enables executives to monitor alerts, investigate issues, and coordinate resolutions across departments.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Right Column (Case Study Card) */}
+                          <div style={{ flex: w < 1024 ? 'none' : '1.25', background: '#fff', padding: w < 768 ? '20px' : '22px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                            <h3 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 10px 0', color: '#e89528' }}>
+                              Real-World Example
+                            </h3>
+                             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '16px', lineHeight: '1.6', color: '#444', fontWeight: '500' }}>
+                              <p style={{ margin: 0, textAlign: 'justify' }}>
+                                A jewellery manufacturer notices that gross profit margins have fallen from 24% to 19% over the last six weeks, despite maintaining monthly sales of approximately ₹8–10 crore.
+                              </p>
+                              <p style={{ margin: 0, textAlign: 'justify' }}>
+                                In many organizations, management would first need to collect reports from Finance, Procurement, Manufacturing, Inventory, and Sales teams. Multiple review meetings would then be conducted to compare data, identify discrepancies, and determine the root cause, often taking several days or even weeks before corrective action can be taken.
+                              </p>
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', margin: '2px 0' }}>
+                                <p style={{ margin: 0, textAlign: 'justify' }}>
+                                  With StackLogix, AI Monitoring automatically detects the 5% margin decline and flags it as a critical business drift. The Automated Dashboard instantly consolidates data across departments and reveals that:
+                                </p>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', paddingLeft: '14px' }}>
+                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '15.5px' }}>• Gold procurement costs have increased by 7%</span>
+                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '15.5px' }}>• Manufacturing wastage has risen from 2.8% to 4.1%</span>
+                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '15.5px' }}>• Discounts on a high-volume product category have increased by 12%</span>
+                                </div>
+                              </div>
+                              <p style={{ margin: 0, textAlign: 'justify' }}>
+                                The Command Center brings all related metrics, alerts, and discussions into a single workspace, enabling management and department heads to quickly investigate the issue and implement corrective actions.
+                              </p>
+                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '10px 14px', borderRadius: '8px', fontWeight: '600', color: '#a35b12', fontSize: '16px', marginTop: '4px', lineHeight: '1.5' }}>
+                                Result: Instead of spending days gathering information, leadership identifies the root cause within hours, preventing further margin erosion and potentially saving ₹30–50 lakh per month in avoidable losses.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '40px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '16px' : '24px' }}>
+                          <h2 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.2', whiteSpace: w < 768 ? 'normal' : 'nowrap', display: 'flex', alignItems: 'center' }}>
+                            <a href={cat.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                              {cat.title} <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                            </a>
+                          </h2>
+                        </div>
+                        <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#555', lineHeight: '1.6', marginBottom: w < 768 ? '30px' : '40px' }}>Available on both web and mobile platforms, enabling powerful insights and operations tightly coupled with your central logic systems.</p>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: w < 768 ? '12px' : '20px', width: '100%' }}>
+                          <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
+                            <Package color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }} />
+                            <span style={{ fontWeight: '600', fontSize: w < 768 ? '14px' : '16px', color: '#222' }}>Catalogue</span>
+                          </div>
+                          <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
+                            <Clock color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }} />
+                            <span style={{ fontWeight: '600', fontSize: w < 768 ? '14px' : '16px', color: '#222' }}>Reminders</span>
+                          </div>
+                        </div>
                       </div>
                     )}
-
-                    <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '40px 60px 40px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '16px' : '24px' }}>
-                        <h2 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.2', whiteSpace: w < 768 ? 'normal' : 'nowrap', display: 'flex', alignItems: 'center' }}>
-                          <a href={cat.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                            {cat.title} <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
-                          </a>
-                        </h2>
-                      </div>
-                      <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#555', lineHeight: '1.6', marginBottom: w < 768 ? '30px' : '40px' }}>Available on both web and mobile platforms, enabling powerful insights and operations tightly coupled with your central logic systems.</p>
-
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: w < 768 ? '12px' : '20px', width: '100%' }}>
-                        <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
-                          <Package color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }} />
-                          <span style={{ fontWeight: '600', fontSize: w < 768 ? '14px' : '16px', color: '#222' }}>Catalogue</span>
-                        </div>
-                        <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.06)' }}>
-                          <Clock color="#e89528" size={w < 768 ? 28 : 32} style={{ marginBottom: w < 768 ? '8px' : '12px' }} />
-                          <span style={{ fontWeight: '600', fontSize: w < 768 ? '14px' : '16px', color: '#222' }}>Reminders</span>
-                        </div>
-                      </div>
-                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -545,7 +630,16 @@ const BubbleNetwork = () => {
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1, transition: { delay: 0.25, duration: 0.4 } }}
                       exit={{ opacity: 0, transition: { duration: 0.1 } }}
-                      style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%', display: 'flex', flexDirection: w < 768 ? 'column' : 'row' }}
+                      style={{ 
+                        position: 'absolute', 
+                        top: 0, 
+                        left: 0, 
+                        width: w < 768 ? `${w * 0.9}px` : `${Math.min(1350, w * 0.9)}px`, 
+                        height: w < 768 ? '380px' : `${Math.min(750, h * 0.9)}px`, 
+                        zIndex: 1, 
+                        display: 'flex', 
+                        flexDirection: w < 768 ? 'column' : 'row' 
+                      }}
                     >
                       {w >= 768 && (
                         <div style={{ flex: '1', padding: '40px' }}>
