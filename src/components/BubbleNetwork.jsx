@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { bubbleData } from '../data';
-import { Sparkles, X, ChevronRight, BarChart3, Database, ShieldCheck, ExternalLink, Package, Clock, TrendingUp, Layers, ShoppingCart, Briefcase, UserCheck, HeartHandshake, PieChart, BrainCircuit, Activity, Lightbulb, AlertTriangle, Sliders, ArrowRight, Users, Crown, Monitor, Bell, Zap, Shield, Target, ClipboardCheck, Bot, IndianRupee, Truck, Trophy, TrendingDown, CheckCircle2 } from 'lucide-react';
+import { Sparkles, X, ChevronRight, BarChart3, Database, ShieldCheck, ExternalLink, Package, Clock, TrendingUp, Layers, ShoppingCart, Briefcase, UserCheck, HeartHandshake, PieChart, BrainCircuit, Activity, Lightbulb, AlertTriangle, Sliders, ArrowRight, Users, Crown, Monitor, Bell, Zap, Shield, Target, ClipboardCheck, Bot, IndianRupee, Truck, Trophy, TrendingDown, CheckCircle2, MessageSquare, MapPin, Calendar } from 'lucide-react';
 
 const BubbleNetwork = () => {
   const [dimensions, setDimensions] = useState({
@@ -148,7 +148,7 @@ const BubbleNetwork = () => {
 
     if (type === 'root') {
       if (focusedNode === 'root') {
-        return { width: Math.min(1350, w < 768 ? w * 0.65 : w * 0.68), height: w < 768 ? 380 : Math.min(750, h * 0.9), scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
+        return { width: Math.min(1350, w < 768 ? w * 0.70 : w * 0.73), height: w < 768 ? 380 : Math.min(750, h * 0.93), scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       }
       return { width: 240 * rs, height: 240 * rs, scale: 0.35, opacity: 0.6, zIndex: 5 };
     }
@@ -156,9 +156,9 @@ const BubbleNetwork = () => {
     if (nodeId === focusedNode) {
       const isCat = bubbleData[nodeId] !== undefined;
       if (isCat) {
-        return { width: Math.min(1350, w < 768 ? w * 0.65 : w * 0.68), height: w < 768 ? 380 : Math.min(750, h * 0.9), scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
+        return { width: Math.min(1350, w < 768 ? w * 0.70 : w * 0.73), height: w < 768 ? 380 : Math.min(750, h * 0.93), scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       } else {
-        return { width: Math.min(1350, w < 768 ? w * 0.9 : w * 0.9), height: w < 768 ? 380 : Math.min(750, h * 0.9), scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
+        return { width: Math.min(1350, w < 768 ? w * 0.9 : w * 0.9), height: w < 768 ? 380 : Math.min(750, h * 0.93), scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       }
     }
 
@@ -306,7 +306,7 @@ const BubbleNetwork = () => {
         style={{ 
           position: 'absolute', 
           cursor: 'pointer', 
-          borderWidth: `${1 / getSize('root').scale}px`,
+          borderWidth: `${Math.min(1.5, 1 / getSize('root').scale)}px`,
           willChange: 'left, top, transform, opacity, width, height, border-radius'
         }}
         onClick={() => {
@@ -358,8 +358,8 @@ const BubbleNetwork = () => {
                 position: 'absolute', 
                 top: 0, 
                 left: 0, 
-                width: w < 768 ? `${w * 0.65}px` : `${Math.min(1350, w * 0.68)}px`, 
-                height: w < 768 ? '380px' : `${Math.min(750, h * 0.9)}px`, 
+                width: w < 768 ? `${w * 0.70}px` : `${Math.min(1350, w * 0.73)}px`, 
+                height: w < 768 ? '380px' : `${Math.min(750, h * 0.93)}px`, 
                 zIndex: 1, 
                 display: 'flex', 
                 flexDirection: 'column' 
@@ -486,7 +486,7 @@ const BubbleNetwork = () => {
               className={`glass-bubble ${focus ? 'expanded' : ''}`} onClick={() => handleNodeClick(cat.id)}
               style={{ 
                 position: 'absolute', 
-                borderWidth: `${1 / size.scale}px`,
+                borderWidth: `${Math.min(1.5, 1 / size.scale)}px`,
                 willChange: 'transform, opacity, width, height, border-radius'
               }}
               animate={{
@@ -537,8 +537,8 @@ const BubbleNetwork = () => {
                       position: 'absolute', 
                       top: 0, 
                       left: 0, 
-                      width: w < 768 ? `${w * 0.65}px` : `${Math.min(1350, w * 0.68)}px`, 
-                      height: w < 768 ? '380px' : `${Math.min(750, h * 0.9)}px`, 
+                      width: w < 768 ? `${w * 0.70}px` : `${Math.min(1350, w * 0.73)}px`, 
+                      height: w < 768 ? '380px' : `${Math.min(750, h * 0.93)}px`, 
                       zIndex: 1, 
                       display: 'flex', 
                       flexDirection: 'column' 
@@ -739,8 +739,8 @@ const BubbleNetwork = () => {
                             {/* Header Section */}
                             <div style={{ display: 'flex', alignItems: 'center', marginBottom: '4px' }}>
                               <div style={{
-                                width: w < 768 ? '44px' : '56px',
-                                height: w < 768 ? '44px' : '56px',
+                                width: w < 768 ? '44px' : '60px',
+                                height: w < 768 ? '44px' : '60px',
                                 borderRadius: '50%',
                                 border: '1.5px solid rgba(232, 149, 40, 0.3)',
                                 background: 'rgba(232, 149, 40, 0.04)',
@@ -751,30 +751,30 @@ const BubbleNetwork = () => {
                                 marginRight: '16px',
                                 flexShrink: 0
                               }}>
-                                <ShoppingCart size={w < 768 ? 20 : 28} />
+                                <ShoppingCart size={w < 768 ? 20 : 30} />
                               </div>
                               <div>
-                                <h2 style={{ fontSize: w < 768 ? '28px' : '38px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
+                                <h2 style={{ fontSize: w < 768 ? '28px' : '40px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
                                   Procurement
                                 </h2>
-                                <h3 style={{ fontSize: w < 768 ? '13px' : '16px', fontWeight: '600', color: '#666', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
+                                <h3 style={{ fontSize: w < 768 ? '13px' : '17px', fontWeight: '600', color: '#666', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
                                   Intelligent Procurement & Inventory Control
                                 </h3>
                               </div>
                             </div>
 
-                            <p style={{ fontSize: w < 768 ? '13px' : '16px', color: '#444', lineHeight: '1.45', margin: '6px 0 14px 0', fontWeight: '500', textAlign: 'left' }}>
+                            <p style={{ fontSize: w < 768 ? '13px' : '17px', color: '#444', lineHeight: '1.45', margin: '8px 0 16px 0', fontWeight: '500', textAlign: 'left' }}>
                               Ensure the right materials are available at the right time while optimizing inventory, procurement costs, and fulfilment efficiency.
                             </p>
 
                             {/* Timeline List */}
-                            <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: w < 768 ? '10px' : '15px', paddingLeft: '4px' }}>
+                            <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: w < 768 ? '10px' : '17px', paddingLeft: '4px' }}>
                               {/* Connector Line */}
                               <div style={{
                                 position: 'absolute',
-                                left: w < 768 ? '18px' : '26px',
-                                top: w < 768 ? '14px' : '22px',
-                                bottom: w < 768 ? '14px' : '22px',
+                                left: w < 768 ? '18px' : '28px',
+                                top: w < 768 ? '14px' : '24px',
+                                bottom: w < 768 ? '14px' : '24px',
                                 width: '2px',
                                 background: 'linear-gradient(to bottom, rgba(232, 149, 40, 0.4) 0%, rgba(232, 149, 40, 0.1) 100%)',
                                 zIndex: 0
@@ -811,8 +811,8 @@ const BubbleNetwork = () => {
                                 return (
                                   <div key={index} style={{ display: 'flex', alignItems: 'center', position: 'relative', zIndex: 1 }}>
                                     <div style={{
-                                      width: w < 768 ? '28px' : '44px',
-                                      height: w < 768 ? '28px' : '44px',
+                                      width: w < 768 ? '28px' : '48px',
+                                      height: w < 768 ? '28px' : '48px',
                                       borderRadius: '50%',
                                       border: '1.5px solid rgba(232, 149, 40, 0.25)',
                                       background: '#fff',
@@ -824,13 +824,13 @@ const BubbleNetwork = () => {
                                       boxShadow: '0 3px 6px rgba(0,0,0,0.03)',
                                       flexShrink: 0
                                     }}>
-                                      <ItemIcon size={w < 768 ? 14 : 21} />
+                                      <ItemIcon size={w < 768 ? 14 : 23} />
                                     </div>
                                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                      <h4 style={{ fontSize: w < 768 ? '13px' : '16.5px', fontWeight: '700', color: '#d68022', margin: 0 }}>
+                                      <h4 style={{ fontSize: w < 768 ? '13px' : '17.5px', fontWeight: '700', color: '#d68022', margin: 0 }}>
                                         {item.title}
                                       </h4>
-                                      <p style={{ fontSize: w < 768 ? '11px' : '13.5px', color: '#555', margin: '1px 0 0 0', lineHeight: '1.4', fontWeight: '500' }}>
+                                      <p style={{ fontSize: w < 768 ? '11px' : '14.5px', color: '#555', margin: '1px 0 0 0', lineHeight: '1.4', fontWeight: '500' }}>
                                         {item.desc}
                                       </p>
                                     </div>
@@ -843,7 +843,7 @@ const BubbleNetwork = () => {
                             <div style={{
                               height: '1px',
                               background: 'linear-gradient(to right, rgba(232, 149, 40, 0.25), rgba(232, 149, 40, 0.02))',
-                              margin: w < 768 ? '12px 0 8px 0' : '16px 0 12px 0'
+                              margin: w < 768 ? '12px 0 8px 0' : '18px 0 14px 0'
                             }} />
 
                             {/* Bottom Badge Row */}
@@ -860,7 +860,7 @@ const BubbleNetwork = () => {
                                     flex: 1,
                                     background: 'rgba(232, 149, 40, 0.03)',
                                     border: '1.2px solid rgba(232, 149, 40, 0.12)',
-                                    padding: w < 768 ? '6px 2px' : '11px 5px',
+                                    padding: w < 768 ? '6px 2px' : '12px 6px',
                                     borderRadius: '8px',
                                     display: 'flex',
                                     flexDirection: 'column',
@@ -870,7 +870,7 @@ const BubbleNetwork = () => {
                                   }}>
                                     <BadgeIcon size={w < 768 ? 14 : 20} color="#e89528" style={{ strokeWidth: 2.2 }} />
                                     <span style={{
-                                      fontSize: w < 768 ? '9px' : '12px',
+                                      fontSize: w < 768 ? '9px' : '13px',
                                       fontWeight: '700',
                                       color: '#555',
                                       textAlign: 'center',
@@ -972,6 +972,504 @@ const BubbleNetwork = () => {
                           </div>
                         </div>
                       </div>
+                    ) : cat.id === 'analytics' ? (
+                      <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '20px 70px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
+                        <div style={{ display: 'flex', flexDirection: w < 1024 ? 'column' : 'row', gap: w < 1024 ? '30px' : '40px', alignItems: 'stretch' }}>
+                          {/* Left Column (Timeline & Infographic) */}
+                          <div style={{ flex: '1', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingRight: w < 1024 ? '0px' : '10px' }}>
+                            {/* Header Section */}
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '4px' }}>
+                              <div style={{
+                                width: w < 768 ? '44px' : '56px',
+                                height: w < 768 ? '44px' : '56px',
+                                borderRadius: '50%',
+                                border: '1.5px solid rgba(232, 149, 40, 0.3)',
+                                background: 'rgba(232, 149, 40, 0.04)',
+                                color: '#e89528',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                marginRight: '16px',
+                                flexShrink: 0
+                              }}>
+                                <Target size={w < 768 ? 20 : 28} />
+                              </div>
+                              <div>
+                                <h2 style={{ fontSize: w < 768 ? '28px' : '38px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
+                                  Sales Enablement
+                                </h2>
+                                <h3 style={{ fontSize: w < 768 ? '13px' : '17px', fontWeight: '600', color: '#666', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
+                                  Empower Teams. Manage Sales. Drive Growth.
+                                </h3>
+                              </div>
+                            </div>
+
+                            <p style={{ fontSize: w < 768 ? '13px' : '16.5px', color: '#444', lineHeight: '1.45', margin: '8px 0 16px 0', fontWeight: '500', textAlign: 'left' }}>
+                              Equip your sales teams with the right tools to manage leads, engagements, activities, and approvals—efficiently.
+                            </p>
+
+                            {/* Sales Process Flow Section Header */}
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '16px 0' }}>
+                              <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, rgba(232, 149, 40, 0.02), rgba(232, 149, 40, 0.25))' }} />
+                              <span style={{ fontSize: '14px', fontWeight: '700', color: '#d68022', padding: '0 15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Sales Process Flow</span>
+                              <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to left, rgba(232, 149, 40, 0.02), rgba(232, 149, 40, 0.25))' }} />
+                            </div>
+
+                            {/* Horizontal Process Flow */}
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 10px', marginBottom: '16px' }}>
+                              {[
+                                { title: 'Leads', desc: 'Assign & qualify\nthe right leads', icon: UserCheck },
+                                { title: 'Engage', desc: 'Connect & nurture\nwith purpose', icon: MessageSquare },
+                                { title: 'Convert', desc: 'Track activities\n& win deals', icon: Target },
+                                { title: 'Fulfil', desc: 'Approve orders\n& build trust', icon: ShoppingCart }
+                              ].map((step, idx, arr) => {
+                                const StepIcon = step.icon;
+                                return (
+                                  <React.Fragment key={idx}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '22%' }}>
+                                      <div style={{
+                                        width: '46px',
+                                        height: '46px',
+                                        borderRadius: '50%',
+                                        border: '1.5px solid rgba(232, 149, 40, 0.25)',
+                                        background: '#fff',
+                                        color: '#e89528',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow: '0 3px 6px rgba(0,0,0,0.03)',
+                                        marginBottom: '8px'
+                                      }}>
+                                        <StepIcon size={20} />
+                                      </div>
+                                      <span style={{ fontSize: '13.5px', fontWeight: '800', color: '#222', textTransform: 'uppercase', marginBottom: '2px' }}>{step.title}</span>
+                                      <span style={{ fontSize: '11.5px', color: '#666', textAlign: 'center', lineHeight: '1.2', whiteSpace: 'pre-line', fontWeight: '500' }}>{step.desc}</span>
+                                    </div>
+                                    {idx < arr.length - 1 && (
+                                      <ArrowRight size={16} color="rgba(232, 149, 40, 0.4)" style={{ flexShrink: 0, marginTop: '-28px' }} />
+                                    )}
+                                  </React.Fragment>
+                                );
+                              })}
+                            </div>
+
+                            {/* Role-Based Columns */}
+                            <div style={{ display: 'flex', gap: '20px', marginBottom: '16px' }}>
+                              {/* Managers Column */}
+                              <div style={{ flex: 1, background: 'rgba(232, 149, 40, 0.02)', border: '1px solid rgba(232, 149, 40, 0.1)', borderRadius: '12px', padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2px' }}>
+                                  <Crown size={18} color="#e89528" />
+                                  <span style={{ fontSize: '15px', fontWeight: '700', color: '#d68022' }}>For Sales Managers</span>
+                                </div>
+                                {[
+                                  { title: 'Lead Allocation', icon: Users },
+                                  { title: 'Order Approvals', icon: CheckCircle2 },
+                                  { title: 'Pricing & Discount Control', icon: Sliders },
+                                  { title: 'Performance Monitoring', icon: BarChart3 }
+                                ].map((feat, i) => {
+                                  const FeatIcon = feat.icon;
+                                  return (
+                                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                      <FeatIcon size={15} color="#e89528" style={{ flexShrink: 0 }} />
+                                      <span style={{ fontSize: '13.5px', color: '#444', fontWeight: '600' }}>{feat.title}</span>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+
+                              {/* Hunters Column */}
+                              <div style={{ flex: 1, background: 'rgba(232, 149, 40, 0.02)', border: '1px solid rgba(232, 149, 40, 0.1)', borderRadius: '12px', padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2px' }}>
+                                  <Briefcase size={18} color="#e89528" />
+                                  <span style={{ fontSize: '15px', fontWeight: '700', color: '#d68022' }}>For Hunters (Field Teams)</span>
+                                </div>
+                                {[
+                                  { title: 'Manage Leads', icon: UserCheck },
+                                  { title: 'Plan & Record Visits', icon: MapPin },
+                                  { title: 'Track Activities', icon: Clock },
+                                  { title: 'Raise Orders', icon: ShoppingCart }
+                                ].map((feat, i) => {
+                                  const FeatIcon = feat.icon;
+                                  return (
+                                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                      <FeatIcon size={15} color="#e89528" style={{ flexShrink: 0 }} />
+                                      <span style={{ fontSize: '13.5px', color: '#444', fontWeight: '600' }}>{feat.title}</span>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+
+                            {/* Divider Line & Impact Badges */}
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '16px 0 12px 0' }}>
+                              <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, rgba(232, 149, 40, 0.02), rgba(232, 149, 40, 0.25))' }} />
+                              <span style={{ fontSize: '12px', fontWeight: '700', color: '#d68022', padding: '0 15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Business Impact</span>
+                              <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to left, rgba(232, 149, 40, 0.02), rgba(232, 149, 40, 0.25))' }} />
+                            </div>
+
+                            {/* Bottom Badge Row */}
+                            <div style={{ display: 'flex', gap: '8px', justifyContent: 'space-between' }}>
+                              {[
+                                { text: 'Higher\nConversions', icon: Target },
+                                { text: 'Faster\nApprovals', icon: Zap },
+                                { text: 'Better Field\nProductivity', icon: Briefcase },
+                                { text: 'Stronger Customer\nRelationships', icon: HeartHandshake }
+                              ].map((badge, idx) => {
+                                const BadgeIcon = badge.icon;
+                                return (
+                                  <div key={idx} style={{
+                                    flex: 1,
+                                    background: 'rgba(232, 149, 40, 0.03)',
+                                    border: '1.2px solid rgba(232, 149, 40, 0.12)',
+                                    padding: w < 768 ? '6px 2px' : '12px 6px',
+                                    borderRadius: '8px',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '4px'
+                                  }}>
+                                    <BadgeIcon size={w < 768 ? 14 : 20} color="#e89528" style={{ strokeWidth: 2.2 }} />
+                                    <span style={{
+                                      fontSize: w < 768 ? '9px' : '12px',
+                                      fontWeight: '700',
+                                      color: '#555',
+                                      textAlign: 'center',
+                                      lineHeight: '1.25',
+                                      whiteSpace: 'pre-line'
+                                    }}>
+                                      {badge.text}
+                                    </span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+
+                          {/* Right Column (Case Study Card) */}
+                          <div style={{ flex: w < 1024 ? 'none' : '1.25', background: '#fff', padding: w < 768 ? '20px' : '22px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '14px' }}>
+                              <Lightbulb size={26} color="#e89528" style={{ marginRight: '10px' }} />
+                              <h3 style={{ fontSize: '25px', fontWeight: '700', margin: 0, color: '#e89528' }}>
+                                Real-World Example
+                              </h3>
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '13px', fontSize: w < 768 ? '14px' : '16.5px', lineHeight: '1.5', color: '#444', fontWeight: '500' }}>
+                              <p style={{ margin: 0, textAlign: 'left', fontWeight: '700', color: '#111' }}>
+                                A consumer goods company wants to improve field sales efficiency and increase lead conversions.
+                              </p>
+                              <p style={{ margin: 0, textAlign: 'left' }}>
+                                Leads were not distributed effectively, activities were inconsistent, and order approvals took too long—resulting in lost opportunities and lower sales productivity.
+                              </p>
+                              <p style={{ margin: 0, textAlign: 'left' }}>
+                                With StackLogix Sales Enablement, the company can now:
+                              </p>
+
+                              {/* Two-Column Checklist & Dashboard Widget layout */}
+                              <div style={{ display: 'flex', flexDirection: w < 768 ? 'column' : 'row', gap: '20px', alignItems: 'center', margin: '8px 0' }}>
+                                <div style={{ flex: '1.25', display: 'flex', flexDirection: 'column', gap: '10px', width: '100%' }}>
+                                  {[
+                                    "Assign and track leads across regions",
+                                    "Plan and record visits, calls, and follow-ups",
+                                    "Capture visit outcomes and customer insights",
+                                    "Raise orders with pricing and discount controls",
+                                    "Approve orders quickly and maintain full visibility"
+                                  ].map((text, i) => (
+                                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                                      <CheckCircle2 size={16} color="#e89528" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                      <span style={{ fontSize: '15px', lineHeight: '1.35', color: '#333', fontWeight: '600' }}>{text}</span>
+                                    </div>
+                                  ))}
+                                </div>
+
+                                <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '16px 18px', display: 'flex', flexDirection: 'column', gap: '11px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <span style={{ fontSize: '12.5px', fontWeight: '800', color: '#222', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Sales Overview</span>
+                                  </div>
+                                  <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '5px 0' }} />
+                                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '11px' }}>
+                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                      <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Leads Assigned</span>
+                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
+                                        <span style={{ fontSize: '12.5px', color: '#222', fontWeight: '700' }}>128 Leads</span>
+                                        <Users size={16} color="#e89528" />
+                                      </div>
+                                    </div>
+                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                      <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Pending Approval</span>
+                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                        <span style={{ fontSize: '12.5px', color: '#222', fontWeight: '700' }}>24 Orders</span>
+                                        <ShoppingCart size={16} color="#a3a8b3" />
+                                      </div>
+                                    </div>
+                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                      <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Visits Today</span>
+                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                        <span style={{ fontSize: '12.5px', color: '#222', fontWeight: '700' }}>18 Visits</span>
+                                        <Calendar size={16} color="#e89528" />
+                                      </div>
+                                    </div>
+                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                      <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Conversion Rate</span>
+                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                        <span style={{ fontSize: '12.5px', color: '#e89528', fontWeight: '800' }}>23%</span>
+                                        <TrendingUp size={16} color="#e89528" />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <p style={{ margin: 0, textAlign: 'left' }}>
+                                Sales representatives can quickly log visit details, capture customer needs, check lead priorities, and send orders for approval instantly from the field.
+                              </p>
+                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '8px' }}>
+                                <Trophy size={24} color="#e89528" style={{ flexShrink: 0 }} />
+                                <span style={{ fontSize: '16px', fontWeight: '600', color: '#a35b12', lineHeight: '1.4', textAlign: 'left' }}>
+                                  Result: Better lead conversion, faster order approvals, improved productivity, and stronger customer relationships.
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : cat.id === 'erp' ? (
+                      <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '20px 70px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
+                        <div style={{ display: 'flex', flexDirection: w < 1024 ? 'column' : 'row', gap: w < 1024 ? '30px' : '40px', alignItems: 'stretch' }}>
+                          {/* Left Column (Timeline & Infographic) */}
+                          <div style={{ flex: '1', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingRight: w < 1024 ? '0px' : '10px' }}>
+                            {/* Header Section */}
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '4px' }}>
+                              <div style={{
+                                width: w < 768 ? '44px' : '56px',
+                                height: w < 768 ? '44px' : '56px',
+                                borderRadius: '50%',
+                                border: '1.5px solid rgba(232, 149, 40, 0.3)',
+                                background: 'rgba(232, 149, 40, 0.04)',
+                                color: '#e89528',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                marginRight: '16px',
+                                flexShrink: 0
+                              }}>
+                                <Activity size={w < 768 ? 20 : 28} />
+                              </div>
+                              <div>
+                                <h2 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
+                                  Analyst
+                                </h2>
+                                <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '600', color: '#666', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
+                                  Turn Data Into Actionable Intelligence
+                                </h3>
+                              </div>
+                            </div>
+
+                            <p style={{ fontSize: w < 768 ? '14px' : '17.5px', color: '#444', lineHeight: '1.45', margin: '8px 0 14px 0', fontWeight: '500', textAlign: 'left' }}>
+                              Transform business data into actionable intelligence. Uncover trends, investigate anomalies, validate information, and identify opportunities for improvement with AI-powered analytics.
+                            </p>
+
+                            {/* Insight Discovery Flow Section Header */}
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '14px 0' }}>
+                              <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, rgba(232, 149, 40, 0.02), rgba(232, 149, 40, 0.25))' }} />
+                              <span style={{ fontSize: '14.5px', fontWeight: '700', color: '#d68022', padding: '0 15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Insight Discovery Flow</span>
+                              <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to left, rgba(232, 149, 40, 0.02), rgba(232, 149, 40, 0.25))' }} />
+                            </div>
+
+                            {/* Horizontal Process Flow */}
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 10px', marginBottom: '14px' }}>
+                              {[
+                                { title: 'Monitor', desc: 'Track KPIs, trends\n& performance changes', icon: Monitor },
+                                { title: 'Analyze', desc: 'Identify patterns\n& correlations', icon: TrendingUp },
+                                { title: 'Investigate', desc: 'Perform root-cause\n& data validation', icon: Sliders },
+                                { title: 'Recommend', desc: 'Generate data-backed\ninsights & suggestions', icon: Lightbulb }
+                              ].map((step, idx, arr) => {
+                                const StepIcon = step.icon;
+                                return (
+                                  <React.Fragment key={idx}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '22%' }}>
+                                      <div style={{
+                                        width: '48px',
+                                        height: '48px',
+                                        borderRadius: '50%',
+                                        border: '1.5px solid rgba(232, 149, 40, 0.25)',
+                                        background: '#fff',
+                                        color: '#e89528',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow: '0 3px 6px rgba(0,0,0,0.03)',
+                                        marginBottom: '6px'
+                                      }}>
+                                        <StepIcon size={20} />
+                                      </div>
+                                      <span style={{ fontSize: '14px', fontWeight: '800', color: '#222', textTransform: 'uppercase', marginBottom: '2px' }}>{step.title}</span>
+                                      <span style={{ fontSize: '12px', color: '#666', textAlign: 'center', lineHeight: '1.25', whiteSpace: 'pre-line', fontWeight: '500' }}>{step.desc}</span>
+                                    </div>
+                                    {idx < arr.length - 1 && (
+                                      <ArrowRight size={14} color="rgba(232, 149, 40, 0.4)" style={{ flexShrink: 0, marginTop: '-24px' }} />
+                                    )}
+                                  </React.Fragment>
+                                );
+                              })}
+                            </div>
+
+                            {/* Capabilities Grid */}
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '14px' }}>
+                              {[
+                                { title: 'Trend & Pattern Recognition', icon: Activity },
+                                { title: 'Root Cause Investigation', icon: Sliders },
+                                { title: 'KPI & Risk Monitoring', icon: AlertTriangle },
+                                { title: 'Predictive Insights & Forecasting', icon: BrainCircuit },
+                                { title: 'Data Validation & Audit Tracking', icon: ClipboardCheck },
+                                { title: 'Cross-Functional Data Analysis', icon: Database }
+                              ].map((feat, i) => {
+                                const FeatIcon = feat.icon;
+                                return (
+                                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(232, 149, 40, 0.02)', border: '1px solid rgba(232, 149, 40, 0.08)', borderRadius: '8px', padding: '10px 14px' }}>
+                                    <FeatIcon size={14} color="#e89528" style={{ flexShrink: 0 }} />
+                                    <span style={{ fontSize: '14.5px', color: '#444', fontWeight: '600' }}>{feat.title}</span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+
+                            {/* Divider Line & Impact Badges */}
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '14px 0 10px 0' }}>
+                              <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, rgba(232, 149, 40, 0.02), rgba(232, 149, 40, 0.25))' }} />
+                              <span style={{ fontSize: '13px', fontWeight: '700', color: '#d68022', padding: '0 15px', textTransform: 'uppercase', letterSpacing: '1px' }}>Business Impact</span>
+                              <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to left, rgba(232, 149, 40, 0.02), rgba(232, 149, 40, 0.25))' }} />
+                            </div>
+
+                            {/* Bottom Badge Row */}
+                            <div style={{ display: 'flex', gap: '8px', justifyContent: 'space-between' }}>
+                              {[
+                                { text: 'Faster\nInvestigations', icon: Zap },
+                                { text: 'Better\nDecisions', icon: CheckCircle2 },
+                                { text: 'Reduced\nBusiness Risks', icon: Shield },
+                                { text: 'Improved\nPerformance', icon: Trophy }
+                              ].map((badge, idx) => {
+                                const BadgeIcon = badge.icon;
+                                return (
+                                  <div key={idx} style={{
+                                    flex: 1,
+                                    background: 'rgba(232, 149, 40, 0.03)',
+                                    border: '1.2px solid rgba(232, 149, 40, 0.12)',
+                                    padding: w < 768 ? '6px 2px' : '12px 6px',
+                                    borderRadius: '8px',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '4px'
+                                  }}>
+                                    <BadgeIcon size={w < 768 ? 14 : 20} color="#e89528" style={{ strokeWidth: 2.2 }} />
+                                    <span style={{
+                                      fontSize: w < 768 ? '9px' : '13px',
+                                      fontWeight: '700',
+                                      color: '#555',
+                                      textAlign: 'center',
+                                      lineHeight: '1.25',
+                                      whiteSpace: 'pre-line'
+                                    }}>
+                                      {badge.text}
+                                    </span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+
+                          {/* Right Column (Case Study Card) */}
+                          <div style={{ flex: w < 1024 ? 'none' : '1.25', background: '#fff', padding: w < 768 ? '20px' : '22px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '14px' }}>
+                              <Lightbulb size={26} color="#e89528" style={{ marginRight: '10px' }} />
+                              <h3 style={{ fontSize: '26px', fontWeight: '700', margin: 0, color: '#e89528' }}>
+                                Real-World Example
+                              </h3>
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: w < 768 ? '14px' : '16.5px', lineHeight: '1.5', color: '#444', fontWeight: '500' }}>
+                              <div>
+                                <p style={{ margin: '0 0 4px 0', textAlign: 'left', fontWeight: '700', color: '#111', fontSize: '17px' }}>
+                                  The Challenge:
+                                </p>
+                                <p style={{ margin: 0, textAlign: 'left' }}>
+                                  A jewellery company noticed website traffic grew by 18% and online engagement rose by 22%, but sales conversions dropped by 12%. Manually collecting, cleaning, and comparing data across CRM, website analytics, and sales sheets was too slow, delaying corrective business actions.
+                                </p>
+                              </div>
+
+                              <div>
+                                <p style={{ margin: '0 0 4px 0', textAlign: 'left', fontWeight: '700', color: '#111', fontSize: '17px' }}>
+                                  How StackLogix Helped:
+                                </p>
+                                <p style={{ margin: '0 0 8px 0', textAlign: 'left' }}>
+                                  AI Monitoring automatically flagged the conversion drop. Analysts used cross-functional data investigation to drill down and discovered that:
+                                </p>
+                                
+                                {/* Two-Column Checklist & Dashboard Widget layout */}
+                                <div style={{ display: 'flex', flexDirection: w < 768 ? 'column' : 'row', gap: '20px', alignItems: 'center', margin: '8px 0' }}>
+                                  <div style={{ flex: '1.25', display: 'flex', flexDirection: 'column', gap: '10px', width: '100%' }}>
+                                    {[
+                                      "A newly launched category had high traffic but low conversions",
+                                      "Pricing was set higher than competing market alternatives",
+                                      "Follow-ups on potential online leads were significantly delayed"
+                                    ].map((text, i) => (
+                                      <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                                        <CheckCircle2 size={16} color="#e89528" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                        <span style={{ fontSize: '15px', lineHeight: '1.35', color: '#333', fontWeight: '600', textAlign: 'left' }}>{text}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+
+                                  <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '16px 18px', display: 'flex', flexDirection: 'column', gap: '11px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                      <span style={{ fontSize: '12.5px', fontWeight: '800', color: '#222', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Analytics & Drifts</span>
+                                    </div>
+                                    <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '5px 0' }} />
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '11px' }}>
+                                      <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                        <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Drifts Detected</span>
+                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
+                                          <span style={{ fontSize: '12.5px', color: '#d9381e', fontWeight: '800' }}>1 Active</span>
+                                          <AlertTriangle size={16} color="#d9381e" />
+                                        </div>
+                                      </div>
+                                      <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                        <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Data Quality</span>
+                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                          <span style={{ fontSize: '12.5px', color: '#222', fontWeight: '700' }}>99.8%</span>
+                                          <ShieldCheck size={16} color="#e89528" />
+                                        </div>
+                                      </div>
+                                      <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                        <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Auto Reports</span>
+                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                          <span style={{ fontSize: '12.5px', color: '#222', fontWeight: '700' }}>14 Active</span>
+                                          <ClipboardCheck size={16} color="#a3a8b3" />
+                                        </div>
+                                      </div>
+                                      <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                        <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Insight Accuracy</span>
+                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                          <span style={{ fontSize: '12.5px', color: '#e89528', fontWeight: '800' }}>94.5%</span>
+                                          <TrendingUp size={16} color="#e89528" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '16px 20px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px' }}>
+                                <Trophy size={26} color="#e89528" style={{ flexShrink: 0 }} />
+                                <span style={{ fontSize: '16.5px', fontWeight: '600', color: '#a35b12', lineHeight: '1.4', textAlign: 'left' }}>
+                                  Result: Anomaly resolved in hours instead of days. By adjusting pricing and accelerating team follow-ups, the company avoided conversion loss and made smarter, data-driven decisions.
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     ) : (
                       <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '40px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
                         <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '16px' : '24px' }}>
@@ -1060,7 +1558,7 @@ const BubbleNetwork = () => {
                   cursor: 'pointer', 
                   transformOrigin: 'center', 
                   overflow: 'hidden', 
-                  borderWidth: `${1 / size.scale}px`,
+                  borderWidth: `${Math.min(1.5, 1 / size.scale)}px`,
                   willChange: 'transform, opacity, width, height, border-radius'
                 }}
                 transition={springConfig}
@@ -1183,6 +1681,246 @@ const BubbleNetwork = () => {
                                 "Root Cause Analysis & Documentation",
                                 "Action Plan & Resolution Tracking",
                                 "Governance, Visibility & Audit Trail"
+                              ].map((feat, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : sub.id === 'order-fulfillment' ? (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  Sales Order Fulfilment <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
+                              Sales Order Fulfilment manages the complete journey of an order from confirmation to delivery. It ensures inventory availability, production allocation, dispatch planning, and order tracking, enabling businesses to deliver products accurately and on time while maintaining customer satisfaction.
+                            </p>
+                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                              Key Features
+                            </h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                              {[
+                                "End-to-End Order Tracking",
+                                "Inventory Allocation & Control",
+                                "Production & Dispatch Coordination",
+                                "Real-Time Order Visibility",
+                                "Exception & Delay Management",
+                                "Fulfilment Performance Monitoring"
+                              ].map((feat, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : sub.id === 'raw-materials' ? (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  Procurement of Raw Materials <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
+                              The Raw Material Procurement module streamlines the purchasing process for essential materials such as gold, diamonds, gemstones, findings, and packaging components. It helps procurement teams plan purchases, manage vendors, monitor delivery schedules, and maintain uninterrupted production operations.
+                            </p>
+                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                              Key Features
+                            </h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                              {[
+                                "Purchase Requisition & Order Management",
+                                "Vendor Performance Management",
+                                "Material Requirement Planning",
+                                "Procurement Approval Workflows",
+                                "Quotation & Price Comparison",
+                                "Delivery Tracking, Analytics & Cost Optimization"
+                              ].map((feat, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : sub.id === 'procurement-inventory' ? (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  Inventory Management <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
+                              Inventory Management provides complete visibility and control over raw materials, work-in-progress items, and finished goods across all locations. It helps businesses maintain optimal stock levels, reduce carrying costs, prevent stock shortages, and ensure materials are available whenever required for production or sales fulfilment.
+                            </p>
+                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                              Key Features
+                            </h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                              {[
+                                "Real-Time Inventory Visibility",
+                                "Multi-Location Inventory Tracking",
+                                "Raw Material, WIP & Finished Goods Monitoring",
+                                "Stock Alerts & Exception Management",
+                                "Stock Movement & Batch Traceability",
+                                "Inventory Valuation, Reporting & Dead Stock Analysis"
+                              ].map((feat, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : sub.id === 'invoicing-vendor-management' ? (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  Invoicing <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
+                              The Invoicing module automates invoice generation and financial documentation while ensuring accuracy and compliance. It integrates directly with sales orders, pricing structures, taxes, gold rates, diamond rates, labour charges, certifications, and other costing components to simplify billing operations.
+                            </p>
+                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                              Key Features
+                            </h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                              {[
+                                "Automated Invoice Generation",
+                                "Sales Order & Billing Integration",
+                                "Dynamic Pricing & Rate Management",
+                                "Tax & Compliance Management",
+                                "Cost Component Management (Gold, Diamond, Labour & Certification)",
+                                "Payment Tracking, Invoice History & Audit Trail"
+                              ].map((feat, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : sub.id === 'intelligent-dashboard' ? (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  Intelligent Lead Assignment <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
+                              The Intelligent Lead Assignment module ensures that leads are allocated to the most suitable Field Assistants based on geography, workload, territory, expertise, and proximity to the customer. Using map-based visualization, Sales Managers can view lead distribution in real time and assign opportunities to the best available resource, improving response times and conversion rates.
+                            </p>
+                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                              Key Features
+                            </h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                              {[
+                                "Map-Based Lead Allocation",
+                                "Territory & Region Management",
+                                "Intelligent Workload Balancing",
+                                "Nearest Representative Assignment",
+                                "Lead Ownership & Reassignment Control",
+                                "Geographic Coverage & Lead Visibility Analytics"
+                              ].map((feat, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : sub.id === 'lead-assignments' ? (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  Field Sales Management <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
+                              The Field Sales Management module serves as the operational workspace for Hunters, providing complete visibility into assigned leads, scheduled meetings, follow-ups, customer interactions, and order management. It enables Field Assistants to stay organized while ensuring that Sales Managers remain informed of all sales activities.
+                            </p>
+                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                              Key Features
+                            </h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                              {[
+                                "Mobile & Web Sales Workspace",
+                                "Meeting, Reminder & Follow-Up Management",
+                                "Customer Visit & Interaction Tracking",
+                                "Order Placement & Submission",
+                                "Manager Guidance & Sales Recommendations",
+                                "Activity Monitoring, Route Planning & Real-Time Updates"
+                              ].map((feat, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : sub.id === 'field-sales' ? (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  AI Sales Monitoring <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
+                              AI Sales Monitoring continuously analyzes sales activities, lead progression, follow-up effectiveness, conversion rates, and team performance. The system identifies missed opportunities, delayed actions, inactive leads, and unusual sales patterns while providing actionable recommendations to improve performance and maximize conversions.
+                            </p>
+                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                              Key Features
+                            </h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                              {[
+                                "Lead Aging & Follow-Up Monitoring",
+                                "Sales Performance & Conversion Analytics",
+                                "Sales Pipeline Health Tracking",
+                                "Automated Drift & Risk Detection",
+                                "AI-Powered Recommendations & Opportunity Identification",
+                                "Team Productivity & Predictive Sales Insights"
+                              ].map((feat, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        ) : sub.id === 'ai-sales-monitoring' ? (
+                          <>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
+                              <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                                <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                  Feedback & Collaboration Hub <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                </a>
+                              </h3>
+                            </div>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '18px', textAlign: 'left', fontWeight: '500' }}>
+                              The Feedback & Collaboration Hub ensures seamless communication between Sales Managers and Field Assistants. Every customer visit, follow-up, meeting outcome, and sales update is recorded through structured feedback forms, creating complete visibility into field operations. This enables managers to provide timely guidance, track commitments, monitor deadlines, and ensure accountability across the sales team.
+                            </p>
+                            <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#e89528', margin: '0 0 12px 0' }}>
+                              Key Features
+                            </h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : '1fr 1fr', gap: w < 768 ? '10px' : '14px' }}>
+                              {[
+                                "Post-Visit Feedback & Customer Records",
+                                "Manager–Hunter Communication Hub",
+                                "Activity, Progress & Performance Tracking",
+                                "Task, Deadline & Follow-Up Management",
+                                "Escalation & Action Item Tracking",
+                                "Sales Audit Trail & Accountability Monitoring"
                               ].map((feat, i) => (
                                 <div key={i} style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid rgba(232, 149, 40, 0.15)', borderLeft: '4.5px solid #e89528', padding: w < 768 ? '12px 16px' : '18px 22px', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
                                   <span style={{ fontSize: w < 768 ? '15px' : '18px', fontWeight: '500', color: '#222', lineHeight: '1.3' }}>{feat}</span>
