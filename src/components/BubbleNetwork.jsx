@@ -2221,15 +2221,16 @@ const BubbleNetwork = () => {
                       {w >= 768 && (() => {
                         const imageConfig = {
                           'intelligent-dashboard': { src: '/intelligent_lead_assignment.png', aspect: '1635 / 1519' },
-                          'lead-assignments': { src: '/field_sales_management.png', aspect: '1769 / 1502' },
+                          'lead-assignments': { src: '/field_sales_managment_corrc.png', aspect: '1718 / 1544' },
                           'field-sales': { src: '/ai_sales_monitoring.png', aspect: '1607 / 1414' },
+                          'ai-sales-monitoring': { src: '/collaboration_and_feedback_corrct.png', aspect: '1769 / 1502' },
                           'order-fulfillment': { src: '/order_fulfillment.png', aspect: '1984 / 1448' },
                           'procurement-inventory': { src: '/procurement_inventory.png', aspect: '1994 / 1396' },
                           'raw-materials': { src: '/raw_materials.png', aspect: '1936 / 1406' },
                           'invoicing-vendor-management': { src: '/invoicing_vendor_management.png', aspect: '815 / 720' },
                           'advanced-ai-monitoring': { src: '/advanced_ai_monitoring.png', aspect: '1203 / 859' },
                           'command-center': { src: '/command_center.png', aspect: '1203 / 910' },
-                          'automated-reports': { src: '/automated_reports_and_dashboards.png', aspect: '1203 / 768' },
+                          'automated-reports': { src: '/automated_reports_and_dashboards.png', aspect: '1425 / 889' },
                           'analyst-audit-trails': { src: '/audit_trail.png', aspect: '1203 / 929' },
                           'analyst-command-center': { src: '/root_cause_analysis.png', aspect: '1203 / 1008' },
                           'analyst-ai-monitoring': { src: '/ai_insight_engine.png', aspect: '1203 / 1019' },
