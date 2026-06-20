@@ -22,4 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables - NEVER commit these
 .env
+.env.*
+**/.env
+**/.env.*
+
+# Temp files
+git_diff_temp.txt
