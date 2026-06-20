@@ -16,7 +16,7 @@ COPY public/ ./public
 COPY index.html ./index.html
 COPY vite.config.js ./vite.config.js
 COPY jsconfig.json ./jsconfig.json
-COPY ["stacklogix brain.png", "./"]
+COPY ["original_images/stacklogix brain.png", "./"]
 
 # Build the frontend (outputs to /app/dist)
 RUN npm run build
