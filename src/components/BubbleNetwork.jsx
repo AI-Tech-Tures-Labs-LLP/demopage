@@ -446,8 +446,8 @@ const BubbleNetwork = () => {
 
     if (type === 'root') {
       if (focusedNode === 'root') {
-        const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1500, w * 0.65));
-        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(850, h * 0.86));
+        const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1350, w * 0.73));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
         return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       }
       return { width: 240 * rs, height: 240 * rs, scale: 0.35, opacity: 0.6, zIndex: 5 };
@@ -456,12 +456,12 @@ const BubbleNetwork = () => {
     if (nodeId === focusedNode) {
       const isCat = bubbleData[nodeId] !== undefined;
       if (isCat) {
-        const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1500, w * 0.65));
-        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(850, h * 0.86));
+        const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1350, w * 0.73));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
         return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       } else {
-        const width = w < 768 ? R(w * 0.92) : w < 1024 ? R(w * 0.85) : R(Math.min(1600, w * 0.78));
-        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(850, h * 0.86));
+        const width = w < 768 ? R(w * 0.92) : w < 1024 ? R(w * 0.85) : R(Math.min(1350, w * 0.9));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
         return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       }
     }
@@ -671,135 +671,107 @@ const BubbleNetwork = () => {
                 display: 'flex', 
                 flexDirection: 'column' 
               }}
-            >              {(() => {
-                const boxW = getSize('root').width;
-                const boxH = getSize('root').height;
-                const baseW = 1350;
-                const baseH = 750;
-                const scale = w >= 1024 ? Math.min(boxW / baseW, boxH / baseH) : 1;
-                return (
-                  <div style={w >= 1024 ? {
-                    width: `${baseW}px`,
-                    height: `${baseH}px`,
-                    position: 'absolute',
-                    left: '50%',
-                    top: '50%',
-                    transform: `translate(-50%, -50%) scale(${scale})`,
-                    transformOrigin: 'center center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    padding: '32px 48px',
-                    boxSizing: 'border-box'
-                  } : {
-                    flex: '1',
-                    padding: w < 768 ? '16px 12px' : '32px 48px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'flex-start',
-                    overflowY: w < 768 ? 'auto' : 'hidden',
-                    gap: w < 768 ? '16px' : '24px'
-                  }}>
-                    {/* Title & Introduction */}
-                    <div style={{ marginBottom: w < 768 ? '12px' : '0px' }}>
-                      <h2 style={{ fontSize: w < 768 ? '26px' : '44px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
-                        What is StackLogix?
-                      </h2>
-                      <p style={{ fontSize: w < 768 ? '13px' : '17px', color: '#444', lineHeight: '1.5', marginTop: '8px', fontWeight: '500', textAlign: 'left', margin: '8px 0 0 0' }}>
-                        A fully customizable platform that unifies and optimizes every stage of the business lifecycle — eliminating data silos and creating a single source of truth across the organization.
-                      </p>
-                    </div>
+            >
+              <div style={{ flex: '1', padding: w < 768 ? '16px 12px' : '32px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: w < 768 ? 'auto' : 'hidden', gap: w < 768 ? '16px' : '24px' }}>
+                {/* Title & Introduction */}
+                <div style={{ marginBottom: w < 768 ? '12px' : '0px' }}>
+                  <h2 style={{ fontSize: w < 768 ? '26px' : '44px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
+                    What is StackLogix?
+                  </h2>
+                  <p style={{ fontSize: w < 768 ? '13px' : '17px', color: '#444', lineHeight: '1.5', marginTop: '8px', fontWeight: '500', textAlign: 'left', margin: '8px 0 0 0' }}>
+                    A fully customizable platform that unifies and optimizes every stage of the business lifecycle — eliminating data silos and creating a single source of truth across the organization.
+                  </p>
+                </div>
 
-                    {/* Section 1: One system, every source of truth */}
-                    <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                      <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
-                        One system, every source of truth
-                      </h3>
-                      <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
-                        Integrates seamlessly with the tools you already run, then connects them into a single layer.
-                      </p>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: w < 768 ? '6px' : '12px', flexWrap: 'wrap' }}>
-                        {['ERP', 'CRM', 'Accounting', 'Manufacturing', 'Inventory'].map((source, index) => (
-                          <React.Fragment key={source}>
-                            <div style={{ background: '#fdfbf2', border: '1px solid rgba(232, 149, 40, 0.35)', color: '#a35b12', padding: w < 768 ? '4px 8px' : '6px 14px', borderRadius: '20px', fontSize: w < 768 ? '10px' : '13px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '5px', boxShadow: '0 2px 5px rgba(232,149,40,0.04)', flexShrink: 0 }}>
-                              {source === 'ERP' && <Database size={w < 768 ? 11 : 13} />}
-                              {source === 'CRM' && <Users size={w < 768 ? 11 : 13} />}
-                              {source === 'Accounting' && <BarChart3 size={w < 768 ? 11 : 13} />}
-                              {source === 'Manufacturing' && <Package size={w < 768 ? 11 : 13} />}
-                              {source === 'Inventory' && <Layers size={w < 768 ? 11 : 13} />}
-                              {source}
-                            </div>
-                            {index < 5 && <ArrowRight size={w < 768 ? 12 : 16} color="#d68022" style={{ flexShrink: 0 }} />}
-                          </React.Fragment>
-                        ))}
-                        <div style={{ background: '#d68022', color: '#fff', padding: w < 768 ? '5px 10px' : '7px 16px', borderRadius: '20px', fontSize: w < 768 ? '10px' : '13px', fontWeight: '700', boxShadow: '0 4px 12px rgba(214, 128, 34, 0.25)', display: 'flex', alignItems: 'center', gap: '5px', flexShrink: 0 }}>
-                          <ShieldCheck size={w < 768 ? 11 : 13} />
-                          Single source of truth
+                {/* Section 1: One system, every source of truth */}
+                <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
+                    One system, every source of truth
+                  </h3>
+                  <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
+                    Integrates seamlessly with the tools you already run, then connects them into a single layer.
+                  </p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: w < 768 ? '6px' : '12px', flexWrap: 'wrap' }}>
+                    {['ERP', 'CRM', 'Accounting', 'Manufacturing', 'Inventory'].map((source, index) => (
+                      <React.Fragment key={source}>
+                        <div style={{ background: '#fdfbf2', border: '1px solid rgba(232, 149, 40, 0.35)', color: '#a35b12', padding: w < 768 ? '4px 8px' : '6px 14px', borderRadius: '20px', fontSize: w < 768 ? '10px' : '13px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '5px', boxShadow: '0 2px 5px rgba(232,149,40,0.04)', flexShrink: 0 }}>
+                          {source === 'ERP' && <Database size={w < 768 ? 11 : 13} />}
+                          {source === 'CRM' && <Users size={w < 768 ? 11 : 13} />}
+                          {source === 'Accounting' && <BarChart3 size={w < 768 ? 11 : 13} />}
+                          {source === 'Manufacturing' && <Package size={w < 768 ? 11 : 13} />}
+                          {source === 'Inventory' && <Layers size={w < 768 ? 11 : 13} />}
+                          {source}
                         </div>
-                      </div>
-                    </div>
-
-                    {/* Section 2: Modular by design */}
-                    <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                      <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
-                        Modular by design
-                      </h3>
-                      <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
-                        Purpose-built for the jewellery industry, adaptable to any enterprise workflow. Choose only the modules you need.
-                      </p>
-                      <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : 'repeat(4, 1fr)', gap: '10px' }}>
-                        {[
-                          { title: 'AI-driven forecasting', icon: TrendingUp },
-                          { title: 'Inventory planning', icon: Layers },
-                          { title: 'Procurement', icon: ShoppingCart },
-                          { title: 'Sales enablement', icon: Briefcase },
-                          { title: 'Lead management', icon: UserCheck },
-                          { title: 'Customer relationship', icon: HeartHandshake },
-                          { title: 'Business intelligence', icon: PieChart }
-                        ].map((mod, i) => {
-                          const IconComponent = mod.icon;
-                          return (
-                            <div key={i} style={{ background: '#f8f9fa', border: '1px solid #f0f1f3', padding: w < 768 ? '8px 10px' : '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                              <div style={{ background: 'rgba(232, 149, 40, 0.08)', padding: '6px', borderRadius: '6px', color: '#e89528', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                                <IconComponent size={w < 768 ? 14 : 18} />
-                              </div>
-                              <span style={{ fontSize: w < 768 ? '11px' : '14px', fontWeight: '600', color: '#222', lineHeight: '1.2' }}>{mod.title}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Section 3: Beyond dashboards and chatbots */}
-                    <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px', marginTop: w < 768 ? '0px' : '-16px' }}>
-                      <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
-                        Beyond dashboards and chatbots
-                      </h3>
-                      <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
-                        Actionable AI that gives management real-time visibility into operations, performance, risks, and opportunities.
-                      </p>
-                      <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : 'repeat(5, 1fr)', gap: '10px' }}>
-                        {[
-                          { title: 'Predictive analytics', icon: BrainCircuit },
-                          { title: 'Automated monitoring', icon: Activity },
-                          { title: 'Intelligent recommendations', icon: Lightbulb },
-                          { title: 'Anomaly detection', icon: AlertTriangle },
-                          { title: 'Executive command centers', icon: Sliders }
-                        ].map((feat, i) => {
-                          const IconComponent = feat.icon;
-                          return (
-                            <div key={i} style={{ background: '#f8f9fa', border: '1px solid #f0f1f3', padding: w < 768 ? '8px 10px' : '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                              <div style={{ background: 'rgba(232, 149, 40, 0.08)', padding: '6px', borderRadius: '6px', color: '#e89528', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                                <IconComponent size={w < 768 ? 14 : 18} />
-                              </div>
-                              <span style={{ fontSize: w < 768 ? '11px' : '14px', fontWeight: '600', color: '#222', lineHeight: '1.2' }}>{feat.title}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
+                        {index < 5 && <ArrowRight size={w < 768 ? 12 : 16} color="#d68022" style={{ flexShrink: 0 }} />}
+                      </React.Fragment>
+                    ))}
+                    <div style={{ background: '#d68022', color: '#fff', padding: w < 768 ? '5px 10px' : '7px 16px', borderRadius: '20px', fontSize: w < 768 ? '10px' : '13px', fontWeight: '700', boxShadow: '0 4px 12px rgba(214, 128, 34, 0.25)', display: 'flex', alignItems: 'center', gap: '5px', flexShrink: 0 }}>
+                      <ShieldCheck size={w < 768 ? 11 : 13} />
+                      Single source of truth
                     </div>
                   </div>
-                );
-              })()}
+                </div>
+
+                {/* Section 2: Modular by design */}
+                <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
+                    Modular by design
+                  </h3>
+                  <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
+                    Purpose-built for the jewellery industry, adaptable to any enterprise workflow. Choose only the modules you need.
+                  </p>
+                  <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : 'repeat(4, 1fr)', gap: '10px' }}>
+                    {[
+                      { title: 'AI-driven forecasting', icon: TrendingUp },
+                      { title: 'Inventory planning', icon: Layers },
+                      { title: 'Procurement', icon: ShoppingCart },
+                      { title: 'Sales enablement', icon: Briefcase },
+                      { title: 'Lead management', icon: UserCheck },
+                      { title: 'Customer relationship', icon: HeartHandshake },
+                      { title: 'Business intelligence', icon: PieChart }
+                    ].map((mod, i) => {
+                      const IconComponent = mod.icon;
+                      return (
+                        <div key={i} style={{ background: '#f8f9fa', border: '1px solid #f0f1f3', padding: w < 768 ? '8px 10px' : '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                          <div style={{ background: 'rgba(232, 149, 40, 0.08)', padding: '6px', borderRadius: '6px', color: '#e89528', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            <IconComponent size={w < 768 ? 14 : 18} />
+                          </div>
+                          <span style={{ fontSize: w < 768 ? '11px' : '14px', fontWeight: '600', color: '#222', lineHeight: '1.2' }}>{mod.title}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Section 3: Beyond dashboards and chatbots */}
+                <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px', marginTop: w < 768 ? '0px' : '-16px' }}>
+                  <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
+                    Beyond dashboards and chatbots
+                  </h3>
+                  <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
+                    Actionable AI that gives management real-time visibility into operations, performance, risks, and opportunities.
+                  </p>
+                  <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : 'repeat(5, 1fr)', gap: '10px' }}>
+                    {[
+                      { title: 'Predictive analytics', icon: BrainCircuit },
+                      { title: 'Automated monitoring', icon: Activity },
+                      { title: 'Intelligent recommendations', icon: Lightbulb },
+                      { title: 'Anomaly detection', icon: AlertTriangle },
+                      { title: 'Executive command centers', icon: Sliders }
+                    ].map((feat, i) => {
+                      const IconComponent = feat.icon;
+                      return (
+                        <div key={i} style={{ background: '#f8f9fa', border: '1px solid #f0f1f3', padding: w < 768 ? '8px 10px' : '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                          <div style={{ background: 'rgba(232, 149, 40, 0.08)', padding: '6px', borderRadius: '6px', color: '#e89528', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            <IconComponent size={w < 768 ? 14 : 18} />
+                          </div>
+                          <span style={{ fontSize: w < 768 ? '11px' : '14px', fontWeight: '600', color: '#222', lineHeight: '1.2' }}>{feat.title}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -2257,6 +2229,7 @@ const BubbleNetwork = () => {
                           'invoicing-vendor-management': { src: '/invoicing_vendor_management.png', aspect: '815 / 720' },
                           'advanced-ai-monitoring': { src: '/advanced_ai_monitoring.png', aspect: '1203 / 859' },
                           'command-center': { src: '/command_center.png', aspect: '1203 / 910' },
+                          'automated-reports': { src: '/automated_reports_and_dashboards.png', aspect: '1203 / 768' },
                           'analyst-audit-trails': { src: '/audit_trail.png', aspect: '1203 / 929' },
                           'analyst-command-center': { src: '/root_cause_analysis.png', aspect: '1203 / 1008' },
                           'analyst-ai-monitoring': { src: '/ai_insight_engine.png', aspect: '1203 / 1019' },
@@ -2291,10 +2264,10 @@ const BubbleNetwork = () => {
                           const content = subComponentContent[sub.id];
                           return (
                             <>
-                              <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '12px' : '16px' }}>
-                                <h3 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal' }}>
+                              <div style={{ display: 'flex', alignItems: 'center', marginBottom: w < 768 ? '10px' : '14px' }}>
+                                <h3 style={{ fontSize: sub.id === 'automated-reports' ? (w < 768 ? '26px' : '36px') : (w < 768 ? '32px' : '42px'), fontWeight: '800', color: '#e89528', margin: 0, display: 'flex', alignItems: 'center', whiteSpace: 'normal', lineHeight: '1.15' }}>
                                   <a href={sub.link || '#'} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                    {content.title} <ExternalLink size={w < 768 ? 24 : 28} style={{ marginLeft: '12px' }} />
+                                    {content.title} <ExternalLink size={w < 768 ? 20 : 24} style={{ marginLeft: '10px' }} />
                                   </a>
                                 </h3>
                               </div>
