@@ -268,6 +268,16 @@ const BubbleNetwork = () => {
   });
   const [focusedNode, setFocusedNode] = useState(null);
   const [isResizing, setIsResizing] = useState(false);
+  const [hoveredProcureIdx, setHoveredProcureIdx] = useState(null);
+  const [hoveredSalesIdx, setHoveredSalesIdx] = useState(null);
+  const [hoveredAnalyticsIdx, setHoveredAnalyticsIdx] = useState(null);
+  const [hoveredTopMgmtIdx, setHoveredTopMgmtIdx] = useState(null);
+  const [procureFilter, setProcureFilter] = useState('All');
+  const [hoveredWidgetIdx, setHoveredWidgetIdx] = useState(null);
+  const [salesFilter, setSalesFilter] = useState('All');
+  const [analyticsFilter, setAnalyticsFilter] = useState('All');
+  const [hoveredSalesWidgetIdx, setHoveredSalesWidgetIdx] = useState(null);
+  const [hoveredAnalyticsWidgetIdx, setHoveredAnalyticsWidgetIdx] = useState(null);
 
   useEffect(() => {
     let timeoutId;
@@ -1021,10 +1031,51 @@ const BubbleNetwork = () => {
                                 <p style={{ margin: 0, textAlign: 'left' }}>
                                   With StackLogix, AI Monitoring automatically detects the 5% margin decline and flags it as a critical business drift. The Automated Dashboard instantly consolidates data across departments and reveals that:
                                 </p>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', paddingLeft: '14px' }}>
-                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '18px' }}>• Gold procurement costs have increased by 7%</span>
-                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '18px' }}>• Manufacturing wastage has risen from 2.8% to 4.1%</span>
-                                  <span style={{ fontWeight: '600', color: '#111', fontSize: '18px' }}>• Discounts on a high-volume product category have increased by 12%</span>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', paddingLeft: '0px', marginTop: '6px' }}>
+                                  {[
+                                    "Gold procurement costs have increased by 7%",
+                                    "Manufacturing wastage has risen from 2.8% to 4.1%",
+                                    "Discounts on a high-volume product category have increased by 12%"
+                                  ].map((text, i) => (
+                                    <div 
+                                      key={i} 
+                                      onMouseEnter={() => setHoveredTopMgmtIdx(i)}
+                                      onMouseLeave={() => setHoveredTopMgmtIdx(null)}
+                                      style={{ 
+                                        display: 'flex', 
+                                        alignItems: 'flex-start', 
+                                        gap: '10px',
+                                        padding: '2px 8px',
+                                        borderRadius: '8px',
+                                        background: hoveredTopMgmtIdx === i ? 'rgba(232, 149, 40, 0.05)' : 'transparent',
+                                        border: '1px solid ' + (hoveredTopMgmtIdx === i ? 'rgba(232, 149, 40, 0.15)' : 'transparent'),
+                                        transform: hoveredTopMgmtIdx === i ? 'translateX(4px)' : 'none',
+                                        boxShadow: hoveredTopMgmtIdx === i ? '0 4px 12px rgba(232, 149, 40, 0.04)' : 'none',
+                                        transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                                        cursor: 'pointer',
+                                        margin: '0 -8px'
+                                      }}
+                                    >
+                                      <CheckCircle2 
+                                        size={16} 
+                                        color="#e89528" 
+                                        style={{ 
+                                          marginTop: '2px', 
+                                          flexShrink: 0, 
+                                          transform: hoveredTopMgmtIdx === i ? 'scale(1.15)' : 'none', 
+                                          transition: 'transform 0.2s ease' 
+                                        }} 
+                                      />
+                                      <span style={{ 
+                                        fontSize: '15px', 
+                                        lineHeight: '1.35', 
+                                        color: hoveredTopMgmtIdx === i ? '#e89528' : '#333', 
+                                        fontWeight: '600',
+                                        transition: 'color 0.2s ease',
+                                        textAlign: 'left'
+                                      }}>{text}</span>
+                                    </div>
+                                  ))}
                                 </div>
                               </div>
                               <p style={{ margin: 0, textAlign: 'left' }}>
@@ -1220,48 +1271,165 @@ const BubbleNetwork = () => {
                                     "Projected material consumption based on demand forecasts",
                                     "Recommended purchase quantities and reorder timelines"
                                   ].map((text, i) => (
-                                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                                      <CheckCircle2 size={16} color="#e89528" style={{ marginTop: '2px', flexShrink: 0 }} />
-                                      <span style={{ fontSize: '14.5px', lineHeight: '1.35', color: '#333', fontWeight: '600' }}>{text}</span>
+                                    <div 
+                                      key={i} 
+                                      onMouseEnter={() => setHoveredProcureIdx(i)}
+                                      onMouseLeave={() => setHoveredProcureIdx(null)}
+                                      style={{ 
+                                        display: 'flex', 
+                                        alignItems: 'flex-start', 
+                                        gap: '10px',
+                                        padding: '6px 10px',
+                                        borderRadius: '8px',
+                                        background: hoveredProcureIdx === i ? 'rgba(232, 149, 40, 0.05)' : 'transparent',
+                                        border: '1px solid ' + (hoveredProcureIdx === i ? 'rgba(232, 149, 40, 0.15)' : 'transparent'),
+                                        transform: hoveredProcureIdx === i ? 'translateX(4px)' : 'none',
+                                        boxShadow: hoveredProcureIdx === i ? '0 4px 12px rgba(232, 149, 40, 0.04)' : 'none',
+                                        transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                                        cursor: 'pointer',
+                                        margin: '0 -10px'
+                                      }}
+                                    >
+                                      <CheckCircle2 
+                                        size={16} 
+                                        color="#e89528" 
+                                        style={{ 
+                                          marginTop: '2px', 
+                                          flexShrink: 0, 
+                                          transform: hoveredProcureIdx === i ? 'scale(1.15)' : 'none', 
+                                          transition: 'transform 0.2s ease' 
+                                        }} 
+                                      />
+                                      <span style={{ 
+                                        fontSize: '14.5px', 
+                                        lineHeight: '1.35', 
+                                        color: hoveredProcureIdx === i ? '#e89528' : '#333', 
+                                        fontWeight: '600',
+                                        transition: 'color 0.2s ease'
+                                      }}>{text}</span>
                                     </div>
                                   ))}
                                 </div>
 
                                 <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <span style={{ fontSize: '12px', fontWeight: '800', color: '#222', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Procurement Dashboard</span>
+                                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+                                    <span style={{ fontSize: '11px', fontWeight: '850', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Procurement Dashboard</span>
+                                    <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.03)', padding: '2px', borderRadius: '20px', border: '1px solid rgba(0,0,0,0.04)' }}>
+                                      {['All', 'Metals', 'Gemstones'].map((filt) => (
+                                        <button
+                                          key={filt}
+                                          onClick={() => setProcureFilter(filt)}
+                                          style={{
+                                            border: 'none',
+                                            background: procureFilter === filt ? '#e89528' : 'transparent',
+                                            color: procureFilter === filt ? '#fff' : '#666',
+                                            fontSize: '9.5px',
+                                            fontWeight: '700',
+                                            padding: '3px 8px',
+                                            borderRadius: '15px',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.2s ease',
+                                            boxShadow: procureFilter === filt ? '0 2px 6px rgba(232, 149, 40, 0.25)' : 'none'
+                                          }}
+                                          onMouseEnter={(e) => {
+                                            if (procureFilter !== filt) e.target.style.color = '#e89528';
+                                          }}
+                                          onMouseLeave={(e) => {
+                                            if (procureFilter !== filt) e.target.style.color = '#666';
+                                          }}
+                                        >
+                                          {filt}
+                                        </button>
+                                      ))}
+                                    </div>
                                   </div>
                                   <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '4px 0' }} />
-                                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '9px 11px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                      <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Stock Overview</span>
-                                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: '2.5px solid #f0f0f0', borderTopColor: '#e89528', borderLeftColor: '#e89528', flexShrink: 0 }} />
-                                        <span style={{ fontSize: '12px', color: '#222', fontWeight: '700', lineHeight: '1.1' }}>68% stock</span>
+                                  {(() => {
+                                    const dashboardData = {
+                                      All: [
+                                        { title: 'Stock Overview', value: '68% stock', pct: 68 },
+                                        { title: 'Purchase Orders', value: '32 Open POs', type: 'po' },
+                                        { title: 'Deliveries', value: '12 In Transit', type: 'del' },
+                                        { title: 'Shortage Risk', value: '5 At Risk', type: 'risk' }
+                                      ],
+                                      Metals: [
+                                        { title: 'Stock Overview', value: '74% stock', pct: 74 },
+                                        { title: 'Purchase Orders', value: '14 Open POs', type: 'po' },
+                                        { title: 'Deliveries', value: '5 In Transit', type: 'del' },
+                                        { title: 'Shortage Risk', value: '1 At Risk', type: 'risk' }
+                                      ],
+                                      Gemstones: [
+                                        { title: 'Stock Overview', value: '45% stock', pct: 45 },
+                                        { title: 'Purchase Orders', value: '18 Open POs', type: 'po' },
+                                        { title: 'Deliveries', value: '7 In Transit', type: 'del' },
+                                        { title: 'Shortage Risk', value: '4 At Risk', type: 'risk' }
+                                      ]
+                                    };
+
+                                    const currentData = dashboardData[procureFilter];
+
+                                    return (
+                                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                                        {currentData.map((item, idx) => {
+                                          const isHovered = hoveredWidgetIdx === idx;
+                                          return (
+                                            <div 
+                                              key={item.title}
+                                              onMouseEnter={() => setHoveredWidgetIdx(idx)}
+                                              onMouseLeave={() => setHoveredWidgetIdx(null)}
+                                              style={{ 
+                                                background: '#fff', 
+                                                border: '1px solid ' + (isHovered ? '#e89528' : 'rgba(0,0,0,0.04)'), 
+                                                borderRadius: '8px', 
+                                                padding: '9px 11px', 
+                                                display: 'flex', 
+                                                flexDirection: 'column', 
+                                                gap: '4px', 
+                                                boxShadow: isHovered ? '0 4px 12px rgba(232, 149, 40, 0.08)' : '0 2px 4px rgba(0,0,0,0.01)',
+                                                transform: isHovered ? 'translateY(-2px)' : 'none',
+                                                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                                                cursor: 'pointer'
+                                              }}
+                                            >
+                                              <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>{item.title}</span>
+                                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                                                {item.pct !== undefined ? (
+                                                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', width: '100%' }}>
+                                                    <div style={{ 
+                                                      width: '20px', 
+                                                      height: '20px', 
+                                                      borderRadius: '50%', 
+                                                      border: '2.5px solid #f0f0f0', 
+                                                      borderTopColor: '#e89528', 
+                                                      borderLeftColor: '#e89528', 
+                                                      borderRightColor: item.pct >= 68 ? '#e89528' : '#f0f0f0',
+                                                      flexShrink: 0,
+                                                      transform: isHovered ? 'rotate(45deg)' : 'none',
+                                                      transition: 'transform 0.4s ease'
+                                                    }} />
+                                                    <span style={{ fontSize: '12px', color: '#222', fontWeight: '700', lineHeight: '1.1' }}>{item.value}</span>
+                                                  </div>
+                                                ) : (
+                                                  <>
+                                                    <span style={{ 
+                                                      fontSize: '12px', 
+                                                      color: item.type === 'risk' ? (item.value.startsWith('1') ? '#e89528' : '#d9381e') : '#222', 
+                                                      fontWeight: item.type === 'risk' ? '800' : '700' 
+                                                    }}>
+                                                      {item.value}
+                                                    </span>
+                                                    {item.type === 'po' && <ClipboardCheck size={16} color={isHovered ? '#e89528' : '#a3a8b3'} style={{ transition: 'color 0.2s ease, transform 0.2s ease', transform: isHovered ? 'scale(1.15)' : 'none' }} />}
+                                                    {item.type === 'del' && <Truck size={16} color="#e89528" style={{ transition: 'transform 0.2s ease', transform: isHovered ? 'translateX(2px)' : 'none' }} />}
+                                                    {item.type === 'risk' && <AlertTriangle size={16} color={item.value.startsWith('1') ? '#e89528' : '#d9381e'} style={{ transition: 'transform 0.2s ease', transform: isHovered ? 'scale(1.15) rotate(10deg)' : 'none' }} />}
+                                                  </>
+                                                )}
+                                              </div>
+                                            </div>
+                                          );
+                                        })}
                                       </div>
-                                    </div>
-                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '9px 11px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                      <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Purchase Orders</span>
-                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                        <span style={{ fontSize: '12px', color: '#222', fontWeight: '700' }}>32 Open POs</span>
-                                        <ClipboardCheck size={16} color="#a3a8b3" />
-                                      </div>
-                                    </div>
-                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '9px 11px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                      <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Deliveries</span>
-                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                        <span style={{ fontSize: '12px', color: '#222', fontWeight: '700' }}>12 In Transit</span>
-                                        <Truck size={16} color="#e89528" />
-                                      </div>
-                                    </div>
-                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '9px 11px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                      <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Shortage Risk</span>
-                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                        <span style={{ fontSize: '12px', color: '#d9381e', fontWeight: '800' }}>5 At Risk</span>
-                                        <AlertTriangle size={16} color="#d9381e" />
-                                      </div>
-                                    </div>
-                                  </div>
+                                    );
+                                  })()}
                                 </div>
                               </div>
 
@@ -1460,20 +1628,20 @@ const BubbleNetwork = () => {
                                 Real-World Example
                               </h3>
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '13px', fontSize: w < 768 ? '14px' : '16.5px', lineHeight: '1.5', color: '#444', fontWeight: '500' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: w < 768 ? '14px' : '16px', lineHeight: '1.45', color: '#444', fontWeight: '500' }}>
                               <p style={{ margin: 0, textAlign: 'left', fontWeight: '700', color: '#111' }}>
-                                A consumer goods company wants to improve field sales efficiency and increase lead conversions.
+                                A consumer goods company wants to improve field sales efficiency.
                               </p>
                               <p style={{ margin: 0, textAlign: 'left' }}>
-                                Leads were not distributed effectively, activities were inconsistent, and order approvals took too long—resulting in lost opportunities and lower sales productivity.
+                                Siloed leads, inconsistent tracking, and slow approvals caused lost deals and low sales productivity.
                               </p>
                               <p style={{ margin: 0, textAlign: 'left' }}>
-                                With StackLogix Sales Enablement, the company can now:
+                                StackLogix Sales Enablement automates processes and tracks performance:
                               </p>
 
                               {/* Two-Column Checklist & Dashboard Widget layout */}
-                              <div style={{ display: 'flex', flexDirection: w < 768 ? 'column' : 'row', gap: '20px', alignItems: 'center', margin: '8px 0' }}>
-                                <div style={{ flex: '1.25', display: 'flex', flexDirection: 'column', gap: '10px', width: '100%' }}>
+                              <div style={{ display: 'flex', flexDirection: w < 768 ? 'column' : 'row', gap: '16px', alignItems: 'center', margin: '4px 0' }}>
+                                <div style={{ flex: '1.25', display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
                                   {[
                                     "Assign and track leads across regions",
                                     "Plan and record visits, calls, and follow-ups",
@@ -1481,60 +1649,163 @@ const BubbleNetwork = () => {
                                     "Raise orders with pricing and discount controls",
                                     "Approve orders quickly and maintain full visibility"
                                   ].map((text, i) => (
-                                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                                      <CheckCircle2 size={16} color="#e89528" style={{ marginTop: '2px', flexShrink: 0 }} />
-                                      <span style={{ fontSize: '15px', lineHeight: '1.35', color: '#333', fontWeight: '600' }}>{text}</span>
+                                    <div 
+                                      key={i} 
+                                      onMouseEnter={() => setHoveredSalesIdx(i)}
+                                      onMouseLeave={() => setHoveredSalesIdx(null)}
+                                      style={{ 
+                                        display: 'flex', 
+                                        alignItems: 'flex-start', 
+                                        gap: '10px',
+                                        padding: '2px 8px',
+                                        borderRadius: '8px',
+                                        background: hoveredSalesIdx === i ? 'rgba(232, 149, 40, 0.05)' : 'transparent',
+                                        border: '1px solid ' + (hoveredSalesIdx === i ? 'rgba(232, 149, 40, 0.15)' : 'transparent'),
+                                        transform: hoveredSalesIdx === i ? 'translateX(4px)' : 'none',
+                                        boxShadow: hoveredSalesIdx === i ? '0 4px 12px rgba(232, 149, 40, 0.04)' : 'none',
+                                        transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                                        cursor: 'pointer',
+                                        margin: '0 -8px'
+                                      }}
+                                    >
+                                      <CheckCircle2 
+                                        size={16} 
+                                        color="#e89528" 
+                                        style={{ 
+                                          marginTop: '2px', 
+                                          flexShrink: 0, 
+                                          transform: hoveredSalesIdx === i ? 'scale(1.15)' : 'none', 
+                                          transition: 'transform 0.2s ease' 
+                                        }} 
+                                      />
+                                      <span style={{ 
+                                        fontSize: '14.5px', 
+                                        lineHeight: '1.35', 
+                                        color: hoveredSalesIdx === i ? '#e89528' : '#333', 
+                                        fontWeight: '600',
+                                        transition: 'color 0.2s ease',
+                                        textAlign: 'left'
+                                      }}>{text}</span>
                                     </div>
                                   ))}
                                 </div>
 
-                                <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '16px 18px', display: 'flex', flexDirection: 'column', gap: '11px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <span style={{ fontSize: '12.5px', fontWeight: '800', color: '#222', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Sales Overview</span>
-                                  </div>
-                                  <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '5px 0' }} />
-                                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '11px' }}>
-                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                      <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Leads Assigned</span>
-                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
-                                        <span style={{ fontSize: '12.5px', color: '#222', fontWeight: '700' }}>128 Leads</span>
-                                        <Users size={16} color="#e89528" />
-                                      </div>
-                                    </div>
-                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                      <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Pending Approval</span>
-                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                        <span style={{ fontSize: '12.5px', color: '#222', fontWeight: '700' }}>24 Orders</span>
-                                        <ShoppingCart size={16} color="#a3a8b3" />
-                                      </div>
-                                    </div>
-                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                      <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Visits Today</span>
-                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                        <span style={{ fontSize: '12.5px', color: '#222', fontWeight: '700' }}>18 Visits</span>
-                                        <Calendar size={16} color="#e89528" />
-                                      </div>
-                                    </div>
-                                    <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                      <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Conversion Rate</span>
-                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                        <span style={{ fontSize: '12.5px', color: '#e89528', fontWeight: '800' }}>23%</span>
-                                        <TrendingUp size={16} color="#e89528" />
-                                      </div>
+                                <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+                                    <span style={{ fontSize: '11px', fontWeight: '850', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Sales Overview</span>
+                                    <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.03)', padding: '2px', borderRadius: '20px', border: '1px solid rgba(0,0,0,0.04)' }}>
+                                      {['All', 'North', 'South'].map((filt) => (
+                                        <button
+                                          key={filt}
+                                          onClick={() => setSalesFilter(filt)}
+                                          style={{
+                                            border: 'none',
+                                            background: salesFilter === filt ? '#e89528' : 'transparent',
+                                            color: salesFilter === filt ? '#fff' : '#666',
+                                            fontSize: '9.5px',
+                                            fontWeight: '700',
+                                            padding: '3px 8px',
+                                            borderRadius: '15px',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.2s ease',
+                                            boxShadow: salesFilter === filt ? '0 2px 6px rgba(232, 149, 40, 0.25)' : 'none'
+                                          }}
+                                          onMouseEnter={(e) => {
+                                            if (salesFilter !== filt) e.target.style.color = '#e89528';
+                                          }}
+                                          onMouseLeave={(e) => {
+                                            if (salesFilter !== filt) e.target.style.color = '#666';
+                                          }}
+                                        >
+                                          {filt}
+                                        </button>
+                                      ))}
                                     </div>
                                   </div>
+                                  <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '4px 0' }} />
+                                  {(() => {
+                                    const salesData = {
+                                      All: [
+                                        { title: 'Leads Assigned', value: '128 Leads', icon: Users },
+                                        { title: 'Pending Approval', value: '24 Orders', icon: ShoppingCart, isApproval: true },
+                                        { title: 'Visits Today', value: '18 Visits', icon: Calendar },
+                                        { title: 'Conversion Rate', value: '23%', icon: TrendingUp, isHighlight: true }
+                                      ],
+                                      North: [
+                                        { title: 'Leads Assigned', value: '76 Leads', icon: Users },
+                                        { title: 'Pending Approval', value: '14 Orders', icon: ShoppingCart, isApproval: true },
+                                        { title: 'Visits Today', value: '10 Visits', icon: Calendar },
+                                        { title: 'Conversion Rate', value: '21%', icon: TrendingUp, isHighlight: true }
+                                      ],
+                                      South: [
+                                        { title: 'Leads Assigned', value: '52 Leads', icon: Users },
+                                        { title: 'Pending Approval', value: '10 Orders', icon: ShoppingCart, isApproval: true },
+                                        { title: 'Visits Today', value: '8 Visits', icon: Calendar },
+                                        { title: 'Conversion Rate', value: '26%', icon: TrendingUp, isHighlight: true }
+                                      ]
+                                    };
+                                    const currentData = salesData[salesFilter];
+                                    return (
+                                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                                        {currentData.map((item, idx) => {
+                                          const IconComponent = item.icon;
+                                          const isHovered = hoveredSalesWidgetIdx === idx;
+                                          return (
+                                            <div 
+                                              key={item.title}
+                                              onMouseEnter={() => setHoveredSalesWidgetIdx(idx)}
+                                              onMouseLeave={() => setHoveredSalesWidgetIdx(null)}
+                                              style={{ 
+                                                background: '#fff', 
+                                                border: '1px solid ' + (isHovered ? '#e89528' : 'rgba(0,0,0,0.04)'), 
+                                                borderRadius: '8px', 
+                                                padding: '9px 11px', 
+                                                display: 'flex', 
+                                                flexDirection: 'column', 
+                                                gap: '4px', 
+                                                boxShadow: isHovered ? '0 4px 12px rgba(232, 149, 40, 0.08)' : '0 2px 4px rgba(0,0,0,0.01)',
+                                                transform: isHovered ? 'translateY(-2px)' : 'none',
+                                                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                                                cursor: 'pointer'
+                                              }}
+                                            >
+                                              <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>{item.title}</span>
+                                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                                                <span style={{ 
+                                                  fontSize: '12px', 
+                                                  color: item.isHighlight ? '#e89528' : '#222', 
+                                                  fontWeight: item.isHighlight ? '800' : '700' 
+                                                }}>
+                                                  {item.value}
+                                                </span>
+                                                <IconComponent 
+                                                  size={16} 
+                                                  color={item.isHighlight ? '#e89528' : (item.isApproval ? '#a3a8b3' : '#e89528')} 
+                                                  style={{
+                                                    transition: 'all 0.2s ease',
+                                                    transform: isHovered ? (item.icon === TrendingUp ? 'scale(1.15) translateY(-2px)' : 'scale(1.15)') : 'none'
+                                                  }}
+                                                />
+                                              </div>
+                                            </div>
+                                          );
+                                        })}
+                                      </div>
+                                    );
+                                  })()}
                                 </div>
                               </div>
 
                               <p style={{ margin: 0, textAlign: 'left' }}>
-                                Sales representatives can quickly log visit details, capture customer needs, check lead priorities, and send orders for approval instantly from the field.
+                                Representatives log details, check lead priorities, and submit orders for approval from the field.
                               </p>
-                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '8px' }}>
-                                <Trophy size={24} color="#e89528" style={{ flexShrink: 0 }} />
-                                <span style={{ fontSize: '16px', fontWeight: '600', color: '#a35b12', lineHeight: '1.4', textAlign: 'left' }}>
-                                  Result: Better lead conversion, faster order approvals, improved productivity, and stronger customer relationships.
+                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '10px 14px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '4px' }}>
+                                <Trophy size={20} color="#e89528" style={{ flexShrink: 0 }} />
+                                <span style={{ fontSize: '14.5px', fontWeight: '600', color: '#a35b12', lineHeight: '1.35', textAlign: 'left' }}>
+                                  Result: Better lead conversion, faster order approvals, and stronger relationships.
                                 </span>
                               </div>
+
                             </div>
                           </div>
                         </div>
@@ -1694,84 +1965,187 @@ const BubbleNetwork = () => {
                                 Real-World Example
                               </h3>
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: w < 768 ? '14px' : '16.5px', lineHeight: '1.5', color: '#444', fontWeight: '500' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: w < 768 ? '14px' : '15.5px', lineHeight: '1.45', color: '#444', fontWeight: '500' }}>
                               <div>
-                                <p style={{ margin: '0 0 4px 0', textAlign: 'left', fontWeight: '700', color: '#111', fontSize: '17px' }}>
+                                <p style={{ margin: '0 0 2px 0', textAlign: 'left', fontWeight: '700', color: '#111', fontSize: '16px' }}>
                                   The Challenge:
                                 </p>
                                 <p style={{ margin: 0, textAlign: 'left' }}>
-                                  A jewellery company noticed website traffic grew by 18% and online engagement rose by 22%, but sales conversions dropped by 12%. Manually collecting, cleaning, and comparing data across CRM, website analytics, and sales sheets was too slow, delaying corrective business actions.
+                                  Website traffic grew by 18%, but sales conversions dropped by 12%. Manual data collection across CRM and web analytics was too slow, delaying corrective actions.
                                 </p>
                               </div>
 
                               <div>
-                                <p style={{ margin: '0 0 4px 0', textAlign: 'left', fontWeight: '700', color: '#111', fontSize: '17px' }}>
+                                <p style={{ margin: '0 0 2px 0', textAlign: 'left', fontWeight: '700', color: '#111', fontSize: '16px' }}>
                                   How StackLogix Helped:
                                 </p>
-                                <p style={{ margin: '0 0 8px 0', textAlign: 'left' }}>
-                                  AI Monitoring automatically flagged the conversion drop. Analysts used cross-functional data investigation to drill down and discovered that:
+                                <p style={{ margin: 0, textAlign: 'left' }}>
+                                  AI Monitoring flagged the drop, allowing analysts to drill down and discover:
                                 </p>
                                 
                                 {/* Two-Column Checklist & Dashboard Widget layout */}
-                                <div style={{ display: 'flex', flexDirection: w < 768 ? 'column' : 'row', gap: '20px', alignItems: 'center', margin: '8px 0' }}>
-                                  <div style={{ flex: '1.25', display: 'flex', flexDirection: 'column', gap: '10px', width: '100%' }}>
+                                <div style={{ display: 'flex', flexDirection: w < 768 ? 'column' : 'row', gap: '16px', alignItems: 'center', margin: '4px 0' }}>
+                                  <div style={{ flex: '1.25', display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
                                     {[
                                       "A newly launched category had high traffic but low conversions",
                                       "Pricing was set higher than competing market alternatives",
                                       "Follow-ups on potential online leads were significantly delayed"
                                     ].map((text, i) => (
-                                      <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                                        <CheckCircle2 size={16} color="#e89528" style={{ marginTop: '2px', flexShrink: 0 }} />
-                                        <span style={{ fontSize: '15px', lineHeight: '1.35', color: '#333', fontWeight: '600', textAlign: 'left' }}>{text}</span>
+                                      <div 
+                                        key={i} 
+                                        onMouseEnter={() => setHoveredAnalyticsIdx(i)}
+                                        onMouseLeave={() => setHoveredAnalyticsIdx(null)}
+                                        style={{ 
+                                          display: 'flex', 
+                                          alignItems: 'flex-start', 
+                                          gap: '10px',
+                                          padding: '2px 8px',
+                                          borderRadius: '8px',
+                                          background: hoveredAnalyticsIdx === i ? 'rgba(232, 149, 40, 0.05)' : 'transparent',
+                                          border: '1px solid ' + (hoveredAnalyticsIdx === i ? 'rgba(232, 149, 40, 0.15)' : 'transparent'),
+                                          transform: hoveredAnalyticsIdx === i ? 'translateX(4px)' : 'none',
+                                          boxShadow: hoveredAnalyticsIdx === i ? '0 4px 12px rgba(232, 149, 40, 0.04)' : 'none',
+                                          transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                                          cursor: 'pointer',
+                                          margin: '0 -8px'
+                                        }}
+                                      >
+                                        <CheckCircle2 
+                                          size={16} 
+                                          color="#e89528" 
+                                          style={{ 
+                                            marginTop: '2px', 
+                                            flexShrink: 0, 
+                                            transform: hoveredAnalyticsIdx === i ? 'scale(1.15)' : 'none', 
+                                            transition: 'transform 0.2s ease' 
+                                          }} 
+                                        />
+                                        <span style={{ 
+                                          fontSize: '14.5px', 
+                                          lineHeight: '1.35', 
+                                          color: hoveredAnalyticsIdx === i ? '#e89528' : '#333', 
+                                          fontWeight: '600',
+                                          transition: 'color 0.2s ease',
+                                          textAlign: 'left'
+                                        }}>{text}</span>
                                       </div>
                                     ))}
                                   </div>
 
-                                  <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '16px 18px', display: 'flex', flexDirection: 'column', gap: '11px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                      <span style={{ fontSize: '12.5px', fontWeight: '800', color: '#222', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Analytics & Drifts</span>
-                                    </div>
-                                    <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '5px 0' }} />
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '11px' }}>
-                                      <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                        <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Drifts Detected</span>
-                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
-                                          <span style={{ fontSize: '12.5px', color: '#d9381e', fontWeight: '800' }}>1 Active</span>
-                                          <AlertTriangle size={16} color="#d9381e" />
-                                        </div>
-                                      </div>
-                                      <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                        <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Data Quality</span>
-                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                          <span style={{ fontSize: '12.5px', color: '#222', fontWeight: '700' }}>99.8%</span>
-                                          <ShieldCheck size={16} color="#e89528" />
-                                        </div>
-                                      </div>
-                                      <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                        <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Auto Reports</span>
-                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                          <span style={{ fontSize: '12.5px', color: '#222', fontWeight: '700' }}>14 Active</span>
-                                          <ClipboardCheck size={16} color="#a3a8b3" />
-                                        </div>
-                                      </div>
-                                      <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                        <span style={{ fontSize: '10.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Insight Accuracy</span>
-                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                          <span style={{ fontSize: '12.5px', color: '#e89528', fontWeight: '800' }}>94.5%</span>
-                                          <TrendingUp size={16} color="#e89528" />
-                                        </div>
+                                  <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+                                      <span style={{ fontSize: '11px', fontWeight: '850', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Analytics & Drifts</span>
+                                      <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.03)', padding: '2px', borderRadius: '20px', border: '1px solid rgba(0,0,0,0.04)' }}>
+                                        {['All', 'Website', 'Sales'].map((filt) => (
+                                          <button
+                                            key={filt}
+                                            onClick={() => setAnalyticsFilter(filt)}
+                                            style={{
+                                              border: 'none',
+                                              background: analyticsFilter === filt ? '#e89528' : 'transparent',
+                                              color: analyticsFilter === filt ? '#fff' : '#666',
+                                              fontSize: '9.5px',
+                                              fontWeight: '700',
+                                              padding: '3px 8px',
+                                              borderRadius: '15px',
+                                              cursor: 'pointer',
+                                              transition: 'all 0.2s ease',
+                                              boxShadow: analyticsFilter === filt ? '0 2px 6px rgba(232, 149, 40, 0.25)' : 'none'
+                                            }}
+                                            onMouseEnter={(e) => {
+                                              if (analyticsFilter !== filt) e.target.style.color = '#e89528';
+                                            }}
+                                            onMouseLeave={(e) => {
+                                              if (analyticsFilter !== filt) e.target.style.color = '#666';
+                                            }}
+                                          >
+                                            {filt}
+                                          </button>
+                                        ))}
                                       </div>
                                     </div>
+                                    <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '4px 0' }} />
+                                    {(() => {
+                                      const analyticsData = {
+                                        All: [
+                                          { title: 'Drifts Detected', value: '1 Active', icon: AlertTriangle, isRisk: true },
+                                          { title: 'Data Quality', value: '99.8%', icon: ShieldCheck },
+                                          { title: 'Auto Reports', value: '14 Active', icon: ClipboardCheck, isReport: true },
+                                          { title: 'Insight Accuracy', value: '94.5%', icon: TrendingUp, isHighlight: true }
+                                        ],
+                                        Website: [
+                                          { title: 'Drifts Detected', value: '0 Active', icon: AlertTriangle, isRisk: false },
+                                          { title: 'Data Quality', value: '99.6%', icon: ShieldCheck },
+                                          { title: 'Auto Reports', value: '8 Active', icon: ClipboardCheck, isReport: true },
+                                          { title: 'Insight Accuracy', value: '93.1%', icon: TrendingUp, isHighlight: true }
+                                        ],
+                                        Sales: [
+                                          { title: 'Drifts Detected', value: '1 Active', icon: AlertTriangle, isRisk: true },
+                                          { title: 'Data Quality', value: '99.9%', icon: ShieldCheck },
+                                          { title: 'Auto Reports', value: '6 Active', icon: ClipboardCheck, isReport: true },
+                                          { title: 'Insight Accuracy', value: '96.2%', icon: TrendingUp, isHighlight: true }
+                                        ]
+                                      };
+                                      const currentData = analyticsData[analyticsFilter];
+                                      return (
+                                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                                          {currentData.map((item, idx) => {
+                                            const IconComponent = item.icon;
+                                            const isHovered = hoveredAnalyticsWidgetIdx === idx;
+                                            return (
+                                              <div 
+                                                key={item.title}
+                                                onMouseEnter={() => setHoveredAnalyticsWidgetIdx(idx)}
+                                                onMouseLeave={() => setHoveredAnalyticsWidgetIdx(null)}
+                                                style={{ 
+                                                  background: '#fff', 
+                                                  border: '1px solid ' + (isHovered ? '#e89528' : 'rgba(0,0,0,0.04)'), 
+                                                  borderRadius: '8px', 
+                                                  padding: '9px 11px', 
+                                                  display: 'flex', 
+                                                  flexDirection: 'column', 
+                                                  gap: '4px', 
+                                                  boxShadow: isHovered ? '0 4px 12px rgba(232, 149, 40, 0.08)' : '0 2px 4px rgba(0,0,0,0.01)',
+                                                  transform: isHovered ? 'translateY(-2px)' : 'none',
+                                                  transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                                                  cursor: 'pointer'
+                                                }}
+                                              >
+                                                <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>{item.title}</span>
+                                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                                                  <span style={{ 
+                                                    fontSize: '12px', 
+                                                    color: item.isRisk ? '#d9381e' : (item.isHighlight ? '#e89528' : '#222'), 
+                                                    fontWeight: (item.isRisk || item.isHighlight) ? '800' : '700' 
+                                                  }}>
+                                                    {item.value}
+                                                  </span>
+                                                  <IconComponent 
+                                                    size={16} 
+                                                    color={item.isRisk ? '#d9381e' : (item.isHighlight ? '#e89528' : (item.isReport ? '#a3a8b3' : '#e89528'))} 
+                                                    style={{
+                                                      transition: 'all 0.2s ease',
+                                                      transform: isHovered ? (item.icon === TrendingUp ? 'scale(1.15) translateY(-2px)' : 'scale(1.15)') : 'none'
+                                                    }}
+                                                  />
+                                                </div>
+                                              </div>
+                                            );
+                                          })}
+                                        </div>
+                                      );
+                                    })()}
                                   </div>
                                 </div>
                               </div>
 
-                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '16px 20px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px' }}>
-                                <Trophy size={26} color="#e89528" style={{ flexShrink: 0 }} />
-                                <span style={{ fontSize: '16.5px', fontWeight: '600', color: '#a35b12', lineHeight: '1.4', textAlign: 'left' }}>
-                                  Result: Anomaly resolved in hours instead of days. By adjusting pricing and accelerating team follow-ups, the company avoided conversion loss and made smarter, data-driven decisions.
+                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '10px 14px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '4px' }}>
+                                <Trophy size={20} color="#e89528" style={{ flexShrink: 0 }} />
+                                <span style={{ fontSize: '14.5px', fontWeight: '600', color: '#a35b12', lineHeight: '1.35', textAlign: 'left' }}>
+                                  Result: Anomaly resolved in hours, preventing loss and enabling data-driven decisions.
                                 </span>
                               </div>
+
                             </div>
                           </div>
                         </div>
@@ -1904,37 +2278,45 @@ const BubbleNetwork = () => {
                         flexDirection: w < 768 ? 'column' : 'row' 
                       }}
                     >
-                      {w >= 768 && (
-                        <div style={{ flex: '1', padding: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <div style={{ 
-                            width: '100%', 
-                            height: (sub.id === 'intelligent-dashboard' || sub.id === 'lead-assignments' || sub.id === 'field-sales' || sub.id === 'order-fulfillment' || sub.id === 'procurement-inventory' || sub.id === 'raw-materials' || sub.id === 'invoicing-vendor-management') ? 'auto' : '100%',
-                            aspectRatio: sub.id === 'intelligent-dashboard' ? '1635 / 1519' : 
-                                         (sub.id === 'lead-assignments' ? '1769 / 1502' : 
-                                         (sub.id === 'field-sales' ? '1607 / 1414' : 
-                                         (sub.id === 'order-fulfillment' ? '1984 / 1448' : 
-                                         (sub.id === 'procurement-inventory' ? '1994 / 1396' : 
-                                         (sub.id === 'raw-materials' ? '1936 / 1406' : 
-                                         (sub.id === 'invoicing-vendor-management' ? '815 / 720' : 'auto')))))),
-                            maxHeight: '100%',
-                            borderRadius: '16px', 
-                            backgroundImage: `url(${
-                              sub.id === 'intelligent-dashboard' ? '/intelligent_lead_assignment.png' : 
-                              (sub.id === 'lead-assignments' ? '/field_sales_management.png' : 
-                              (sub.id === 'field-sales' ? '/ai_sales_monitoring.png' : 
-                              (sub.id === 'order-fulfillment' ? '/order_fulfillment.png' : 
-                              (sub.id === 'procurement-inventory' ? '/procurement_inventory.png' : 
-                              (sub.id === 'raw-materials' ? '/raw_materials.png' : 
-                              (sub.id === 'invoicing-vendor-management' ? '/invoicing_vendor_management.png' : '/map-bg.png'))))))
-                            })`, 
-                            backgroundSize: (sub.id === 'intelligent-dashboard' || sub.id === 'lead-assignments' || sub.id === 'field-sales' || sub.id === 'order-fulfillment' || sub.id === 'procurement-inventory' || sub.id === 'raw-materials' || sub.id === 'invoicing-vendor-management') ? 'contain' : 'cover', 
-                            backgroundPosition: 'center', 
-                            backgroundRepeat: 'no-repeat',
-                            backgroundColor: (sub.id === 'intelligent-dashboard' || sub.id === 'lead-assignments' || sub.id === 'field-sales' || sub.id === 'order-fulfillment' || sub.id === 'procurement-inventory' || sub.id === 'raw-materials' || sub.id === 'invoicing-vendor-management') ? '#fff' : 'transparent',
-                            boxShadow: '0 20px 40px rgba(0,0,0,0.1)' 
-                          }} />
-                        </div>
-                      )}
+                      {w >= 768 && (() => {
+                        const imageConfig = {
+                          'intelligent-dashboard': { src: '/intelligent_lead_assignment.png', aspect: '1635 / 1519' },
+                          'lead-assignments': { src: '/field_sales_management.png', aspect: '1769 / 1502' },
+                          'field-sales': { src: '/ai_sales_monitoring.png', aspect: '1607 / 1414' },
+                          'order-fulfillment': { src: '/order_fulfillment.png', aspect: '1984 / 1448' },
+                          'procurement-inventory': { src: '/procurement_inventory.png', aspect: '1994 / 1396' },
+                          'raw-materials': { src: '/raw_materials.png', aspect: '1936 / 1406' },
+                          'invoicing-vendor-management': { src: '/invoicing_vendor_management.png', aspect: '815 / 720' },
+                          'advanced-ai-monitoring': { src: '/advanced_ai_monitoring.png', aspect: '1203 / 859' },
+                          'command-center': { src: '/command_center.png', aspect: '1203 / 910' },
+                          'analyst-audit-trails': { src: '/audit_trail.png', aspect: '1203 / 929' },
+                          'analyst-command-center': { src: '/root_cause_analysis.png', aspect: '1203 / 1008' },
+                          'analyst-ai-monitoring': { src: '/ai_insight_engine.png', aspect: '1203 / 1019' },
+                          'analyst-automated-reports': { src: '/business_intelligence.png', aspect: '1203 / 768' }
+                        };
+                        const config = imageConfig[sub.id];
+                        const isContained = !!config;
+                        const imageSrc = config ? config.src : '/map-bg.png';
+                        const aspect = config ? config.aspect : 'auto';
+
+                        return (
+                          <div style={{ flex: '1', padding: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <div style={{ 
+                              width: '100%', 
+                              height: isContained ? 'auto' : '100%',
+                              aspectRatio: aspect,
+                              maxHeight: '100%',
+                              borderRadius: '16px', 
+                              backgroundImage: `url(${imageSrc})`, 
+                              backgroundSize: isContained ? 'contain' : 'cover', 
+                              backgroundPosition: 'center', 
+                              backgroundRepeat: 'no-repeat',
+                              backgroundColor: isContained ? '#fff' : 'transparent',
+                              boxShadow: '0 20px 40px rgba(0,0,0,0.1)' 
+                            }} />
+                          </div>
+                        );
+                      })()}
 
                       <div style={{ flex: '1', padding: w < 768 ? '30px 20px' : '40px 60px 40px 0', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
                         {subComponentContent[sub.id] ? (() => {
