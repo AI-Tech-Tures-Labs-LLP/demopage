@@ -276,6 +276,8 @@ const BubbleNetwork = () => {
   const [hoveredWidgetIdx, setHoveredWidgetIdx] = useState(null);
   const [salesFilter, setSalesFilter] = useState('All');
   const [analyticsFilter, setAnalyticsFilter] = useState('All');
+  const [hoveredSalesWidgetIdx, setHoveredSalesWidgetIdx] = useState(null);
+  const [hoveredAnalyticsWidgetIdx, setHoveredAnalyticsWidgetIdx] = useState(null);
 
   useEffect(() => {
     let timeoutId;
@@ -1728,36 +1730,44 @@ const BubbleNetwork = () => {
                                        Retail: { leads: '86 Leads', pending: '15 Orders', visits: '13 Visits', rate: '25%' }
                                      };
                                      const currentData = salesData[salesFilter];
+                                     const items = [
+                                       { title: 'Leads Assigned', value: currentData.leads, icon: Users, color: '#e89528' },
+                                       { title: 'Pending Approval', value: currentData.pending, icon: ShoppingCart, color: '#a3a8b3' },
+                                       { title: 'Visits Today', value: currentData.visits, icon: Calendar, color: '#e89528' },
+                                       { title: 'Conversion Rate', value: currentData.rate, icon: TrendingUp, color: '#e89528', isRate: true }
+                                     ];
                                      return (
                                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '9px' }}>
-                                         <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                           <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Leads Assigned</span>
-                                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
-                                             <span style={{ fontSize: '11.5px', color: '#222', fontWeight: '700' }}>{currentData.leads}</span>
-                                             <Users size={14} color="#e89528" />
-                                           </div>
-                                         </div>
-                                         <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                           <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Pending Approval</span>
-                                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                             <span style={{ fontSize: '11.5px', color: '#222', fontWeight: '700' }}>{currentData.pending}</span>
-                                             <ShoppingCart size={14} color="#a3a8b3" />
-                                           </div>
-                                         </div>
-                                         <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                           <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Visits Today</span>
-                                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                             <span style={{ fontSize: '11.5px', color: '#222', fontWeight: '700' }}>{currentData.visits}</span>
-                                             <Calendar size={14} color="#e89528" />
-                                           </div>
-                                         </div>
-                                         <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                           <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Conversion Rate</span>
-                                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                             <span style={{ fontSize: '11.5px', color: '#e89528', fontWeight: '800' }}>{currentData.rate}</span>
-                                             <TrendingUp size={14} color="#e89528" />
-                                           </div>
-                                         </div>
+                                         {items.map((item, idx) => {
+                                           const Icon = item.icon;
+                                           const isHovered = hoveredSalesWidgetIdx === idx;
+                                           return (
+                                             <div 
+                                               key={item.title}
+                                               onMouseEnter={() => setHoveredSalesWidgetIdx(idx)}
+                                               onMouseLeave={() => setHoveredSalesWidgetIdx(null)}
+                                               style={{ 
+                                                 background: '#fff', 
+                                                 border: '1.5px solid ' + (isHovered ? '#e89528' : 'rgba(0,0,0,0.04)'), 
+                                                 borderRadius: '8px', 
+                                                 padding: '8px 10px', 
+                                                 display: 'flex', 
+                                                 flexDirection: 'column', 
+                                                 gap: '2px', 
+                                                 boxShadow: isHovered ? '0 4px 12px rgba(232, 149, 40, 0.08)' : '0 2px 4px rgba(0,0,0,0.01)',
+                                                 transform: isHovered ? 'translateY(-2px)' : 'none',
+                                                 transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                                                 cursor: 'pointer'
+                                               }}
+                                             >
+                                               <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>{item.title}</span>
+                                               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
+                                                 <span style={{ fontSize: '11.5px', color: item.isRate ? '#e89528' : '#222', fontWeight: item.isRate ? '800' : '700' }}>{item.value}</span>
+                                                 <Icon size={14} color={isHovered ? '#e89528' : item.color} style={{ transition: 'color 0.2s ease, transform 0.2s ease', transform: isHovered ? 'scale(1.15)' : 'none' }} />
+                                               </div>
+                                             </div>
+                                           );
+                                         })}
                                        </div>
                                      );
                                    })()}
@@ -2039,42 +2049,58 @@ const BubbleNetwork = () => {
                                         'In-Store': { drifts: '0 Active', quality: '99.9%', reports: '6 Active', accuracy: '93.8%', isDrift: false }
                                       };
                                       const currentData = analyticsData[analyticsFilter];
-                                      return (
-                                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '9px' }}>
-                                          <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                            <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Drifts Detected</span>
-                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
-                                              <span style={{ fontSize: '11.5px', color: currentData.isDrift ? '#d9381e' : '#2e7d32', fontWeight: '800' }}>{currentData.drifts}</span>
-                                              {currentData.isDrift ? (
-                                                <AlertTriangle size={14} color="#d9381e" />
-                                              ) : (
-                                                <CheckCircle2 size={14} color="#2e7d32" />
-                                              )}
-                                            </div>
-                                          </div>
-                                          <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                            <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Data Quality</span>
-                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                              <span style={{ fontSize: '11.5px', color: '#222', fontWeight: '700' }}>{currentData.quality}</span>
-                                              <ShieldCheck size={14} color="#e89528" />
-                                            </div>
-                                          </div>
-                                          <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                            <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Auto Reports</span>
-                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                              <span style={{ fontSize: '11.5px', color: '#222', fontWeight: '700' }}>{currentData.reports}</span>
-                                              <ClipboardCheck size={14} color="#a3a8b3" />
-                                            </div>
-                                          </div>
-                                          <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
-                                            <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Insight Accuracy</span>
-                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                              <span style={{ fontSize: '11.5px', color: '#e89528', fontWeight: '800' }}>{currentData.accuracy}</span>
-                                              <TrendingUp size={14} color="#e89528" />
-                                            </div>
-                                          </div>
-                                        </div>
-                                      );
+                                      const items = [
+                                         { title: 'Drifts Detected', value: currentData.drifts, isDriftVal: true },
+                                         { title: 'Data Quality', value: currentData.quality, icon: ShieldCheck, color: '#e89528' },
+                                         { title: 'Auto Reports', value: currentData.reports, icon: ClipboardCheck, color: '#a3a8b3' },
+                                         { title: 'Insight Accuracy', value: currentData.accuracy, icon: TrendingUp, color: '#e89528', isRate: true }
+                                       ];
+                                       return (
+                                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '9px' }}>
+                                           {items.map((item, idx) => {
+                                             const isHovered = hoveredAnalyticsWidgetIdx === idx;
+                                             return (
+                                               <div 
+                                                 key={item.title}
+                                                 onMouseEnter={() => setHoveredAnalyticsWidgetIdx(idx)}
+                                                 onMouseLeave={() => setHoveredAnalyticsWidgetIdx(null)}
+                                                 style={{ 
+                                                   background: '#fff', 
+                                                   border: '1.5px solid ' + (isHovered ? '#e89528' : 'rgba(0,0,0,0.04)'), 
+                                                   borderRadius: '8px', 
+                                                   padding: '8px 10px', 
+                                                   display: 'flex', 
+                                                   flexDirection: 'column', 
+                                                   gap: '2px', 
+                                                   boxShadow: isHovered ? '0 4px 12px rgba(232, 149, 40, 0.08)' : '0 2px 4px rgba(0,0,0,0.01)',
+                                                   transform: isHovered ? 'translateY(-2px)' : 'none',
+                                                   transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                                                   cursor: 'pointer'
+                                                 }}
+                                               >
+                                                 <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>{item.title}</span>
+                                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
+                                                   <span style={{ 
+                                                     fontSize: '11.5px', 
+                                                     color: item.isDriftVal ? (currentData.isDrift ? '#d9381e' : '#2e7d32') : (item.isRate ? '#e89528' : '#222'), 
+                                                     fontWeight: (item.isDriftVal || item.isRate) ? '800' : '700' 
+                                                   }}>{item.value}</span>
+                                                   {item.isDriftVal ? (
+                                                     currentData.isDrift ? (
+                                                       <AlertTriangle size={14} color={isHovered ? '#e89528' : '#d9381e'} style={{ transition: 'color 0.2s ease, transform 0.2s ease', transform: isHovered ? 'scale(1.15) rotate(10deg)' : 'none' }} />
+                                                     ) : (
+                                                       <CheckCircle2 size={14} color={isHovered ? '#e89528' : '#2e7d32'} style={{ transition: 'color 0.2s ease, transform 0.2s ease', transform: isHovered ? 'scale(1.15)' : 'none' }} />
+                                                     )
+                                                   ) : (() => {
+                                                     const Icon = item.icon;
+                                                     return <Icon size={14} color={isHovered ? '#e89528' : item.color} style={{ transition: 'color 0.2s ease, transform 0.2s ease', transform: isHovered ? 'scale(1.15)' : 'none' }} />;
+                                                   })()}
+                                                 </div>
+                                               </div>
+                                             );
+                                           })}
+                                         </div>
+                                       );
                                     })()}
                                   </div>
                                 </div>
