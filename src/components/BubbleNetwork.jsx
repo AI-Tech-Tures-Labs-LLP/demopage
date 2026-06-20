@@ -276,8 +276,6 @@ const BubbleNetwork = () => {
   const [hoveredWidgetIdx, setHoveredWidgetIdx] = useState(null);
   const [salesFilter, setSalesFilter] = useState('All');
   const [analyticsFilter, setAnalyticsFilter] = useState('All');
-  const [hoveredSalesWidgetIdx, setHoveredSalesWidgetIdx] = useState(null);
-  const [hoveredAnalyticsWidgetIdx, setHoveredAnalyticsWidgetIdx] = useState(null);
 
   useEffect(() => {
     let timeoutId;
@@ -448,8 +446,8 @@ const BubbleNetwork = () => {
 
     if (type === 'root') {
       if (focusedNode === 'root') {
-        const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1350, w * 0.73));
-        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
+        const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1500, w * 0.65));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(850, h * 0.86));
         return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       }
       return { width: 240 * rs, height: 240 * rs, scale: 0.35, opacity: 0.6, zIndex: 5 };
@@ -458,12 +456,12 @@ const BubbleNetwork = () => {
     if (nodeId === focusedNode) {
       const isCat = bubbleData[nodeId] !== undefined;
       if (isCat) {
-        const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1350, w * 0.73));
-        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
+        const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1500, w * 0.65));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(850, h * 0.86));
         return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       } else {
-        const width = w < 768 ? R(w * 0.92) : w < 1024 ? R(w * 0.85) : R(Math.min(1350, w * 0.9));
-        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
+        const width = w < 768 ? R(w * 0.92) : w < 1024 ? R(w * 0.85) : R(Math.min(1600, w * 0.78));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(850, h * 0.86));
         return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       }
     }
@@ -673,107 +671,135 @@ const BubbleNetwork = () => {
                 display: 'flex', 
                 flexDirection: 'column' 
               }}
-            >
-              <div style={{ flex: '1', padding: w < 768 ? '16px 12px' : '32px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: w < 768 ? 'auto' : 'hidden', gap: w < 768 ? '16px' : '24px' }}>
-                {/* Title & Introduction */}
-                <div style={{ marginBottom: w < 768 ? '12px' : '0px' }}>
-                  <h2 style={{ fontSize: w < 768 ? '26px' : '44px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
-                    What is StackLogix?
-                  </h2>
-                  <p style={{ fontSize: w < 768 ? '13px' : '17px', color: '#444', lineHeight: '1.5', marginTop: '8px', fontWeight: '500', textAlign: 'left', margin: '8px 0 0 0' }}>
-                    A fully customizable platform that unifies and optimizes every stage of the business lifecycle — eliminating data silos and creating a single source of truth across the organization.
-                  </p>
-                </div>
+            >              {(() => {
+                const boxW = getSize('root').width;
+                const boxH = getSize('root').height;
+                const baseW = 1350;
+                const baseH = 750;
+                const scale = w >= 1024 ? Math.min(boxW / baseW, boxH / baseH) : 1;
+                return (
+                  <div style={w >= 1024 ? {
+                    width: `${baseW}px`,
+                    height: `${baseH}px`,
+                    position: 'absolute',
+                    left: '50%',
+                    top: '50%',
+                    transform: `translate(-50%, -50%) scale(${scale})`,
+                    transformOrigin: 'center center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: '32px 48px',
+                    boxSizing: 'border-box'
+                  } : {
+                    flex: '1',
+                    padding: w < 768 ? '16px 12px' : '32px 48px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-start',
+                    overflowY: w < 768 ? 'auto' : 'hidden',
+                    gap: w < 768 ? '16px' : '24px'
+                  }}>
+                    {/* Title & Introduction */}
+                    <div style={{ marginBottom: w < 768 ? '12px' : '0px' }}>
+                      <h2 style={{ fontSize: w < 768 ? '26px' : '44px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
+                        What is StackLogix?
+                      </h2>
+                      <p style={{ fontSize: w < 768 ? '13px' : '17px', color: '#444', lineHeight: '1.5', marginTop: '8px', fontWeight: '500', textAlign: 'left', margin: '8px 0 0 0' }}>
+                        A fully customizable platform that unifies and optimizes every stage of the business lifecycle — eliminating data silos and creating a single source of truth across the organization.
+                      </p>
+                    </div>
 
-                {/* Section 1: One system, every source of truth */}
-                <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
-                    One system, every source of truth
-                  </h3>
-                  <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
-                    Integrates seamlessly with the tools you already run, then connects them into a single layer.
-                  </p>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: w < 768 ? '6px' : '12px', flexWrap: 'wrap' }}>
-                    {['ERP', 'CRM', 'Accounting', 'Manufacturing', 'Inventory'].map((source, index) => (
-                      <React.Fragment key={source}>
-                        <div style={{ background: '#fdfbf2', border: '1px solid rgba(232, 149, 40, 0.35)', color: '#a35b12', padding: w < 768 ? '4px 8px' : '6px 14px', borderRadius: '20px', fontSize: w < 768 ? '10px' : '13px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '5px', boxShadow: '0 2px 5px rgba(232,149,40,0.04)', flexShrink: 0 }}>
-                          {source === 'ERP' && <Database size={w < 768 ? 11 : 13} />}
-                          {source === 'CRM' && <Users size={w < 768 ? 11 : 13} />}
-                          {source === 'Accounting' && <BarChart3 size={w < 768 ? 11 : 13} />}
-                          {source === 'Manufacturing' && <Package size={w < 768 ? 11 : 13} />}
-                          {source === 'Inventory' && <Layers size={w < 768 ? 11 : 13} />}
-                          {source}
+                    {/* Section 1: One system, every source of truth */}
+                    <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                      <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
+                        One system, every source of truth
+                      </h3>
+                      <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
+                        Integrates seamlessly with the tools you already run, then connects them into a single layer.
+                      </p>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: w < 768 ? '6px' : '12px', flexWrap: 'wrap' }}>
+                        {['ERP', 'CRM', 'Accounting', 'Manufacturing', 'Inventory'].map((source, index) => (
+                          <React.Fragment key={source}>
+                            <div style={{ background: '#fdfbf2', border: '1px solid rgba(232, 149, 40, 0.35)', color: '#a35b12', padding: w < 768 ? '4px 8px' : '6px 14px', borderRadius: '20px', fontSize: w < 768 ? '10px' : '13px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '5px', boxShadow: '0 2px 5px rgba(232,149,40,0.04)', flexShrink: 0 }}>
+                              {source === 'ERP' && <Database size={w < 768 ? 11 : 13} />}
+                              {source === 'CRM' && <Users size={w < 768 ? 11 : 13} />}
+                              {source === 'Accounting' && <BarChart3 size={w < 768 ? 11 : 13} />}
+                              {source === 'Manufacturing' && <Package size={w < 768 ? 11 : 13} />}
+                              {source === 'Inventory' && <Layers size={w < 768 ? 11 : 13} />}
+                              {source}
+                            </div>
+                            {index < 5 && <ArrowRight size={w < 768 ? 12 : 16} color="#d68022" style={{ flexShrink: 0 }} />}
+                          </React.Fragment>
+                        ))}
+                        <div style={{ background: '#d68022', color: '#fff', padding: w < 768 ? '5px 10px' : '7px 16px', borderRadius: '20px', fontSize: w < 768 ? '10px' : '13px', fontWeight: '700', boxShadow: '0 4px 12px rgba(214, 128, 34, 0.25)', display: 'flex', alignItems: 'center', gap: '5px', flexShrink: 0 }}>
+                          <ShieldCheck size={w < 768 ? 11 : 13} />
+                          Single source of truth
                         </div>
-                        {index < 5 && <ArrowRight size={w < 768 ? 12 : 16} color="#d68022" style={{ flexShrink: 0 }} />}
-                      </React.Fragment>
-                    ))}
-                    <div style={{ background: '#d68022', color: '#fff', padding: w < 768 ? '5px 10px' : '7px 16px', borderRadius: '20px', fontSize: w < 768 ? '10px' : '13px', fontWeight: '700', boxShadow: '0 4px 12px rgba(214, 128, 34, 0.25)', display: 'flex', alignItems: 'center', gap: '5px', flexShrink: 0 }}>
-                      <ShieldCheck size={w < 768 ? 11 : 13} />
-                      Single source of truth
+                      </div>
+                    </div>
+
+                    {/* Section 2: Modular by design */}
+                    <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                      <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
+                        Modular by design
+                      </h3>
+                      <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
+                        Purpose-built for the jewellery industry, adaptable to any enterprise workflow. Choose only the modules you need.
+                      </p>
+                      <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : 'repeat(4, 1fr)', gap: '10px' }}>
+                        {[
+                          { title: 'AI-driven forecasting', icon: TrendingUp },
+                          { title: 'Inventory planning', icon: Layers },
+                          { title: 'Procurement', icon: ShoppingCart },
+                          { title: 'Sales enablement', icon: Briefcase },
+                          { title: 'Lead management', icon: UserCheck },
+                          { title: 'Customer relationship', icon: HeartHandshake },
+                          { title: 'Business intelligence', icon: PieChart }
+                        ].map((mod, i) => {
+                          const IconComponent = mod.icon;
+                          return (
+                            <div key={i} style={{ background: '#f8f9fa', border: '1px solid #f0f1f3', padding: w < 768 ? '8px 10px' : '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                              <div style={{ background: 'rgba(232, 149, 40, 0.08)', padding: '6px', borderRadius: '6px', color: '#e89528', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                <IconComponent size={w < 768 ? 14 : 18} />
+                              </div>
+                              <span style={{ fontSize: w < 768 ? '11px' : '14px', fontWeight: '600', color: '#222', lineHeight: '1.2' }}>{mod.title}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Section 3: Beyond dashboards and chatbots */}
+                    <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px', marginTop: w < 768 ? '0px' : '-16px' }}>
+                      <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
+                        Beyond dashboards and chatbots
+                      </h3>
+                      <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
+                        Actionable AI that gives management real-time visibility into operations, performance, risks, and opportunities.
+                      </p>
+                      <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : 'repeat(5, 1fr)', gap: '10px' }}>
+                        {[
+                          { title: 'Predictive analytics', icon: BrainCircuit },
+                          { title: 'Automated monitoring', icon: Activity },
+                          { title: 'Intelligent recommendations', icon: Lightbulb },
+                          { title: 'Anomaly detection', icon: AlertTriangle },
+                          { title: 'Executive command centers', icon: Sliders }
+                        ].map((feat, i) => {
+                          const IconComponent = feat.icon;
+                          return (
+                            <div key={i} style={{ background: '#f8f9fa', border: '1px solid #f0f1f3', padding: w < 768 ? '8px 10px' : '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                              <div style={{ background: 'rgba(232, 149, 40, 0.08)', padding: '6px', borderRadius: '6px', color: '#e89528', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                <IconComponent size={w < 768 ? 14 : 18} />
+                              </div>
+                              <span style={{ fontSize: w < 768 ? '11px' : '14px', fontWeight: '600', color: '#222', lineHeight: '1.2' }}>{feat.title}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Section 2: Modular by design */}
-                <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
-                    Modular by design
-                  </h3>
-                  <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
-                    Purpose-built for the jewellery industry, adaptable to any enterprise workflow. Choose only the modules you need.
-                  </p>
-                  <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : 'repeat(4, 1fr)', gap: '10px' }}>
-                    {[
-                      { title: 'AI-driven forecasting', icon: TrendingUp },
-                      { title: 'Inventory planning', icon: Layers },
-                      { title: 'Procurement', icon: ShoppingCart },
-                      { title: 'Sales enablement', icon: Briefcase },
-                      { title: 'Lead management', icon: UserCheck },
-                      { title: 'Customer relationship', icon: HeartHandshake },
-                      { title: 'Business intelligence', icon: PieChart }
-                    ].map((mod, i) => {
-                      const IconComponent = mod.icon;
-                      return (
-                        <div key={i} style={{ background: '#f8f9fa', border: '1px solid #f0f1f3', padding: w < 768 ? '8px 10px' : '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                          <div style={{ background: 'rgba(232, 149, 40, 0.08)', padding: '6px', borderRadius: '6px', color: '#e89528', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                            <IconComponent size={w < 768 ? 14 : 18} />
-                          </div>
-                          <span style={{ fontSize: w < 768 ? '11px' : '14px', fontWeight: '600', color: '#222', lineHeight: '1.2' }}>{mod.title}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Section 3: Beyond dashboards and chatbots */}
-                <div style={{ background: '#fff', borderLeft: '5px solid #e89528', padding: w < 768 ? '12px 14px' : '22px 28px', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.03)', borderLeftWidth: '5px', display: 'flex', flexDirection: 'column', gap: '4px', marginTop: w < 768 ? '0px' : '-16px' }}>
-                  <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '800', color: '#111', margin: 0 }}>
-                    Beyond dashboards and chatbots
-                  </h3>
-                  <p style={{ fontSize: w < 768 ? '11px' : '14px', color: '#555', margin: '0 0 12px 0', fontWeight: '500' }}>
-                    Actionable AI that gives management real-time visibility into operations, performance, risks, and opportunities.
-                  </p>
-                  <div style={{ display: 'grid', gridTemplateColumns: w < 768 ? '1fr' : 'repeat(5, 1fr)', gap: '10px' }}>
-                    {[
-                      { title: 'Predictive analytics', icon: BrainCircuit },
-                      { title: 'Automated monitoring', icon: Activity },
-                      { title: 'Intelligent recommendations', icon: Lightbulb },
-                      { title: 'Anomaly detection', icon: AlertTriangle },
-                      { title: 'Executive command centers', icon: Sliders }
-                    ].map((feat, i) => {
-                      const IconComponent = feat.icon;
-                      return (
-                        <div key={i} style={{ background: '#f8f9fa', border: '1px solid #f0f1f3', padding: w < 768 ? '8px 10px' : '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                          <div style={{ background: 'rgba(232, 149, 40, 0.08)', padding: '6px', borderRadius: '6px', color: '#e89528', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                            <IconComponent size={w < 768 ? 14 : 18} />
-                          </div>
-                          <span style={{ fontSize: w < 768 ? '11px' : '14px', fontWeight: '600', color: '#222', lineHeight: '1.2' }}>{feat.title}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
+                );
+              })()}
             </motion.div>
           )}
         </AnimatePresence>
@@ -1628,19 +1654,19 @@ const BubbleNetwork = () => {
                                 Real-World Example
                               </h3>
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: w < 768 ? '14px' : '16px', lineHeight: '1.45', color: '#444', fontWeight: '500' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '13px', fontSize: w < 768 ? '14px' : '16.5px', lineHeight: '1.5', color: '#444', fontWeight: '500' }}>
                               <p style={{ margin: 0, textAlign: 'left', fontWeight: '700', color: '#111' }}>
-                                A consumer goods company wants to improve field sales efficiency.
+                                A consumer goods company wants to improve field sales efficiency and increase lead conversions.
                               </p>
                               <p style={{ margin: 0, textAlign: 'left' }}>
-                                Siloed leads, inconsistent tracking, and slow approvals caused lost deals and low sales productivity.
+                                Leads were not distributed effectively, activities were inconsistent, and order approvals took too long—resulting in lost opportunities and lower sales productivity.
                               </p>
                               <p style={{ margin: 0, textAlign: 'left' }}>
-                                StackLogix Sales Enablement automates processes and tracks performance:
+                                With StackLogix Sales Enablement, the company can now:
                               </p>
 
                               {/* Two-Column Checklist & Dashboard Widget layout */}
-                              <div style={{ display: 'flex', flexDirection: w < 768 ? 'column' : 'row', gap: '16px', alignItems: 'center', margin: '4px 0' }}>
+                              <div style={{ display: 'flex', flexDirection: w < 768 ? 'column' : 'row', gap: '20px', alignItems: 'center', margin: '8px 0' }}>
                                 <div style={{ flex: '1.25', display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
                                   {[
                                     "Assign and track leads across regions",
@@ -1679,7 +1705,7 @@ const BubbleNetwork = () => {
                                         }} 
                                       />
                                       <span style={{ 
-                                        fontSize: '14.5px', 
+                                        fontSize: '15px', 
                                         lineHeight: '1.35', 
                                         color: hoveredSalesIdx === i ? '#e89528' : '#333', 
                                         fontWeight: '600',
@@ -1690,122 +1716,91 @@ const BubbleNetwork = () => {
                                   ))}
                                 </div>
 
-                                <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
-                                    <span style={{ fontSize: '11px', fontWeight: '850', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Sales Overview</span>
-                                    <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.03)', padding: '2px', borderRadius: '20px', border: '1px solid rgba(0,0,0,0.04)' }}>
-                                      {['All', 'North', 'South'].map((filt) => (
-                                        <button
-                                          key={filt}
-                                          onClick={() => setSalesFilter(filt)}
-                                          style={{
-                                            border: 'none',
-                                            background: salesFilter === filt ? '#e89528' : 'transparent',
-                                            color: salesFilter === filt ? '#fff' : '#666',
-                                            fontSize: '9.5px',
-                                            fontWeight: '700',
-                                            padding: '3px 8px',
-                                            borderRadius: '15px',
-                                            cursor: 'pointer',
-                                            transition: 'all 0.2s ease',
-                                            boxShadow: salesFilter === filt ? '0 2px 6px rgba(232, 149, 40, 0.25)' : 'none'
-                                          }}
-                                          onMouseEnter={(e) => {
-                                            if (salesFilter !== filt) e.target.style.color = '#e89528';
-                                          }}
-                                          onMouseLeave={(e) => {
-                                            if (salesFilter !== filt) e.target.style.color = '#666';
-                                          }}
-                                        >
-                                          {filt}
-                                        </button>
-                                      ))}
-                                    </div>
-                                  </div>
-                                  <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '4px 0' }} />
-                                  {(() => {
-                                    const salesData = {
-                                      All: [
-                                        { title: 'Leads Assigned', value: '128 Leads', icon: Users },
-                                        { title: 'Pending Approval', value: '24 Orders', icon: ShoppingCart, isApproval: true },
-                                        { title: 'Visits Today', value: '18 Visits', icon: Calendar },
-                                        { title: 'Conversion Rate', value: '23%', icon: TrendingUp, isHighlight: true }
-                                      ],
-                                      North: [
-                                        { title: 'Leads Assigned', value: '76 Leads', icon: Users },
-                                        { title: 'Pending Approval', value: '14 Orders', icon: ShoppingCart, isApproval: true },
-                                        { title: 'Visits Today', value: '10 Visits', icon: Calendar },
-                                        { title: 'Conversion Rate', value: '21%', icon: TrendingUp, isHighlight: true }
-                                      ],
-                                      South: [
-                                        { title: 'Leads Assigned', value: '52 Leads', icon: Users },
-                                        { title: 'Pending Approval', value: '10 Orders', icon: ShoppingCart, isApproval: true },
-                                        { title: 'Visits Today', value: '8 Visits', icon: Calendar },
-                                        { title: 'Conversion Rate', value: '26%', icon: TrendingUp, isHighlight: true }
-                                      ]
-                                    };
-                                    const currentData = salesData[salesFilter];
-                                    return (
-                                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                                        {currentData.map((item, idx) => {
-                                          const IconComponent = item.icon;
-                                          const isHovered = hoveredSalesWidgetIdx === idx;
-                                          return (
-                                            <div 
-                                              key={item.title}
-                                              onMouseEnter={() => setHoveredSalesWidgetIdx(idx)}
-                                              onMouseLeave={() => setHoveredSalesWidgetIdx(null)}
-                                              style={{ 
-                                                background: '#fff', 
-                                                border: '1px solid ' + (isHovered ? '#e89528' : 'rgba(0,0,0,0.04)'), 
-                                                borderRadius: '8px', 
-                                                padding: '9px 11px', 
-                                                display: 'flex', 
-                                                flexDirection: 'column', 
-                                                gap: '4px', 
-                                                boxShadow: isHovered ? '0 4px 12px rgba(232, 149, 40, 0.08)' : '0 2px 4px rgba(0,0,0,0.01)',
-                                                transform: isHovered ? 'translateY(-2px)' : 'none',
-                                                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                                                cursor: 'pointer'
-                                              }}
-                                            >
-                                              <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>{item.title}</span>
-                                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                                                <span style={{ 
-                                                  fontSize: '12px', 
-                                                  color: item.isHighlight ? '#e89528' : '#222', 
-                                                  fontWeight: item.isHighlight ? '800' : '700' 
-                                                }}>
-                                                  {item.value}
-                                                </span>
-                                                <IconComponent 
-                                                  size={16} 
-                                                  color={item.isHighlight ? '#e89528' : (item.isApproval ? '#a3a8b3' : '#e89528')} 
-                                                  style={{
-                                                    transition: 'all 0.2s ease',
-                                                    transform: isHovered ? (item.icon === TrendingUp ? 'scale(1.15) translateY(-2px)' : 'scale(1.15)') : 'none'
-                                                  }}
-                                                />
-                                              </div>
-                                            </div>
-                                          );
-                                        })}
-                                      </div>
-                                    );
-                                  })()}
-                                </div>
+                                <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '11px 13px', display: 'flex', flexDirection: 'column', gap: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+                                     <span style={{ fontSize: '11.5px', fontWeight: '850', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Sales Overview</span>
+                                     <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.03)', padding: '2px', borderRadius: '20px', border: '1px solid rgba(0,0,0,0.04)' }}>
+                                       {['All', 'B2B', 'Retail'].map((filt) => (
+                                         <button
+                                           key={filt}
+                                           onClick={() => setSalesFilter(filt)}
+                                           style={{
+                                             border: 'none',
+                                             background: salesFilter === filt ? '#e89528' : 'transparent',
+                                             color: salesFilter === filt ? '#fff' : '#666',
+                                             fontSize: '9.5px',
+                                             fontWeight: '700',
+                                             padding: '3px 8px',
+                                             borderRadius: '15px',
+                                             cursor: 'pointer',
+                                             transition: 'all 0.2s ease',
+                                             boxShadow: salesFilter === filt ? '0 2px 6px rgba(232, 149, 40, 0.25)' : 'none'
+                                           }}
+                                           onMouseEnter={(e) => {
+                                             if (salesFilter !== filt) e.target.style.color = '#e89528';
+                                           }}
+                                           onMouseLeave={(e) => {
+                                             if (salesFilter !== filt) e.target.style.color = '#666';
+                                           }}
+                                         >
+                                           {filt}
+                                         </button>
+                                       ))}
+                                     </div>
+                                   </div>
+                                   <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '2px 0' }} />
+                                   {(() => {
+                                     const salesData = {
+                                       All: { leads: '128 Leads', pending: '24 Orders', visits: '18 Visits', rate: '23%' },
+                                       B2B: { leads: '42 Leads', pending: '9 Orders', visits: '5 Visits', rate: '18%' },
+                                       Retail: { leads: '86 Leads', pending: '15 Orders', visits: '13 Visits', rate: '25%' }
+                                     };
+                                     const currentData = salesData[salesFilter];
+                                     return (
+                                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '9px' }}>
+                                         <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                           <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Leads Assigned</span>
+                                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
+                                             <span style={{ fontSize: '11.5px', color: '#222', fontWeight: '700' }}>{currentData.leads}</span>
+                                             <Users size={14} color="#e89528" />
+                                           </div>
+                                         </div>
+                                         <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                           <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Pending Approval</span>
+                                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                             <span style={{ fontSize: '11.5px', color: '#222', fontWeight: '700' }}>{currentData.pending}</span>
+                                             <ShoppingCart size={14} color="#a3a8b3" />
+                                           </div>
+                                         </div>
+                                         <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                           <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Visits Today</span>
+                                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                             <span style={{ fontSize: '11.5px', color: '#222', fontWeight: '700' }}>{currentData.visits}</span>
+                                             <Calendar size={14} color="#e89528" />
+                                           </div>
+                                         </div>
+                                         <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                           <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Conversion Rate</span>
+                                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                             <span style={{ fontSize: '11.5px', color: '#e89528', fontWeight: '800' }}>{currentData.rate}</span>
+                                             <TrendingUp size={14} color="#e89528" />
+                                           </div>
+                                         </div>
+                                       </div>
+                                     );
+                                   })()}
+                                 </div>
                               </div>
 
                               <p style={{ margin: 0, textAlign: 'left' }}>
-                                Representatives log details, check lead priorities, and submit orders for approval from the field.
+                                Sales representatives can quickly log visit details, capture customer needs, check lead priorities, and send orders for approval instantly from the field.
                               </p>
-                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '10px 14px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '4px' }}>
-                                <Trophy size={20} color="#e89528" style={{ flexShrink: 0 }} />
-                                <span style={{ fontSize: '14.5px', fontWeight: '600', color: '#a35b12', lineHeight: '1.35', textAlign: 'left' }}>
-                                  Result: Better lead conversion, faster order approvals, and stronger relationships.
+                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '14px 18px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '8px' }}>
+                                <Trophy size={24} color="#e89528" style={{ flexShrink: 0 }} />
+                                <span style={{ fontSize: '16px', fontWeight: '600', color: '#a35b12', lineHeight: '1.4', textAlign: 'left' }}>
+                                  Result: Better lead conversion, faster order approvals, improved productivity, and stronger customer relationships.
                                 </span>
                               </div>
-
                             </div>
                           </div>
                         </div>
@@ -1965,26 +1960,26 @@ const BubbleNetwork = () => {
                                 Real-World Example
                               </h3>
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: w < 768 ? '14px' : '15.5px', lineHeight: '1.45', color: '#444', fontWeight: '500' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: w < 768 ? '14px' : '16.5px', lineHeight: '1.5', color: '#444', fontWeight: '500' }}>
                               <div>
-                                <p style={{ margin: '0 0 2px 0', textAlign: 'left', fontWeight: '700', color: '#111', fontSize: '16px' }}>
+                                <p style={{ margin: '0 0 4px 0', textAlign: 'left', fontWeight: '700', color: '#111', fontSize: '17px' }}>
                                   The Challenge:
                                 </p>
                                 <p style={{ margin: 0, textAlign: 'left' }}>
-                                  Website traffic grew by 18%, but sales conversions dropped by 12%. Manual data collection across CRM and web analytics was too slow, delaying corrective actions.
+                                  A jewellery company noticed website traffic grew by 18% and online engagement rose by 22%, but sales conversions dropped by 12%. Manually collecting, cleaning, and comparing data across CRM, website analytics, and sales sheets was too slow, delaying corrective business actions.
                                 </p>
                               </div>
 
                               <div>
-                                <p style={{ margin: '0 0 2px 0', textAlign: 'left', fontWeight: '700', color: '#111', fontSize: '16px' }}>
+                                <p style={{ margin: '0 0 4px 0', textAlign: 'left', fontWeight: '700', color: '#111', fontSize: '17px' }}>
                                   How StackLogix Helped:
                                 </p>
-                                <p style={{ margin: 0, textAlign: 'left' }}>
-                                  AI Monitoring flagged the drop, allowing analysts to drill down and discover:
+                                <p style={{ margin: '0 0 8px 0', textAlign: 'left' }}>
+                                  AI Monitoring automatically flagged the conversion drop. Analysts used cross-functional data investigation to drill down and discovered that:
                                 </p>
                                 
                                 {/* Two-Column Checklist & Dashboard Widget layout */}
-                                <div style={{ display: 'flex', flexDirection: w < 768 ? 'column' : 'row', gap: '16px', alignItems: 'center', margin: '4px 0' }}>
+                                <div style={{ display: 'flex', flexDirection: w < 768 ? 'column' : 'row', gap: '20px', alignItems: 'center', margin: '8px 0' }}>
                                   <div style={{ flex: '1.25', display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
                                     {[
                                       "A newly launched category had high traffic but low conversions",
@@ -2021,7 +2016,7 @@ const BubbleNetwork = () => {
                                           }} 
                                         />
                                         <span style={{ 
-                                          fontSize: '14.5px', 
+                                          fontSize: '15px', 
                                           lineHeight: '1.35', 
                                           color: hoveredAnalyticsIdx === i ? '#e89528' : '#333', 
                                           fontWeight: '600',
@@ -2032,11 +2027,11 @@ const BubbleNetwork = () => {
                                     ))}
                                   </div>
 
-                                  <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                  <div style={{ flex: '1', width: '100%', background: '#f8f9fa', border: '1.5px solid rgba(0,0,0,0.06)', borderRadius: '12px', padding: '11px 13px', display: 'flex', flexDirection: 'column', gap: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
-                                      <span style={{ fontSize: '11px', fontWeight: '850', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Analytics & Drifts</span>
+                                      <span style={{ fontSize: '11.5px', fontWeight: '850', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Analytics & Drifts</span>
                                       <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.03)', padding: '2px', borderRadius: '20px', border: '1px solid rgba(0,0,0,0.04)' }}>
-                                        {['All', 'Website', 'Sales'].map((filt) => (
+                                        {['All', 'Online', 'In-Store'].map((filt) => (
                                           <button
                                             key={filt}
                                             onClick={() => setAnalyticsFilter(filt)}
@@ -2064,74 +2059,48 @@ const BubbleNetwork = () => {
                                         ))}
                                       </div>
                                     </div>
-                                    <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '4px 0' }} />
+                                    <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '2px 0' }} />
                                     {(() => {
                                       const analyticsData = {
-                                        All: [
-                                          { title: 'Drifts Detected', value: '1 Active', icon: AlertTriangle, isRisk: true },
-                                          { title: 'Data Quality', value: '99.8%', icon: ShieldCheck },
-                                          { title: 'Auto Reports', value: '14 Active', icon: ClipboardCheck, isReport: true },
-                                          { title: 'Insight Accuracy', value: '94.5%', icon: TrendingUp, isHighlight: true }
-                                        ],
-                                        Website: [
-                                          { title: 'Drifts Detected', value: '0 Active', icon: AlertTriangle, isRisk: false },
-                                          { title: 'Data Quality', value: '99.6%', icon: ShieldCheck },
-                                          { title: 'Auto Reports', value: '8 Active', icon: ClipboardCheck, isReport: true },
-                                          { title: 'Insight Accuracy', value: '93.1%', icon: TrendingUp, isHighlight: true }
-                                        ],
-                                        Sales: [
-                                          { title: 'Drifts Detected', value: '1 Active', icon: AlertTriangle, isRisk: true },
-                                          { title: 'Data Quality', value: '99.9%', icon: ShieldCheck },
-                                          { title: 'Auto Reports', value: '6 Active', icon: ClipboardCheck, isReport: true },
-                                          { title: 'Insight Accuracy', value: '96.2%', icon: TrendingUp, isHighlight: true }
-                                        ]
+                                        All: { drifts: '1 Active', quality: '99.8%', reports: '14 Active', accuracy: '94.5%', isDrift: true },
+                                        Online: { drifts: '1 Active', quality: '99.7%', reports: '8 Active', accuracy: '95.2%', isDrift: true },
+                                        'In-Store': { drifts: '0 Active', quality: '99.9%', reports: '6 Active', accuracy: '93.8%', isDrift: false }
                                       };
                                       const currentData = analyticsData[analyticsFilter];
                                       return (
-                                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                                          {currentData.map((item, idx) => {
-                                            const IconComponent = item.icon;
-                                            const isHovered = hoveredAnalyticsWidgetIdx === idx;
-                                            return (
-                                              <div 
-                                                key={item.title}
-                                                onMouseEnter={() => setHoveredAnalyticsWidgetIdx(idx)}
-                                                onMouseLeave={() => setHoveredAnalyticsWidgetIdx(null)}
-                                                style={{ 
-                                                  background: '#fff', 
-                                                  border: '1px solid ' + (isHovered ? '#e89528' : 'rgba(0,0,0,0.04)'), 
-                                                  borderRadius: '8px', 
-                                                  padding: '9px 11px', 
-                                                  display: 'flex', 
-                                                  flexDirection: 'column', 
-                                                  gap: '4px', 
-                                                  boxShadow: isHovered ? '0 4px 12px rgba(232, 149, 40, 0.08)' : '0 2px 4px rgba(0,0,0,0.01)',
-                                                  transform: isHovered ? 'translateY(-2px)' : 'none',
-                                                  transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                                                  cursor: 'pointer'
-                                                }}
-                                              >
-                                                <span style={{ fontSize: '10px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>{item.title}</span>
-                                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                                                  <span style={{ 
-                                                    fontSize: '12px', 
-                                                    color: item.isRisk ? '#d9381e' : (item.isHighlight ? '#e89528' : '#222'), 
-                                                    fontWeight: (item.isRisk || item.isHighlight) ? '800' : '700' 
-                                                  }}>
-                                                    {item.value}
-                                                  </span>
-                                                  <IconComponent 
-                                                    size={16} 
-                                                    color={item.isRisk ? '#d9381e' : (item.isHighlight ? '#e89528' : (item.isReport ? '#a3a8b3' : '#e89528'))} 
-                                                    style={{
-                                                      transition: 'all 0.2s ease',
-                                                      transform: isHovered ? (item.icon === TrendingUp ? 'scale(1.15) translateY(-2px)' : 'scale(1.15)') : 'none'
-                                                    }}
-                                                  />
-                                                </div>
-                                              </div>
-                                            );
-                                          })}
+                                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '9px' }}>
+                                          <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                            <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Drifts Detected</span>
+                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px' }}>
+                                              <span style={{ fontSize: '11.5px', color: currentData.isDrift ? '#d9381e' : '#2e7d32', fontWeight: '800' }}>{currentData.drifts}</span>
+                                              {currentData.isDrift ? (
+                                                <AlertTriangle size={14} color="#d9381e" />
+                                              ) : (
+                                                <CheckCircle2 size={14} color="#2e7d32" />
+                                              )}
+                                            </div>
+                                          </div>
+                                          <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                            <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Data Quality</span>
+                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                              <span style={{ fontSize: '11.5px', color: '#222', fontWeight: '700' }}>{currentData.quality}</span>
+                                              <ShieldCheck size={14} color="#e89528" />
+                                            </div>
+                                          </div>
+                                          <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                            <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Auto Reports</span>
+                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                              <span style={{ fontSize: '11.5px', color: '#222', fontWeight: '700' }}>{currentData.reports}</span>
+                                              <ClipboardCheck size={14} color="#a3a8b3" />
+                                            </div>
+                                          </div>
+                                          <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.01)' }}>
+                                            <span style={{ fontSize: '9.5px', color: '#777', fontWeight: '600', textTransform: 'uppercase' }}>Insight Accuracy</span>
+                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                              <span style={{ fontSize: '11.5px', color: '#e89528', fontWeight: '800' }}>{currentData.accuracy}</span>
+                                              <TrendingUp size={14} color="#e89528" />
+                                            </div>
+                                          </div>
                                         </div>
                                       );
                                     })()}
@@ -2139,13 +2108,12 @@ const BubbleNetwork = () => {
                                 </div>
                               </div>
 
-                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '10px 14px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '4px' }}>
-                                <Trophy size={20} color="#e89528" style={{ flexShrink: 0 }} />
-                                <span style={{ fontSize: '14.5px', fontWeight: '600', color: '#a35b12', lineHeight: '1.35', textAlign: 'left' }}>
-                                  Result: Anomaly resolved in hours, preventing loss and enabling data-driven decisions.
+                              <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '16px 20px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px' }}>
+                                <Trophy size={26} color="#e89528" style={{ flexShrink: 0 }} />
+                                <span style={{ fontSize: '16.5px', fontWeight: '600', color: '#a35b12', lineHeight: '1.4', textAlign: 'left' }}>
+                                  Result: Anomaly resolved in hours instead of days. By adjusting pricing and accelerating team follow-ups, the company avoided conversion loss and made smarter, data-driven decisions.
                                 </span>
                               </div>
-
                             </div>
                           </div>
                         </div>
