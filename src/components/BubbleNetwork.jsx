@@ -209,7 +209,7 @@ const subComponentContent = {
     ]
   },
   'analyst-audit-trails': {
-    title: 'Audit Trails',
+    title: 'Audit Trail',
     intro: 'Provides complete transparency into every transaction, approval, and system activity.',
     bullets: [
       'Allows analysts to validate and verify critical operations.',
