@@ -519,7 +519,7 @@ const BubbleNetwork = () => {
     if (type === 'root') {
       if (focusedNode === 'root') {
         const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1350, w * 0.73));
-        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(800, h * 0.93));
         return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       }
       return { width: 240 * rs, height: 240 * rs, scale: 0.35, opacity: 0.6, zIndex: 5 };
@@ -529,11 +529,11 @@ const BubbleNetwork = () => {
       const isCat = bubbleData[nodeId] !== undefined;
       if (isCat) {
         const width = w < 768 ? R(w * 0.90) : w < 1024 ? R(w * 0.80) : R(Math.min(1350, w * 0.73));
-        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(800, h * 0.93));
         return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       } else {
         const width = w < 768 ? R(w * 0.92) : w < 1024 ? R(w * 0.85) : R(Math.min(1350, w * 0.9));
-        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(750, h * 0.93));
+        const height = w < 768 ? R(Math.min(580, h * 0.85)) : w < 1024 ? R(Math.min(680, h * 0.88)) : R(Math.min(800, h * 0.93));
         return { width, height, scale: 1, opacity: 1, zIndex: 100, borderRadius: '24px' };
       }
     }
