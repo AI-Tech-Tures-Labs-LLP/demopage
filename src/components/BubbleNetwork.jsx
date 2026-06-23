@@ -299,8 +299,12 @@ const BubbleNetwork = () => {
     };
   }, []);
 
-  const w = dimensions.width;
-  const h = dimensions.height;
+  // Design-space: always layout at 1920×945, then zoom to fit any viewport
+  const DESIGN_W = 1920;
+  const DESIGN_H = 945;
+  const pageZoom = Math.min(dimensions.width / DESIGN_W, dimensions.height / DESIGN_H);
+  const w = DESIGN_W;
+  const h = DESIGN_H;
 
   const handleNodeClick = (id) => {
     setFocusedNode(prev => prev === id ? null : id);
@@ -533,6 +537,8 @@ const BubbleNetwork = () => {
     >
       <div className="mesh-bg" />
 
+      <div style={{ width: `${DESIGN_W}px`, height: `${DESIGN_H}px`, zoom: pageZoom, position: 'relative', overflow: 'hidden' }}>
+
       <AnimatePresence>
         {focusedNode && (
           <motion.button
@@ -668,7 +674,7 @@ const BubbleNetwork = () => {
                 top: 0, 
                 left: 0, 
                 width: `${getSize('root').width}px`, 
-                height: `${getSize('root').height}px`, 
+                height: `${getSize('root').height}px`,
                 zIndex: 1, 
                 display: 'flex', 
                 flexDirection: 'column' 
@@ -854,7 +860,7 @@ const BubbleNetwork = () => {
                       top: 0, 
                       left: 0, 
                       width: `${size.width}px`, 
-                      height: `${size.height}px`, 
+                      height: `${size.height}px`,
                       zIndex: 1, 
                       display: 'flex', 
                       flexDirection: 'column' 
@@ -2238,7 +2244,7 @@ const BubbleNetwork = () => {
                         top: 0, 
                         left: 0, 
                         width: `${size.width}px`, 
-                        height: `${size.height}px`, 
+                        height: `${size.height}px`,
                         zIndex: 1, 
                         display: 'flex', 
                         flexDirection: w < 768 ? 'column' : 'row' 
@@ -2442,6 +2448,7 @@ const BubbleNetwork = () => {
           );
         })
       )}
+      </div>
     </div>
   );
 };
