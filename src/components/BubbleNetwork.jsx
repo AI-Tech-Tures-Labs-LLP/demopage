@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { bubbleData } from '../data';
 import { Sparkles, X, ChevronRight, BarChart3, Database, ShieldCheck, ExternalLink, Package, Clock, TrendingUp, Layers, ShoppingCart, Briefcase, UserCheck, HeartHandshake, PieChart, BrainCircuit, Activity, Lightbulb, AlertTriangle, Sliders, ArrowRight, Users, Crown, Monitor, Bell, Zap, Shield, Target, ClipboardCheck, Bot, IndianRupee, Truck, Trophy, TrendingDown, CheckCircle2, MessageSquare, MapPin, Calendar } from 'lucide-react';
@@ -306,9 +306,31 @@ const BubbleNetwork = () => {
   const w = DESIGN_W;
   const h = DESIGN_H;
 
-  const handleNodeClick = (id) => {
+  // Animation-safe click handler with cooldown to prevent rapid-fire glitches
+  const isAnimating = useRef(false);
+  const animationCooldown = useRef(null);
+
+  const handleNodeClick = useCallback((id) => {
+    if (isAnimating.current) return; // Block clicks during animation
+    isAnimating.current = true;
+    
     setFocusedNode(prev => prev === id ? null : id);
-  };
+    
+    // Clear any existing cooldown
+    if (animationCooldown.current) clearTimeout(animationCooldown.current);
+    
+    // Lock clicks for 400ms (spring animation settle time)
+    animationCooldown.current = setTimeout(() => {
+      isAnimating.current = false;
+    }, 400);
+  }, []);
+
+  // Cleanup cooldown on unmount
+  useEffect(() => {
+    return () => {
+      if (animationCooldown.current) clearTimeout(animationCooldown.current);
+    };
+  }, []);
 
   const getCatFromSub = (subId) => {
     return Object.keys(bubbleData).find(catId =>
@@ -530,8 +552,11 @@ const BubbleNetwork = () => {
     <div
       style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       onClick={() => {
-        if (focusedNode) {
+        if (focusedNode && !isAnimating.current) {
+          isAnimating.current = true;
           setFocusedNode(null);
+          if (animationCooldown.current) clearTimeout(animationCooldown.current);
+          animationCooldown.current = setTimeout(() => { isAnimating.current = false; }, 400);
         }
       }}
     >
@@ -543,7 +568,14 @@ const BubbleNetwork = () => {
         {focusedNode && (
           <motion.button
             initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-            onClick={() => setFocusedNode(null)}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (isAnimating.current) return;
+              isAnimating.current = true;
+              setFocusedNode(null);
+              if (animationCooldown.current) clearTimeout(animationCooldown.current);
+              animationCooldown.current = setTimeout(() => { isAnimating.current = false; }, 400);
+            }}
             style={{
               position: 'absolute', top: w < 768 ? '20px' : '40px', right: w < 768 ? '20px' : '40px', zIndex: 200,
               width: w < 768 ? '40px' : '56px', height: w < 768 ? '40px' : '56px', borderRadius: '50%',
