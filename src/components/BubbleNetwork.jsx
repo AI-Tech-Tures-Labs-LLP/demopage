@@ -261,6 +261,29 @@ const subComponentContent = {
   }
 };
 
+// All images used in the app — preloaded on mount for instant display
+const ALL_IMAGES = [
+  '/intelligent_lead_assignment.png',
+  '/field_sales_managment_corrc.png',
+  '/ai_sales_monitoring.png',
+  '/collaboration_and_feedback_corrct.png',
+  '/order_fulfillment.png',
+  '/procurement_inventory.png',
+  '/raw_materials.png',
+  '/invoicing_vendor_management.png',
+  '/advanced_ai_monitoring.png',
+  '/command_center.png',
+  '/automated_reports_and_dashboards.png',
+  '/audit_trail.png',
+  '/root_cause_analysis.png',
+  '/ai_insight_engine.png',
+  '/business_intelligence.png',
+  '/sales.png',
+  '/erp.png',
+  '/analytics.png',
+  '/map-bg.png'
+];
+
 const BubbleNetwork = () => {
   const [dimensions, setDimensions] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 1000,
@@ -297,6 +320,27 @@ const BubbleNetwork = () => {
       window.removeEventListener('resize', handleResize);
       clearTimeout(timeoutId);
     };
+  }, []);
+
+  // Preload all images on mount so they display instantly when bubbles expand
+  useEffect(() => {
+    let cancelled = false;
+    const preloadBatch = async (urls, concurrency = 3) => {
+      for (let i = 0; i < urls.length; i += concurrency) {
+        if (cancelled) return;
+        const batch = urls.slice(i, i + concurrency);
+        await Promise.allSettled(
+          batch.map(url => new Promise((resolve) => {
+            const img = new Image();
+            img.onload = resolve;
+            img.onerror = resolve;
+            img.src = url;
+          }))
+        );
+      }
+    };
+    preloadBatch(ALL_IMAGES);
+    return () => { cancelled = true; };
   }, []);
 
   // Design-space: always layout at 1920×945, then zoom to fit any viewport
