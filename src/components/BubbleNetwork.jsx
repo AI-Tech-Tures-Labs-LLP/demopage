@@ -22,8 +22,8 @@ const subComponentContent = {
     ]
   },
   'automated-reports': {
-    title: 'Automated Dashboards & Reports',
-    intro: 'Automated Dashboards and Reports provide a centralized, real-time view of business performance across multiple systems.',
+    title: 'Automated Reports',
+    intro: 'Automated Reports provide a centralized, real-time view of business performance across multiple systems.',
     bullets: [
       'Consolidates operational data into a single, reliable source of truth.',
       'Features interactive charts and visual analytics to track company growth.',
@@ -347,7 +347,8 @@ const BubbleNetwork = () => {
   // Design-space: always layout at 1920×945, then zoom to fit any viewport
   const DESIGN_W = 1920;
   const DESIGN_H = 945;
-  const pageZoom = Math.min(dimensions.width / DESIGN_W, dimensions.height / DESIGN_H);
+  const rawZoom = Math.min(dimensions.width / DESIGN_W, dimensions.height / DESIGN_H);
+  const pageZoom = Math.round(rawZoom * 100) / 100;
   const w = DESIGN_W;
   const h = DESIGN_H;
 

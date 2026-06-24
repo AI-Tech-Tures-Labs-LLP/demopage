@@ -6,7 +6,7 @@ export const bubbleData = {
     link: 'https://stacklogix.com/sales',
     subComponents: [
       { id: 'advanced-ai-monitoring', title: 'Advanced AI Monitoring', description: 'Real-time AI-powered operational surveillance.', link: 'http://alertfindingstack-alertfindingstack-y4it-85d785-82-25-108-222.sslip.io/drifts' },
-      { id: 'automated-reports', title: 'Automated Reports & Dashboards', description: 'Self-generating data visualizations and insights.', link: 'https://stacklogix.com/automated-reports' },
+      { id: 'automated-reports', title: 'Automated Reports', description: 'Self-generating data visualizations and insights.', link: 'https://stacklogix.com/automated-reports' },
       { id: 'command-center', title: 'Command Center', description: 'Centralized control room for enterprise management.', link: 'http://alertfindingstack-alertfindingstack-y4it-85d785-82-25-108-222.sslip.io/drifts' }
     ]
   },

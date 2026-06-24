@@ -15,7 +15,7 @@ Beyond traditional dashboards and chatbots, StackLogix delivers actionable AI th
 The Top Management module provides leadership with a centralized view of the entire organization, enabling faster and more informed decision-making. It combines AI-driven insights, automated business intelligence, and executive-level visibility into a single platform.
 
 *   **Advanced AI Monitoring** continuously analyzes business operations, identifies risks, detects unusual trends, and highlights performance drifts before they become major issues.
-*   **Automated Reports & Dashboards** provide real-time visibility into critical business metrics, ensuring management always has access to accurate and up-to-date information.
+*   **Automated Reports** provide real-time visibility into critical business metrics, ensuring management always has access to accurate and up-to-date information.
 *   **Command Center** serves as a centralized workspace where executives can monitor alerts, investigate issues, track corrective actions, and coordinate resolution across departments.
 
 Together, these capabilities help leadership move from reactive problem-solving to proactive business management, ensuring greater operational control, efficiency, and profitability.
@@ -26,7 +26,7 @@ A jewellery manufacturer notices that gross profit margins have fallen from 24% 
 
 In many organizations, management would first need to collect reports from Finance, Procurement, Manufacturing, Inventory, and Sales teams. Multiple review meetings would then be conducted to compare data, identify discrepancies, and determine the root cause, often taking several days or even weeks before corrective action can be taken.
 
-With StackLogix, AI Monitoring automatically detects the 5% margin decline and flags it as a critical business drift. The Automated Dashboard instantly consolidates data across departments and reveals that:
+With StackLogix, AI Monitoring automatically detects the 5% margin decline and flags it as a critical business drift. Automated Reports instantly consolidate data across departments and reveal that:
 
 *   Gold procurement costs have increased by 7%
 *   Manufacturing wastage has risen from 2.8% to 4.1%
@@ -51,9 +51,9 @@ AI Monitoring continuously analyzes business operations across sales, inventory,
 *   Root-cause analysis support
 *   Trend and pattern recognition
 
-**Automated Dashboards & Reports**
+**Automated Reports**
 
-Automated Dashboards and Reports provide a centralized view of business performance by consolidating data from multiple systems into a single source of truth. Interactive charts, graphs, and visual analytics make it easier to identify problem areas, track company growth, monitor profitability, and evaluate operational performance without relying on manually prepared reports.
+Automated Reports provide a centralized view of business performance by consolidating data from multiple systems into a single source of truth. Interactive charts, graphs, and visual analytics make it easier to identify problem areas, track company growth, monitor profitability, and evaluate operational performance without relying on manually prepared reports.
 
 **Key Features**
 
