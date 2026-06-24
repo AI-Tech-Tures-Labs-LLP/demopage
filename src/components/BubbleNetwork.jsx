@@ -73,7 +73,7 @@ const subComponentContent = {
     ]
   },
   'raw-materials': {
-    title: 'Procurement of Raw Materials',
+    title: 'Sourcing of Raw Materials',
     intro: 'The Raw Material Procurement module streamlines the purchasing process for metals, diamonds, and gemstones.',
     bullets: [
       'Simplifies vendor communication and delivery schedule tracking.',

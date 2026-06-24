@@ -30,7 +30,7 @@ export const bubbleData = {
     subComponents: [
       { id: 'order-fulfillment', title: 'Order Fulfillment', description: 'Streamlined tracking from order placement to delivery.', link: 'http://fulfillmentstacklogix-fulfillmentstacklo-bda093-187-77-184-127.sslip.io/login' },
       { id: 'procurement-inventory', title: 'Inventory Management', description: 'Smart stock optimization and supply chain visibility.', link: 'http://fulfillmentstacklogix-fulfillmentstacklo-bda093-187-77-184-127.sslip.io/login' },
-      { id: 'raw-materials', title: 'Procurement of Raw Materials', description: 'Automated reordering and supplier tracking.', link: 'http://fulfillmentstacklogix-fulfillmentstacklo-bda093-187-77-184-127.sslip.io/login' },
+      { id: 'raw-materials', title: 'Sourcing of Raw Materials', description: 'Automated reordering and supplier tracking.', link: 'http://fulfillmentstacklogix-fulfillmentstacklo-bda093-187-77-184-127.sslip.io/login' },
       { id: 'invoicing-vendor-management', title: 'Invoicing and Vendor Management', description: 'Centralized invoice processing and vendor portal.', link: 'http://fulfillmentstacklogix-fulfillmentstacklo-bda093-187-77-184-127.sslip.io/login' }
     ]
   },

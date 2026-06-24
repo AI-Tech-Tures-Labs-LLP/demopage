@@ -116,7 +116,7 @@ Sales Order Fulfilment manages the complete journey of an order from confirmatio
 *   Customer communication tracking
 *   Fulfilment performance monitoring
 
-**Procurement of Raw Materials**
+**Sourcing of Raw Materials**
 
 The Raw Material Procurement module streamlines the purchasing process for essential materials such as gold, diamonds, gemstones, findings, and packaging components. It helps procurement teams plan purchases, manage vendors, monitor delivery schedules, and maintain uninterrupted production operations.
 
