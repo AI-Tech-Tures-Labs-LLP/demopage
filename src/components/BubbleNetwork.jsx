@@ -290,6 +290,7 @@ const BubbleNetwork = () => {
     height: typeof window !== 'undefined' ? window.innerHeight : 800
   });
   const [focusedNode, setFocusedNode] = useState(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
   const [hoveredProcureIdx, setHoveredProcureIdx] = useState(null);
   const [hoveredSalesIdx, setHoveredSalesIdx] = useState(null);
@@ -357,16 +358,18 @@ const BubbleNetwork = () => {
   const handleNodeClick = useCallback((id) => {
     if (isAnimating.current) return; // Block clicks during animation
     isAnimating.current = true;
+    setIsTransitioning(true);
     
     setFocusedNode(prev => prev === id ? null : id);
     
     // Clear any existing cooldown
     if (animationCooldown.current) clearTimeout(animationCooldown.current);
     
-    // Lock clicks for 400ms (spring animation settle time)
+    // Lock clicks for 450ms (spring animation settle time)
     animationCooldown.current = setTimeout(() => {
       isAnimating.current = false;
-    }, 400);
+      setIsTransitioning(false);
+    }, 450);
   }, []);
 
   // Cleanup cooldown on unmount
@@ -597,10 +600,7 @@ const BubbleNetwork = () => {
       style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       onClick={() => {
         if (focusedNode && !isAnimating.current) {
-          isAnimating.current = true;
-          setFocusedNode(null);
-          if (animationCooldown.current) clearTimeout(animationCooldown.current);
-          animationCooldown.current = setTimeout(() => { isAnimating.current = false; }, 400);
+          handleNodeClick(null);
         }
       }}
     >
@@ -614,11 +614,7 @@ const BubbleNetwork = () => {
             initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
             onClick={(e) => {
               e.stopPropagation();
-              if (isAnimating.current) return;
-              isAnimating.current = true;
-              setFocusedNode(null);
-              if (animationCooldown.current) clearTimeout(animationCooldown.current);
-              animationCooldown.current = setTimeout(() => { isAnimating.current = false; }, 400);
+              handleNodeClick(null);
             }}
             style={{
               position: 'absolute', top: w < 768 ? '16px' : '24px', right: w < 768 ? '16px' : '24px', zIndex: 200,
@@ -696,7 +692,9 @@ const BubbleNetwork = () => {
           position: 'absolute', 
           cursor: 'pointer', 
           borderWidth: `${Math.min(1.5, 1 / getSize('root').scale)}px`,
-          willChange: 'left, top, transform, opacity, width, height, border-radius'
+          willChange: isTransitioning ? 'left, top, transform, opacity, width, height, border-radius' : 'auto',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden'
         }}
         onClick={(e) => {
           e.stopPropagation();
@@ -869,7 +867,7 @@ const BubbleNetwork = () => {
         return (
           <motion.div
             key={cat.id}
-            style={{ position: 'absolute', willChange: 'left, top' }}
+            style={{ position: 'absolute', willChange: isTransitioning ? 'left, top' : 'auto' }}
             animate={{ left: pos.left, top: pos.top, zIndex: size.zIndex }}
             transition={activeTransition}
           >
@@ -885,7 +883,9 @@ const BubbleNetwork = () => {
                 left: 0,
                 top: 0,
                 borderWidth: `${Math.min(1.5, 1 / size.scale)}px`,
-                willChange: 'transform, opacity, width, height, border-radius'
+                willChange: isTransitioning ? 'transform, opacity, width, height, border-radius' : 'auto',
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden'
               }}
               animate={{
                 width: typeof size.width === 'number' ? `${size.width}px` : size.width,
@@ -2385,7 +2385,7 @@ const BubbleNetwork = () => {
           return (
             <motion.div
               key={sub.id}
-              style={{ position: 'absolute', willChange: 'left, top' }}
+              style={{ position: 'absolute', willChange: isTransitioning ? 'left, top' : 'auto' }}
               animate={{ left: pos.left, top: pos.top, zIndex: size.zIndex }}
               transition={activeTransition}
             >
@@ -2405,7 +2405,9 @@ const BubbleNetwork = () => {
                   transformOrigin: 'center', 
                   overflow: 'hidden', 
                   borderWidth: `${Math.min(1.5, 1 / size.scale)}px`,
-                  willChange: 'transform, opacity, width, height, border-radius'
+                  willChange: isTransitioning ? 'transform, opacity, width, height, border-radius' : 'auto',
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden'
                 }}
                 transition={activeTransition}
                 transformTemplate={cleanTransform}
