@@ -621,7 +621,7 @@ const BubbleNetwork = () => {
               animationCooldown.current = setTimeout(() => { isAnimating.current = false; }, 400);
             }}
             style={{
-              position: 'absolute', top: w < 768 ? '20px' : '40px', right: w < 768 ? '20px' : '40px', zIndex: 200,
+              position: 'absolute', top: w < 768 ? '16px' : '24px', right: w < 768 ? '16px' : '24px', zIndex: 200,
               width: w < 768 ? '40px' : '56px', height: w < 768 ? '40px' : '56px', borderRadius: '50%',
               background: '#fff', border: '2px solid #e89528',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -636,7 +636,7 @@ const BubbleNetwork = () => {
 
       <motion.div
         initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5, ...springConfig }}
-        style={{ position: 'absolute', top: w < 768 ? '20px' : '40px', left: w < 768 ? '20px' : '50px', zIndex: 20 }}
+        style={{ position: 'absolute', top: w < 768 ? '16px' : '24px', left: w < 768 ? '16px' : '24px', zIndex: 20 }}
       >
         <h1 className="shining-text" style={{ fontSize: w < 768 ? '16px' : '32px', margin: 0, display: w < 768 && focusedNode ? 'none' : 'block' }}>StackLogix DEMO</h1>
       </motion.div>
