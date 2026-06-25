@@ -14,6 +14,13 @@ const App = () => {
     setIsLoggedIn(true);
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('stacklogix_auth');
+    sessionStorage.removeItem('stacklogix_token');
+    sessionStorage.removeItem('stacklogix_user');
+    setIsLoggedIn(false);
+  };
+
   return (
     <>
       {!isLoggedIn ? (
@@ -21,7 +28,7 @@ const App = () => {
       ) : (
         <div style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden' }}>
           <div className="mesh-bg" />
-          <BubbleNetwork />
+          <BubbleNetwork onLogout={handleLogout} />
         </div>
       )}
     </>

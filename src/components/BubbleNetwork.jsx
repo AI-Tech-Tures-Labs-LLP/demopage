@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { bubbleData } from '../data';
-import { Sparkles, X, ChevronRight, BarChart3, Database, ShieldCheck, ExternalLink, Package, Clock, TrendingUp, Layers, ShoppingCart, Briefcase, UserCheck, HeartHandshake, PieChart, BrainCircuit, Activity, Lightbulb, AlertTriangle, Sliders, ArrowRight, Users, Crown, Monitor, Bell, Zap, Shield, Target, ClipboardCheck, Bot, IndianRupee, Truck, Trophy, TrendingDown, CheckCircle2, MessageSquare, MapPin, Calendar } from 'lucide-react';
+import { Sparkles, X, ChevronRight, BarChart3, Database, ShieldCheck, ExternalLink, Package, Clock, TrendingUp, Layers, ShoppingCart, Briefcase, UserCheck, HeartHandshake, PieChart, BrainCircuit, Activity, Lightbulb, AlertTriangle, Sliders, ArrowRight, Users, Crown, Monitor, Bell, Zap, Shield, Target, ClipboardCheck, Bot, IndianRupee, Truck, Trophy, TrendingDown, CheckCircle2, MessageSquare, MapPin, Calendar, LogOut } from 'lucide-react';
 
 const subComponentContent = {
   'advanced-ai-monitoring': {
@@ -284,7 +284,7 @@ const ALL_IMAGES = [
   '/map-bg.png'
 ];
 
-const BubbleNetwork = () => {
+const BubbleNetwork = ({ onLogout }) => {
   const [dimensions, setDimensions] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 1000,
     height: typeof window !== 'undefined' ? window.innerHeight : 800
@@ -638,6 +638,53 @@ const BubbleNetwork = () => {
       >
         <h1 className="shining-text" style={{ fontSize: w < 768 ? '16px' : '32px', margin: 0, display: w < 768 && focusedNode ? 'none' : 'block' }}>StackLogix DEMO</h1>
       </motion.div>
+
+      {/* Sign Out Button in the bottom left corner */}
+      <AnimatePresence>
+        {!focusedNode && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ delay: 0.5, ...springConfig }}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (onLogout) onLogout();
+            }}
+            style={{
+              position: 'absolute',
+              bottom: w < 768 ? '16px' : '24px',
+              left: w < 768 ? '16px' : '24px',
+              zIndex: 20,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: w < 768 ? '8px 16px' : '10px 20px',
+              borderRadius: '30px',
+              background: 'rgba(255, 255, 255, 0.85)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(232, 149, 40, 0.3)',
+              color: '#a35b12',
+              fontWeight: '600',
+              fontSize: w < 768 ? '13px' : '15px',
+              cursor: 'pointer',
+              boxShadow: '0 4px 15px rgba(232, 149, 40, 0.08)',
+              outline: 'none',
+              fontFamily: 'inherit'
+            }}
+            whileHover={{ 
+              scale: 1.05, 
+              backgroundColor: '#fdfbf2', 
+              borderColor: '#e89528', 
+              boxShadow: '0 4px 15px rgba(232, 149, 40, 0.25)' 
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <LogOut size={w < 768 ? 16 : 18} />
+            <span>Sign Out</span>
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* SVG Connections with Animated Paths */}
       <svg width={w} height={h} style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', zIndex: 0 }}>
