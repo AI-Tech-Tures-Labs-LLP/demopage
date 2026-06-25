@@ -8,6 +8,8 @@ const LoginPage = ({ onLogin }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [fieldErrors, setFieldErrors] = useState({});
+  const [emailReadOnly, setEmailReadOnly] = useState(true);
+  const [passwordReadOnly, setPasswordReadOnly] = useState(true);
 
   const handleEmailChange = (val) => {
     setEmail(val);
@@ -247,7 +249,7 @@ const LoginPage = ({ onLogin }) => {
           )}
         </AnimatePresence>
 
-        <form onSubmit={handleSubmit} autoComplete="off" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        <form onSubmit={handleSubmit} autoComplete="on" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           
           {/* Email Input */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -257,11 +259,14 @@ const LoginPage = ({ onLogin }) => {
               </div>
               <input
                 type="email"
+                id="email"
+                name="email"
                 value={email}
                 onChange={(e) => handleEmailChange(e.target.value)}
                 placeholder="Enter your email"
                 required
-                autoComplete="new-email"
+                autoComplete="username"
+                readOnly={emailReadOnly}
                 style={{
                   width: '100%',
                   padding: '16px 16px 16px 46px',
@@ -277,11 +282,13 @@ const LoginPage = ({ onLogin }) => {
                   boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.02)'
                 }}
                 onFocus={(e) => {
+                  setEmailReadOnly(false);
                   e.target.style.background = '#ffffff';
                   e.target.style.border = '1px solid var(--bubble-border)';
                   e.target.style.boxShadow = '0 0 0 4px rgba(232, 149, 40, 0.15), inset 0 2px 4px rgba(0,0,0,0.02)';
                 }}
                 onBlur={(e) => {
+                  if (!email) setEmailReadOnly(true);
                   e.target.style.background = 'rgba(255,255,255,0.8)';
                   e.target.style.border = '1px solid rgba(255,255,255,0.6)';
                   e.target.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.02)';
@@ -320,11 +327,14 @@ const LoginPage = ({ onLogin }) => {
               </div>
               <input
                 type="password"
+                id="password"
+                name="password"
                 value={password}
                 onChange={(e) => handlePasswordChange(e.target.value)}
                 placeholder="Enter your password"
                 required
-                autoComplete="new-password"
+                autoComplete="current-password"
+                readOnly={passwordReadOnly}
                 style={{
                   width: '100%',
                   padding: '16px 16px 16px 46px',
@@ -340,11 +350,13 @@ const LoginPage = ({ onLogin }) => {
                   boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.02)'
                 }}
                 onFocus={(e) => {
+                  setPasswordReadOnly(false);
                   e.target.style.background = '#ffffff';
                   e.target.style.border = '1px solid var(--bubble-border)';
                   e.target.style.boxShadow = '0 0 0 4px rgba(232, 149, 40, 0.15), inset 0 2px 4px rgba(0,0,0,0.02)';
                 }}
                 onBlur={(e) => {
+                  if (!password) setPasswordReadOnly(true);
                   e.target.style.background = 'rgba(255,255,255,0.8)';
                   e.target.style.border = '1px solid rgba(255,255,255,0.6)';
                   e.target.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.02)';
