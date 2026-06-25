@@ -30,6 +30,8 @@ COPY server/ ./server
 # Install backend dependencies
 WORKDIR /app/server
 RUN npm ci
+RUN npm install compression --save
+
 
 # Go back to app root
 WORKDIR /app
