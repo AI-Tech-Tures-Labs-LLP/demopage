@@ -1,4 +1,5 @@
 import express from 'express';
+import compression from 'compression';
 import cors from 'cors';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -16,10 +17,12 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 const app = express();
 const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'supersecretjwttokenstacklogix';
+const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:5173';
 
 // Middlewares
+app.use(compression());
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: CORS_ORIGIN,
   credentials: true
 }));
 app.use(express.json());
@@ -146,9 +149,37 @@ app.post('/api/auth/login', validateLoginInput, async (req, res) => {
   }
 });
 
+// Health check endpoint
+app.get('/api/auth/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 // Serve static files from the React build directory
 const distPath = path.join(__dirname, '../dist');
-app.use(express.static(distPath));
+
+// Vite outputs content-hashed JS/CSS bundles into dist/assets/
+// (e.g. index-a1b2c3d4.js) — those are safe to cache forever, since
+// any change to the file produces a new filename.
+app.use('/assets', express.static(path.join(distPath, 'assets'), {
+  maxAge: '1y',
+  immutable: true
+}));
+
+// Everything else (anything copied from public/ — logos, icons,
+// favicons, etc.) keeps its ORIGINAL filename across deploys.
+// Caching these as "immutable" means a browser that cached an old
+// version will never re-fetch it, even after you fix/replace the
+// file. Use a short cache with revalidation instead.
+app.use(express.static(distPath, {
+  maxAge: '1h',
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache');
+    } else {
+      res.setHeader('Cache-Control', 'public, max-age=3600, must-revalidate');
+    }
+  }
+}));
 
 // Fallback all routes to index.html (client-side routing)
 app.get('*', (req, res, next) => {
