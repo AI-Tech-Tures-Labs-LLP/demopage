@@ -2497,7 +2497,7 @@ const BubbleNetwork = () => {
                                   </a>
                                 </h3>
                               </div>
-                              <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#444', lineHeight: '1.6', marginBottom: '14px', textAlign: 'left', fontWeight: '500' }}>
+                              <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#222', lineHeight: '1.6', marginBottom: '14px', textAlign: 'left', fontWeight: '500' }}>
                                 {content.intro}
                               </p>
                               
@@ -2514,7 +2514,7 @@ const BubbleNetwork = () => {
                                     boxShadow: '0 2px 8px rgba(0,0,0,0.01)'
                                   }}>
                                     <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#e89528', flexShrink: 0 }} />
-                                    <span style={{ fontSize: w < 768 ? '14px' : '15px', color: '#555', fontWeight: '500', textAlign: 'left', lineHeight: '1.4' }}>{bullet}</span>
+                                    <span style={{ fontSize: w < 768 ? '14px' : '15px', color: '#222', fontWeight: '500', textAlign: 'left', lineHeight: '1.4' }}>{bullet}</span>
                                   </div>
                                 ))}
                               </div>
@@ -2540,7 +2540,7 @@ const BubbleNetwork = () => {
                                 </a>
                               </h3>
                             </div>
-                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#555', lineHeight: '1.6', marginBottom: w < 768 ? '30px' : '40px' }}>{sub.description} Ensures predictive insights, live data streams, and autonomous actions highly specific to your operational workflows.</p>
+                            <p style={{ fontSize: w < 768 ? '15px' : '18px', color: '#222', lineHeight: '1.6', marginBottom: w < 768 ? '30px' : '40px' }}>{sub.description} Ensures predictive insights, live data streams, and autonomous actions highly specific to your operational workflows.</p>
 
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: w < 768 ? '12px' : '20px' }}>
                               <div style={{ background: '#fff', padding: w < 768 ? '20px 10px' : '30px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
