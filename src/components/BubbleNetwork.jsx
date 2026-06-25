@@ -2300,6 +2300,9 @@ const BubbleNetwork = () => {
                                 </div>
                               </div>
 
+                              <p style={{ margin: 0, textAlign: 'left' }}>
+                                Analysts and decision-makers can drill down into website metrics, evaluate competitor pricing, and optimize customer journeys using consolidated data feeds.
+                              </p>
                               <div style={{ background: 'rgba(232, 149, 40, 0.05)', borderLeft: '4px solid #e89528', padding: '16px 20px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px' }}>
                                 <Trophy size={26} color="#e89528" style={{ flexShrink: 0 }} />
                                 <span style={{ fontSize: '16.5px', fontWeight: '600', color: '#a35b12', lineHeight: '1.4', textAlign: 'left' }}>
