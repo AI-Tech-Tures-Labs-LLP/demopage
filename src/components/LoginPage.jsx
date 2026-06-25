@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Layers, ArrowRight, Mail, Lock, AlertCircle } from 'lucide-react';
+import { Layers, ArrowRight, Mail, Lock, AlertCircle, Eye, EyeOff } from 'lucide-react';
 
 const LoginPage = ({ onLogin }) => {
   const [email, setEmail] = useState('');
@@ -10,6 +10,7 @@ const LoginPage = ({ onLogin }) => {
   const [fieldErrors, setFieldErrors] = useState({});
   const [emailReadOnly, setEmailReadOnly] = useState(true);
   const [passwordReadOnly, setPasswordReadOnly] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleEmailChange = (val) => {
     setEmail(val);
@@ -326,7 +327,7 @@ const LoginPage = ({ onLogin }) => {
                 <Lock size={20} />
               </div>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 value={password}
@@ -337,7 +338,7 @@ const LoginPage = ({ onLogin }) => {
                 readOnly={passwordReadOnly}
                 style={{
                   width: '100%',
-                  padding: '16px 16px 16px 46px',
+                  padding: '16px 48px 16px 46px',
                   borderRadius: '16px',
                   border: '1px solid rgba(255,255,255,0.6)',
                   background: 'rgba(255,255,255,0.8)',
@@ -362,6 +363,30 @@ const LoginPage = ({ onLogin }) => {
                   e.target.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.02)';
                 }}
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: 'absolute',
+                  right: '16px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: '#9CA3AF',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: 0,
+                  outline: 'none',
+                  transition: 'color 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#e89528'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#9CA3AF'}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
             </div>
             <AnimatePresence>
               {fieldErrors.password && (
