@@ -1,0 +1,49 @@
+# ============================================================
+# Dokploy Docker Compose — Single-Service App
+# ============================================================
+# Required environment variables (set in Dokploy dashboard):
+#
+#   DB_HOST       - PostgreSQL host (AWS RDS endpoint)
+#   DB_NAME       - PostgreSQL database name
+#   DB_USER       - PostgreSQL username
+#   DB_PASSWORD   - PostgreSQL password
+#   DB_PORT       - PostgreSQL port                  (default: 5432)
+#   DB_SSL        - Enable SSL for DB connection     (default: true)
+#                   Set to "false" to disable SSL
+#   JWT_SECRET    - Secret key for JWT token signing
+#   CORS_ORIGIN   - Allowed CORS origin
+#                   e.g. https://yourdomain.com
+#
+# NOTE: PORT is no longer externally configurable. nginx (port 80)
+# is what Dokploy/Traefik should route to now — it serves the built
+# frontend directly and proxies /api/ to the Node backend on 5000
+# internally. The Node backend's port is fixed at 5000 to match the
+# proxy_pass target hardcoded in nginx.conf; changing it requires
+# updating nginx.conf too.
+# ============================================================
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - "80"
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PORT: ${DB_PORT:-5432}
+      DB_SSL: ${DB_SSL:-true}
+      JWT_SECRET: ${JWT_SECRET}
+      CORS_ORIGIN: ${CORS_ORIGIN}
+    networks:
+      - dokploy-network
+    restart: unless-stopped
+
+networks:
+  dokploy-network:
+    external: true
