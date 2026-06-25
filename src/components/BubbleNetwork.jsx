@@ -302,6 +302,7 @@ const BubbleNetwork = () => {
   const [analyticsFilter, setAnalyticsFilter] = useState('All');
   const [hoveredSalesWidgetIdx, setHoveredSalesWidgetIdx] = useState(null);
   const [hoveredAnalyticsWidgetIdx, setHoveredAnalyticsWidgetIdx] = useState(null);
+  const [hoveredBulletIdx, setHoveredBulletIdx] = useState(null);
 
   useEffect(() => {
     let timeoutId;
@@ -2503,18 +2504,41 @@ const BubbleNetwork = () => {
                               
                               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px' }}>
                                 {content.bullets.map((bullet, idx) => (
-                                  <div key={idx} style={{ 
-                                    border: '1px solid rgba(232, 149, 40, 0.12)', 
-                                    background: 'rgba(232, 149, 40, 0.02)', 
-                                    padding: '10px 14px', 
-                                    borderRadius: '8px', 
-                                    display: 'flex', 
-                                    alignItems: 'center', 
-                                    gap: '10px',
-                                    boxShadow: '0 2px 8px rgba(0,0,0,0.01)'
-                                  }}>
-                                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#e89528', flexShrink: 0 }} />
-                                    <span style={{ fontSize: w < 768 ? '14px' : '15px', color: '#222', fontWeight: '500', textAlign: 'left', lineHeight: '1.4' }}>{bullet}</span>
+                                  <div 
+                                    key={idx} 
+                                    onMouseEnter={() => setHoveredBulletIdx(idx)}
+                                    onMouseLeave={() => setHoveredBulletIdx(null)}
+                                    style={{ 
+                                      border: '1px solid ' + (hoveredBulletIdx === idx ? 'rgba(232, 149, 40, 0.3)' : 'rgba(232, 149, 40, 0.12)'), 
+                                      background: hoveredBulletIdx === idx ? 'rgba(232, 149, 40, 0.06)' : 'rgba(232, 149, 40, 0.02)', 
+                                      padding: '10px 14px', 
+                                      borderRadius: '8px', 
+                                      display: 'flex', 
+                                      alignItems: 'center', 
+                                      gap: '10px',
+                                      boxShadow: hoveredBulletIdx === idx ? '0 4px 12px rgba(232, 149, 40, 0.05)' : '0 2px 8px rgba(0,0,0,0.01)',
+                                      transform: hoveredBulletIdx === idx ? 'translateX(4px)' : 'none',
+                                      transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                                      cursor: 'pointer'
+                                    }}
+                                  >
+                                    <div style={{ 
+                                      width: '6px', 
+                                      height: '6px', 
+                                      borderRadius: '50%', 
+                                      background: '#e89528', 
+                                      flexShrink: 0,
+                                      transform: hoveredBulletIdx === idx ? 'scale(1.25)' : 'none',
+                                      transition: 'transform 0.2s ease'
+                                    }} />
+                                    <span style={{ 
+                                      fontSize: w < 768 ? '14px' : '15px', 
+                                      color: hoveredBulletIdx === idx ? '#e89528' : '#222', 
+                                      fontWeight: hoveredBulletIdx === idx ? '600' : '500', 
+                                      textAlign: 'left', 
+                                      lineHeight: '1.4',
+                                      transition: 'color 0.2s ease'
+                                    }}>{bullet}</span>
                                   </div>
                                 ))}
                               </div>
