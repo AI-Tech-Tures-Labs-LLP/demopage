@@ -969,13 +969,13 @@ const BubbleNetwork = () => {
                                 <h2 style={{ fontSize: w < 768 ? '28px' : '40px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
                                   Top Management
                                 </h2>
-                                <h3 style={{ fontSize: w < 768 ? '13px' : '17px', fontWeight: '600', color: '#666', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
+                                <h3 style={{ fontSize: w < 768 ? '13px' : '17px', fontWeight: '600', color: '#222', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
                                   AI-Powered Executive Intelligence
                                 </h3>
                               </div>
                             </div>
 
-                            <p style={{ fontSize: w < 768 ? '13px' : '17px', color: '#444', lineHeight: '1.45', margin: '8px 0 16px 0', fontWeight: '500', textAlign: 'left' }}>
+                            <p style={{ fontSize: w < 768 ? '13px' : '17px', color: '#222', lineHeight: '1.45', margin: '8px 0 16px 0', fontWeight: '500', textAlign: 'left' }}>
                               One unified view of the entire business for faster, smarter decision-making across all departments and operations.
                             </p>
 
@@ -1042,7 +1042,7 @@ const BubbleNetwork = () => {
                                       <h4 style={{ fontSize: w < 768 ? '13px' : '17.5px', fontWeight: '700', color: '#d68022', margin: 0 }}>
                                         {item.title}
                                       </h4>
-                                      <p style={{ fontSize: w < 768 ? '11px' : '14.5px', color: '#555', margin: '1px 0 0 0', lineHeight: '1.4', fontWeight: '500' }}>
+                                      <p style={{ fontSize: w < 768 ? '11px' : '14.5px', color: '#222', margin: '1px 0 0 0', lineHeight: '1.4', fontWeight: '500' }}>
                                         {item.desc}
                                       </p>
                                     </div>
@@ -1084,7 +1084,7 @@ const BubbleNetwork = () => {
                                     <span style={{
                                       fontSize: w < 768 ? '9px' : '13px',
                                       fontWeight: '700',
-                                      color: '#555',
+                                      color: '#222',
                                       textAlign: 'center',
                                       lineHeight: '1.25',
                                       whiteSpace: 'pre-line'
@@ -1308,13 +1308,13 @@ const BubbleNetwork = () => {
                                 <h2 style={{ fontSize: w < 768 ? '28px' : '40px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
                                   Procurement
                                 </h2>
-                                <h3 style={{ fontSize: w < 768 ? '13px' : '17px', fontWeight: '600', color: '#666', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
+                                <h3 style={{ fontSize: w < 768 ? '13px' : '17px', fontWeight: '600', color: '#222', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
                                   Intelligent Procurement & Inventory Control
                                 </h3>
                               </div>
                             </div>
 
-                            <p style={{ fontSize: w < 768 ? '13px' : '17px', color: '#444', lineHeight: '1.45', margin: '8px 0 16px 0', fontWeight: '500', textAlign: 'left' }}>
+                            <p style={{ fontSize: w < 768 ? '13px' : '17px', color: '#222', lineHeight: '1.45', margin: '8px 0 16px 0', fontWeight: '500', textAlign: 'left' }}>
                               Ensure the right materials are available at the right time while optimizing inventory, procurement costs, and fulfilment efficiency.
                             </p>
 
@@ -1381,7 +1381,7 @@ const BubbleNetwork = () => {
                                       <h4 style={{ fontSize: w < 768 ? '13px' : '17.5px', fontWeight: '700', color: '#d68022', margin: 0 }}>
                                         {item.title}
                                       </h4>
-                                      <p style={{ fontSize: w < 768 ? '11px' : '14.5px', color: '#555', margin: '1px 0 0 0', lineHeight: '1.4', fontWeight: '500' }}>
+                                      <p style={{ fontSize: w < 768 ? '11px' : '14.5px', color: '#222', margin: '1px 0 0 0', lineHeight: '1.4', fontWeight: '500' }}>
                                         {item.desc}
                                       </p>
                                     </div>
@@ -1423,7 +1423,7 @@ const BubbleNetwork = () => {
                                     <span style={{
                                       fontSize: w < 768 ? '9px' : '13px',
                                       fontWeight: '700',
-                                      color: '#555',
+                                      color: '#222',
                                       textAlign: 'center',
                                       lineHeight: '1.25',
                                       whiteSpace: 'pre-line'
@@ -1666,13 +1666,13 @@ const BubbleNetwork = () => {
                                 <h2 style={{ fontSize: w < 768 ? '28px' : '38px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
                                   Sales Enablement
                                 </h2>
-                                <h3 style={{ fontSize: w < 768 ? '13px' : '17px', fontWeight: '600', color: '#666', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
+                                <h3 style={{ fontSize: w < 768 ? '13px' : '17px', fontWeight: '600', color: '#222', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
                                   Empower Teams. Manage Sales. Drive Growth.
                                 </h3>
                               </div>
                             </div>
 
-                            <p style={{ fontSize: w < 768 ? '13px' : '16.5px', color: '#444', lineHeight: '1.45', margin: '8px 0 16px 0', fontWeight: '500', textAlign: 'left' }}>
+                            <p style={{ fontSize: w < 768 ? '13px' : '16.5px', color: '#222', lineHeight: '1.45', margin: '8px 0 16px 0', fontWeight: '500', textAlign: 'left' }}>
                               Equip your sales teams with the right tools to manage leads, engagements, activities, and approvals—efficiently.
                             </p>
 
@@ -1684,7 +1684,7 @@ const BubbleNetwork = () => {
                             </div>
 
                             {/* Horizontal Process Flow */}
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 10px', marginBottom: '16px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '0 10px', marginBottom: '16px' }}>
                               {[
                                 { title: 'Leads', desc: 'Assign & qualify\nthe right leads', icon: UserCheck },
                                 { title: 'Engage', desc: 'Connect & nurture\nwith purpose', icon: MessageSquare },
@@ -1711,10 +1711,10 @@ const BubbleNetwork = () => {
                                         <StepIcon size={20} />
                                       </div>
                                       <span style={{ fontSize: '13.5px', fontWeight: '800', color: '#222', textTransform: 'uppercase', marginBottom: '2px' }}>{step.title}</span>
-                                      <span style={{ fontSize: '11.5px', color: '#666', textAlign: 'center', lineHeight: '1.2', whiteSpace: 'pre-line', fontWeight: '500' }}>{step.desc}</span>
+                                      <span style={{ fontSize: '11.5px', color: '#222', textAlign: 'center', lineHeight: '1.2', whiteSpace: 'pre-line', fontWeight: '500' }}>{step.desc}</span>
                                     </div>
                                     {idx < arr.length - 1 && (
-                                      <ArrowRight size={16} color="rgba(232, 149, 40, 0.4)" style={{ flexShrink: 0, marginTop: '-28px' }} />
+                                      <ArrowRight size={16} color="rgba(232, 149, 40, 0.4)" style={{ flexShrink: 0, marginTop: '15px' }} />
                                     )}
                                   </React.Fragment>
                                 );
@@ -1739,7 +1739,7 @@ const BubbleNetwork = () => {
                                   return (
                                     <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                       <FeatIcon size={15} color="#e89528" style={{ flexShrink: 0 }} />
-                                      <span style={{ fontSize: '13.5px', color: '#444', fontWeight: '600' }}>{feat.title}</span>
+                                      <span style={{ fontSize: '13.5px', color: '#222', fontWeight: '600' }}>{feat.title}</span>
                                     </div>
                                   );
                                 })}
@@ -1761,7 +1761,7 @@ const BubbleNetwork = () => {
                                   return (
                                     <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                       <FeatIcon size={15} color="#e89528" style={{ flexShrink: 0 }} />
-                                      <span style={{ fontSize: '13.5px', color: '#444', fontWeight: '600' }}>{feat.title}</span>
+                                      <span style={{ fontSize: '13.5px', color: '#222', fontWeight: '600' }}>{feat.title}</span>
                                     </div>
                                   );
                                 })}
@@ -1801,7 +1801,7 @@ const BubbleNetwork = () => {
                                     <span style={{
                                       fontSize: w < 768 ? '9px' : '12px',
                                       fontWeight: '700',
-                                      color: '#555',
+                                      color: '#222',
                                       textAlign: 'center',
                                       lineHeight: '1.25',
                                       whiteSpace: 'pre-line'
@@ -2007,13 +2007,13 @@ const BubbleNetwork = () => {
                                 <h2 style={{ fontSize: w < 768 ? '32px' : '42px', fontWeight: '800', margin: 0, color: '#e89528', lineHeight: '1.1' }}>
                                   Analytics
                                 </h2>
-                                <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '600', color: '#666', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
+                                <h3 style={{ fontSize: w < 768 ? '15px' : '19px', fontWeight: '600', color: '#222', margin: '2px 0 0 0', letterSpacing: '0.5px' }}>
                                   Turn Data Into Actionable Intelligence
                                 </h3>
                               </div>
                             </div>
 
-                            <p style={{ fontSize: w < 768 ? '14px' : '17.5px', color: '#444', lineHeight: '1.45', margin: '8px 0 14px 0', fontWeight: '500', textAlign: 'left' }}>
+                            <p style={{ fontSize: w < 768 ? '14px' : '17.5px', color: '#222', lineHeight: '1.45', margin: '8px 0 14px 0', fontWeight: '500', textAlign: 'left' }}>
                               Transform business data into actionable intelligence. Uncover trends, investigate anomalies, validate information, and identify opportunities for improvement with AI-powered analytics.
                             </p>
 
@@ -2025,7 +2025,7 @@ const BubbleNetwork = () => {
                             </div>
 
                             {/* Horizontal Process Flow */}
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 10px', marginBottom: '14px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '0 10px', marginBottom: '14px' }}>
                               {[
                                 { title: 'Monitor', desc: 'Track KPIs, trends\n& performance changes', icon: Monitor },
                                 { title: 'Analyze', desc: 'Identify patterns\n& correlations', icon: TrendingUp },
@@ -2052,10 +2052,10 @@ const BubbleNetwork = () => {
                                         <StepIcon size={20} />
                                       </div>
                                       <span style={{ fontSize: '14px', fontWeight: '800', color: '#222', textTransform: 'uppercase', marginBottom: '2px' }}>{step.title}</span>
-                                      <span style={{ fontSize: '12px', color: '#666', textAlign: 'center', lineHeight: '1.25', whiteSpace: 'pre-line', fontWeight: '500' }}>{step.desc}</span>
+                                      <span style={{ fontSize: '12px', color: '#222', textAlign: 'center', lineHeight: '1.25', whiteSpace: 'pre-line', fontWeight: '500' }}>{step.desc}</span>
                                     </div>
                                     {idx < arr.length - 1 && (
-                                      <ArrowRight size={14} color="rgba(232, 149, 40, 0.4)" style={{ flexShrink: 0, marginTop: '-24px' }} />
+                                      <ArrowRight size={14} color="rgba(232, 149, 40, 0.4)" style={{ flexShrink: 0, marginTop: '17px' }} />
                                     )}
                                   </React.Fragment>
                                 );
@@ -2076,7 +2076,7 @@ const BubbleNetwork = () => {
                                 return (
                                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(232, 149, 40, 0.02)', border: '1px solid rgba(232, 149, 40, 0.08)', borderRadius: '8px', padding: '10px 14px' }}>
                                     <FeatIcon size={14} color="#e89528" style={{ flexShrink: 0 }} />
-                                    <span style={{ fontSize: '14.5px', color: '#444', fontWeight: '600' }}>{feat.title}</span>
+                                    <span style={{ fontSize: '14.5px', color: '#222', fontWeight: '600' }}>{feat.title}</span>
                                   </div>
                                 );
                               })}
@@ -2115,7 +2115,7 @@ const BubbleNetwork = () => {
                                     <span style={{
                                       fontSize: w < 768 ? '9px' : '13px',
                                       fontWeight: '700',
-                                      color: '#555',
+                                      color: '#222',
                                       textAlign: 'center',
                                       lineHeight: '1.25',
                                       whiteSpace: 'pre-line'
