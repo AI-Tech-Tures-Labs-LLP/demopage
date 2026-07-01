@@ -17,7 +17,7 @@ export const bubbleData = {
     link: 'https://stacklogix.com/erp',
     subComponents: [
       { id: 'analyst-automated-reports', title: 'Business Intelligence', description: 'Schedule and auto-generate detailed performance reports.', link: 'http://fulfillmentstacklogix-fulfillmentstacklo-bda093-187-77-184-127.sslip.io/dashboard/product-insights' },
-      { id: 'analyst-audit-trails', title: 'Audit Trail', description: 'Comprehensive tracking of all system activities and changes.', link: 'http://audittrail-audittrail-feoxoe-fa9071-187-77-184-127.sslip.io/audit/sales-order/SO24011300001' },
+      { id: 'analyst-audit-trails', title: 'Audit Trail', description: 'Comprehensive tracking of all system activities and changes.', link: 'http://audittrail-audittrail-feoxoe-fa9071-187-77-184-127.sslip.io/audit' },
       { id: 'analyst-command-center', title: 'Root Cause Analysis', description: 'Unified overview of system health and metrics.', link: 'http://alertfindingstack-alertfindingstack-y4it-85d785-82-25-108-222.sslip.io/findings/5e2f17d9-9c6d-48a1-a639-47e512d2cb0e' },
       { id: 'analyst-ai-monitoring', title: 'AI Insights Engine', description: 'Intelligent alerts and real-time anomaly detection.', link: 'http://alertfindingstack-alertfindingstack-y4it-85d785-82-25-108-222.sslip.io/findings/5e2f17d9-9c6d-48a1-a639-47e512d2cb0e' }
     ]
